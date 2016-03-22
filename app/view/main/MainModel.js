@@ -11,3 +11,50 @@ Ext.define('InboxManagement.view.main.MainModel', {
 
     //TODO - add data, formulas and/or methods to support your view
 });
+
+
+//Ext.define('InboxManagement.view.main.MainModel', {
+//    extend: 'Ext.app.ViewModel',
+//
+//    alias: 'viewmodel.tree-list',
+//
+//    formulas: {
+//        selectionText: function(get) {
+//            var selection = get('treelist.selection'),
+//                path;
+//            if (selection) {
+//                path = selection.getPath('text');
+//                path = path.replace(/^\/Root/, '');
+//                return 'Selected: ' + path;
+//            } else {
+//                return 'No node selected';
+//            }
+//        }
+//    },
+//
+//    stores: {
+//        navItems: {
+//            type: 'tree',              
+//            root: {                
+//                expanded: true,
+//                children: [{
+//                    text: 'Write',
+//                    iconCls: 'x-fa fa-edit',
+//                    leaf: true
+//                },{
+//                    text: 'Inbox',
+//                    iconCls: 'x-fa fa-inbox',
+//                    leaf: true
+//                },{
+//                    text: 'Sent',
+//                    iconCls: 'x-fa fa-send',
+//                    leaf: true
+//                },{
+//                    text: 'Trash',
+//                    iconCls: 'x-fa fa-trash-o',
+//                    leaf: true
+//                }]
+//            }
+//        }
+//    }
+//});

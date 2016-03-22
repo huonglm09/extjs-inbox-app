@@ -110,7 +110,7 @@ Ext.define('InboxManagement.controller.Routes', {
             },
             // If not logged in redirect to the login route
             failure: function() {
-                me.redirectTo('login', false);
+//                me.redirectTo('login', false);
             }
         });
     },

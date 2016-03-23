@@ -14,6 +14,12 @@ Ext.define('InboxManagement.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
+    },
+    onLogout: function() {
+        localStorage.removeItem("LoggedIn");  
+        InboxManagement.Global.setUser(null); 
+        this.getView().destroy();
+        this.redirectTo('login');        
     }
 });
 

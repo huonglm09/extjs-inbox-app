@@ -7,7 +7,7 @@ Ext.define('InboxManagement.Application', {
     /*
      * The default hash for the router
      * */
-    defaultToken: 'home',
+    defaultToken: 'inbox',
     /*
      * Define the router controller
      * */
@@ -19,15 +19,6 @@ Ext.define('InboxManagement.Application', {
         /*
          * Calling the registerVtypes method in the Global singleton to set up the vtypes to use in the application
          * */
-        InboxManagement.Global.registerVtypes();
-    },
-    onAppUpdate: function() {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
-                function(choice) {
-                    if (choice === 'yes') {
-                        window.location.reload();
-                    }
-                }
-        );
+        //InboxManagement.Global.registerVtypes();
     }
 });

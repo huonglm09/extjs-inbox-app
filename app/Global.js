@@ -15,7 +15,11 @@ Ext.define('InboxManagement.Global', {
         /*
          * Start token var.  This is updated when a major route is hit
          * */
-        startToken: null
+        startToken: null,
+        /*
+         * Using view
+         * */
+        currentView: null
     },
     /*
      * Initialize the config in the constructor
@@ -26,7 +30,7 @@ Ext.define('InboxManagement.Global', {
     /*
      * The register VTypes method is where you can put form field vtypes to use throughout your application
      * */
-    registerVtypes: function() {        
+    registerVtypes: function() {
         Ext.apply(Ext.form.field.VTypes, {
             /*
              * Passwordcheck.  This vtype will force a password be at least 8 chars in length and have 1 uppercase and 1 number

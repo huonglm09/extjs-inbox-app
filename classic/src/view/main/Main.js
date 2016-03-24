@@ -24,28 +24,28 @@ Ext.define('InboxManagement.view.main.Main', {
     titleRotation: 0,
     tabRotation: 0,
     header: {
-        items: [{
-                xtype: 'button',
-                text: 'My Account',
-                menu: [{
-                        text: 'Profile',
-                        iconCls: 'x-fa fa-user',
-                        width: 190
-                    }, {
-                        text: 'Logout',
-                        iconCls: 'x-fa fa-sign-out',
-                        handler: 'onLogout',
-                        width: 190
-                    }]
-            }],
+//        items: [{
+//                xtype: 'button',
+//                text: 'My Account',
+//                menu: [{
+//                        text: 'Profile',
+//                        iconCls: 'x-fa fa-user',
+//                        width: 220
+//                    }, {
+//                        text: 'Logout',
+//                        iconCls: 'x-fa fa-sign-out',
+//                        handler: 'onLogout',
+//                        width: 220
+//                    }]
+//            }],
         layout: {
             align: 'stretchmax'
         },
         title: {
-            width: 120,
-            height: 100,
+            width: 198,            
+            height: 33,
             bind: {
-                html: '<img src="resources/images/logo/logo.png"/>'
+                html: '<img class="logo" src="resources/images/logo/logo.png"/>'
             },
             flex: 0
         }
@@ -76,13 +76,20 @@ Ext.define('InboxManagement.view.main.Main', {
                 },
                 tall: {
                     iconAlign: 'top',
-                    textAlign: 'center'
+                    textAlign: 'center'                    
                 }
             }
         }
     },
     
     items: [{
+            title: 'Profile',
+            id: 'profile',
+            iconCls: 'fa-user',            
+            bind: {
+                html: '{loremIpsum}'
+            }
+        }, {
             title: 'Inbox',
             id: 'inbox',
             iconCls: 'fa-inbox',            
@@ -107,6 +114,13 @@ Ext.define('InboxManagement.view.main.Main', {
             title: 'Trash',
             id: 'trash',
             iconCls: 'fa-trash-o',            
+            bind: {
+                html: '{loremIpsum}'
+            }
+        }, {
+            title: 'Logout',
+            id: 'logout',
+            iconCls: 'fa-sign-out',            
             bind: {
                 html: '{loremIpsum}'
             }

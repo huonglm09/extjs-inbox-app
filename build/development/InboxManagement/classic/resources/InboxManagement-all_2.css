@@ -9567,3 +9567,42 @@
     top: 30px;
     right: -24px;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:85 */
+.x-tab-focus.x-tab-navigation {
+    outline: none;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:88 */
+.x-tab-text.x-tab-icon-left > .x-tab-icon-el-navigation {
+    margin-right: 10px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:91 */
+.x-tab-bar-navigation {
+    background-color: #32404e;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:94 */
+.x-tab.x-tab-active.x-tab-navigation {
+    background-color: #475360;
+    border-left: 5px solid #cc3232;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:98 */
+.x-tab-icon-el-navigation {
+    font-size: 18px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:101 */
+.x-tab-inner-navigation {
+    font-weight: normal;
+    font-size: 14px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:105 */
+.x-panel-header-title-navigation {
+    top: 0px !important;
+    left: 0px !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:109 */
+.x-panel-header-title-navigation .logo {
+    width: 270px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:112 */
+.x-tab-navigation:hover {
+    background-color: #3c4a57 !important;
+}

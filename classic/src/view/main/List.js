@@ -1,27 +1,114 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('InboxManagement.view.main.List', {
-    extend: 'Ext.grid.Panel',
-    xtype: 'mainlist',
+//Ext.define('InboxManagement.view.main.List', {
+//    extend: 'Ext.grid.Panel',
+//    xtype: 'mainlist',
+//
+//    requires: [
+//        'InboxManagement.store.Personnel'
+//    ],
+//
+//    title: 'Personnel',
+//
+//    store: {
+//        type: 'personnel'
+//    },
+//
+//    columns: [
+//        { text: 'Name',  dataIndex: 'name' },
+//        { text: 'Email', dataIndex: 'email', flex: 1 },
+//        { text: 'Phone', dataIndex: 'phone', flex: 1 }
+//    ],
+//
+//    listeners: {
+//        select: 'onItemSelected'
+//    }
+//});
 
+Ext.define('InboxManagement.view.main.List', {
+    extend: 'Ext.form.Panel',
+    xtype: 'mainlist',
+    alias: 'mainlist',
     requires: [
-        'InboxManagement.store.Personnel'
+        'Ext.button.Button',
+        'Ext.form.field.Text',
+        'Ext.form.field.File',
+        'Ext.form.field.HtmlEditor'
     ],
 
-    title: 'Personnel',
+//    viewModel: {
+//        type: 'emailcompose'
+//    },
 
-    store: {
-        type: 'personnel'
+//    controller: 'emailcompose',
+
+    cls: 'email-compose',
+
+    layout: {
+        type:'vbox',
+        align:'stretch'
     },
 
-    columns: [
-        { text: 'Name',  dataIndex: 'name' },
-        { text: 'Email', dataIndex: 'email', flex: 1 },
-        { text: 'Phone', dataIndex: 'phone', flex: 1 }
+    bodyPadding: 10,
+    scrollable: true,
+
+    defaults: {
+        labelWidth: 60,
+        labelSeparator: ''
+    },
+
+    items: [
+        {
+            xtype: 'textfield',
+            fieldLabel: 'To'
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: 'Subject'
+        },
+        {
+            xtype: 'htmleditor',
+            flex: 1,
+            minHeight: 100,
+            labelAlign: 'top',
+            fieldLabel: 'Message'
+        }
     ],
 
-    listeners: {
-        select: 'onItemSelected'
+    bbar: {
+        overflowHandler: 'menu',
+        items: [
+            {
+                xtype: 'filefield',
+                width: 400,
+                labelWidth: 80,
+                fieldLabel: 'Attachment',
+                labelSeparator: '',
+//                buttonConfig: {
+//                    xtype: 'filebutton',
+//                    glyph:'',
+//                    iconCls: 'x-fa fa-cloud-upload',
+//                    text: 'Browse'
+//                }
+            },
+//            '->',
+            {
+                xtype: 'button',
+//                ui: 'soft-red',
+                text: 'Discard',
+//                handler: 'onComposeDiscardClick'
+            },
+            {
+                xtype: 'button',
+//                ui: 'gray',
+                text: 'Save'
+            },
+            {
+                xtype: 'button',
+//                ui: 'soft-green',
+                text: 'Send'
+            }
+        ]
     }
 });

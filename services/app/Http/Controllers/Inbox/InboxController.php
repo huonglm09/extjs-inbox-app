@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Inbox;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class InboxController extends Controller
-{
+class InboxController extends Controller {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         
     }
 
@@ -23,8 +22,18 @@ class InboxController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function index(Request $request)
-    {        
+    public function index(Request $request) {        
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            $result = array(
+                'success' => true,
+                'data' => $data
+            );                        
+            
+            return response()->json($result);
+        }
+        
         return view('welcome');
     }
+
 }

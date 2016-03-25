@@ -26,6 +26,6 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {       
-    Route::get('inbox/{id?}', 'Inbox\InboxController@index')->where('id', '[0-9]+')->name('inbox');
-});
+//Route::group(['middleware' => ['web']], function () {       
+    Route::any('inbox/{id?}', 'Inbox\InboxController@index')->where('id', '[0-9]+')->name('inbox');
+//});

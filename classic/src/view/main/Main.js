@@ -14,7 +14,7 @@ Ext.define('InboxManagement.view.main.Main', {
         'Ext.window.MessageBox',
         'InboxManagement.view.main.MainController',
         'InboxManagement.view.main.MainModel',
-        'InboxManagement.view.main.List'
+        'InboxManagement.view.main.Write'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -42,7 +42,7 @@ Ext.define('InboxManagement.view.main.Main', {
             align: 'stretchmax'
         },
         title: {
-            width: 198,            
+            width: 198,
             height: 33,
             bind: {
                 html: '<img class="logo" src="resources/images/logo/logo.png"/>'
@@ -51,7 +51,7 @@ Ext.define('InboxManagement.view.main.Main', {
         }
     },
     tabBar: {
-        flex: 1,
+        flex: 1,        
         layout: {
             align: 'stretch',
             overflowHandler: 'none'
@@ -76,51 +76,50 @@ Ext.define('InboxManagement.view.main.Main', {
                 },
                 tall: {
                     iconAlign: 'top',
-                    textAlign: 'center'                    
+                    textAlign: 'center'
                 }
             }
         }
     },
-    
     items: [{
             title: 'Profile',
             id: 'profile',
-            iconCls: 'fa-user',            
+            iconCls: 'fa-user',
             bind: {
                 html: '{loremIpsum}'
             }
         }, {
             title: 'Inbox',
             id: 'inbox',
-            iconCls: 'fa-inbox',            
+            iconCls: 'fa-inbox',
             bind: {
                 html: '{loremIpsum}'
             }
         }, {
             title: 'Write',
             id: 'write',
-            iconCls: 'fa-edit',            
+            iconCls: 'fa-edit',
             items: [{
-                    xtype: 'mainlist'
+                    xtype: 'write'
                 }]
         }, {
             title: 'Sent',
             id: 'sent',
-            iconCls: 'fa-send',            
+            iconCls: 'fa-send',
             bind: {
                 html: '{loremIpsum}'
             }
         }, {
             title: 'Trash',
             id: 'trash',
-            iconCls: 'fa-trash-o',            
+            iconCls: 'fa-trash-o',
             bind: {
                 html: '{loremIpsum}'
             }
         }, {
             title: 'Logout',
             id: 'logout',
-            iconCls: 'fa-sign-out',            
+            iconCls: 'fa-sign-out',
             bind: {
                 html: '{loremIpsum}'
             }

@@ -880,12 +880,15 @@ $include-inboxmanagement-application: dynamic(true);;
 $include-inboxmanagement-global: dynamic(true);;
 $include-inboxmanagement-controller-routes: dynamic(true);;
 $include-inboxmanagement-store-personnel: dynamic(true);;
+$include-inboxmanagement-store-write: dynamic(true);;
 $include-inboxmanagement-view-auth-login: dynamic(true);;
 $include-inboxmanagement-view-auth-logincontroller: dynamic(true);;
-$include-inboxmanagement-view-main-list: dynamic(true);;
 $include-inboxmanagement-view-main-main: dynamic(true);;
 $include-inboxmanagement-view-main-maincontroller: dynamic(true);;
 $include-inboxmanagement-view-main-mainmodel: dynamic(true);;
+$include-inboxmanagement-view-main-write: dynamic(true);;
+$include-inboxmanagement-view-main-writecontroller: dynamic(true);;
+$include-inboxmanagement-view-main-writemodel: dynamic(true);;
 $output-paths: ("path": "../../classic/resources", "shared": "../../resources");
 
 /* ======================== ETC ======================== */

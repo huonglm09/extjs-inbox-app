@@ -93,7 +93,7 @@ $ui-header-noborder-adjust: false
 }
 .x-tab.x-tab-active.x-tab-navigation {  
     background-color: #475360;
-    border-left: 5px solid #cc3232;
+    border-left: 5px solid #35baf6; //cc3232
 }
 .x-tab-icon-el-navigation {
     font-size: 18px;
@@ -107,8 +107,32 @@ $ui-header-noborder-adjust: false
     left: 0px !important;
 }
 .x-panel-header-title-navigation .logo {
-    width: 270px;    
+    width: 270px;        
 }
 .x-tab-navigation:hover {
     background-color: #3c4a57 !important;    
+}
+.x-form-item-body-default .x-toolbar-default {
+    border-bottom: 1px solid #d0d0d0 !important;
+    z-index: 1;
+}
+.x-form-item-body-default .x-component.x-html-editor-input.x-box-item.x-component-default {
+    padding: 10px;
+}
+#send {    
+    border: 1px solid #84b351;    
+    background-color: #9cc96b;
+}
+#discard {
+    border: 1px solid #cf2f3f;    
+    background-color: #e44959;
+}
+.write-btn span {
+    color: #ffffff !important;    
+}
+#discard:hover {
+    background-color: #d24352;
+}
+#send:hover {
+    background-color: #90b962;
 }

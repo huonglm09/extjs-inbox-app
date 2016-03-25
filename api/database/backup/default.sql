@@ -1,0 +1,3 @@
+INSERT INTO ext_inbox.users VALUES ('1', 'Henry', 'Tran', 'henry.tran@qsoftvietnam.com','$2y$10$jfOXeW9aqtuP4QA0gzn1re6GEoTCsokcrNAmFISBx677PG1m4kx5q','','2016-03-17 17:07:27', '2016-03-17 10:38:23', null);
+INSERT INTO ext_inbox.users VALUES ('2', 'Nguyen', 'Manh', 'theman2311@gmail.com','$2y$10$jfOXeW9aqtuP4QA0gzn1re6GEoTCsokcrNAmFISBx677PG1m4kx5q','','2016-03-17 17:07:27', '2016-03-17 10:38:23', null);
+INSERT INTO ext_inbox.users VALUES ('3', 'Vinh', 'Bao', 'themanhss@gmail.com','$2y$10$jfOXeW9aqtuP4QA0gzn1re6GEoTCsokcrNAmFISBx677PG1m4kx5q','','2016-03-17 17:07:27', '2016-03-17 10:38:23', null);

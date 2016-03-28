@@ -3,9 +3,7 @@ Ext.define('InboxManagement.controller.Routes', {
     requires: [
         'Ext.util.History',
         'InboxManagement.Global',
-        'InboxManagement.view.auth.Login',
-        'InboxManagement.view.auth.Password',
-        'InboxManagement.view.auth.Register'
+        'InboxManagement.view.auth.Login'        
     ],
     /*
      * Listen for unmatched route
@@ -54,6 +52,16 @@ Ext.define('InboxManagement.controller.Routes', {
             'trash': {
                 before: 'loggedIn',
                 action: 'onTrash'
+            },
+            // Trash route
+            'profile': {
+                before: 'loggedIn',
+                action: 'onProfile'
+            },
+            // Trash route
+            'logout': {
+                before: 'loggedIn',
+                action: 'onLogout'
             }
         }
     },
@@ -97,6 +105,18 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onTrash: function() {
         this.changeTab('trash');
+    },
+    /*
+     * Profile route method
+     * */
+    onProfile: function() {
+        this.changeTab('profile');
+    },
+    /*
+     * Logout route method
+     * */
+    onLogout: function() {
+        this.changeTab('logout');
     },
     /*
      * Change view when change tab

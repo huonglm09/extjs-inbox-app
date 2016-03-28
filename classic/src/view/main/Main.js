@@ -25,19 +25,19 @@ Ext.define('InboxManagement.view.main.Main', {
     tabRotation: 0,
     header: {
         items: [{
-                xtype: 'button',
-                text: 'My Account',
-                menu: [{
-                        text: 'Profile',
-                        iconCls: 'x-fa fa-user',
-                        width: 190
-                    }, {
-                        text: 'Logout',
-                        iconCls: 'x-fa fa-sign-out',
-                        handler: 'onLogout',
-                        width: 190
-                    }]
-            }],
+            xtype: 'button',
+            text: 'My Account',
+            menu: [{
+                text: 'Profile',
+                iconCls: 'x-fa fa-user',
+                width: 190
+            }, {
+                text: 'Logout',
+                iconCls: 'x-fa fa-sign-out',
+                handler: 'onLogout',
+                width: 190
+            }]
+        }],
         layout: {
             align: 'stretchmax'
         },
@@ -81,36 +81,36 @@ Ext.define('InboxManagement.view.main.Main', {
             }
         }
     },
-    
+
     items: [{
-            title: 'Inbox',
-            id: 'inbox',
-            iconCls: 'fa-inbox',            
-            bind: {
-                html: '{loremIpsum}'
-            }
-        }, {
-            title: 'Write',
-            id: 'write',
-            iconCls: 'fa-edit',            
-            items: [{
-                    xtype: 'mainlist'
-                }]
-        }, {
-            title: 'Sent',
-            id: 'sent',
-            iconCls: 'fa-send',            
-            bind: {
-                html: '{loremIpsum}'
-            }
-        }, {
-            title: 'Trash',
-            id: 'trash',
-            iconCls: 'fa-trash-o',            
-            bind: {
-                html: '{loremIpsum}'
-            }
+        title: 'Inbox',
+        id: 'inbox',
+        iconCls: 'fa-inbox',
+        items: [{
+            xtype: 'main-inbox'
         }]
+    }, {
+        title: 'Write',
+        id: 'write',
+        iconCls: 'fa-edit',
+        items: [{
+            xtype: 'mainlist'
+        }]
+    }, {
+        title: 'Sent',
+        id: 'sent',
+        iconCls: 'fa-send',
+        bind: {
+            html: '{loremIpsum}'
+        }
+    }, {
+        title: 'Trash',
+        id: 'trash',
+        iconCls: 'fa-trash-o',
+        bind: {
+            html: '{loremIpsum}'
+        }
+    }]
 });
 
 

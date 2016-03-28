@@ -518,7 +518,7 @@ img {
     left: 0;
     top: 0;
     overflow: hidden;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/Component.scss:90 */
@@ -615,7 +615,7 @@ td.x-frame-br {
 .x-proxy-el {
     position: absolute;
     background: #b4b4b4;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/Component.scss:206 */
@@ -1316,7 +1316,7 @@ td.x-frame-br {
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/dd/StatusProxy.scss:6 */
 .x-dd-drag-repair .x-dd-drag-ghost {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/dd/StatusProxy.scss:10 */
@@ -1331,7 +1331,7 @@ td.x-frame-br {
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/dd/StatusProxy.scss:21 */
 .x-dd-drag-ghost {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
     opacity: 0.85;
     white-space: nowrap;
 }
@@ -1551,7 +1551,7 @@ td.x-frame-mc {
     display: none;
     z-index: 200000;
     background-color: #fff;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/src/window/Window.scss:1 */
@@ -1978,7 +1978,7 @@ the height of a multi-line element */
     width: 100%;
     height: 100%;
     overflow: hidden;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
     /* Yes, there's actually a good reason for this...
       * If the configured buttonText is set to something longer than the default,
@@ -3448,7 +3448,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-small {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -4036,7 +4036,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-medium {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -4624,7 +4624,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-large {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -5212,7 +5212,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-toolbar-small {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -5800,7 +5800,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-toolbar-medium {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -6388,7 +6388,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-default-toolbar-large {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -6538,17 +6538,17 @@ body > .x-mask {
     margin: 0;
     color: #fff;
     text-align: center;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Tool.scss:19 */
 .x-tool-over .x-tool-img {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Tool.scss:24 */
 .x-tool-pressed .x-tool-img {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Tool.scss:30 */
@@ -7025,12 +7025,12 @@ body > .x-mask {
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Splitter.scss:164 */
 .x-splitter-active {
     background-color: #b4b4b4;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Splitter.scss:168 */
 .x-splitter-active .x-collapse-el {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Splitter.scss:173 */
@@ -7155,22 +7155,22 @@ body > .x-mask {
 .x-box-scroller-toolbar-default {
     cursor: pointer;
     color: #919191;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-toolbar-default.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-toolbar-default.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-toolbar-default.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -7341,22 +7341,22 @@ body > .x-mask {
 .x-box-scroller-toolbar-footer {
     cursor: pointer;
     color: #919191;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-toolbar-footer.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-toolbar-footer.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-toolbar-footer.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -7463,7 +7463,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:899 */
 .x-panel-ghost {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:276 */
@@ -7728,7 +7728,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:850 */
 .x-panel-default-resizable .x-panel-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
@@ -9186,7 +9186,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:850 */
 .x-panel-default-framed-resizable .x-panel-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
@@ -9619,7 +9619,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:696 */
 .x-window-ghost {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:228 */
@@ -11067,7 +11067,7 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/Labelable.scss:156 */
 .x-form-item-default.x-item-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/Labelable.scss:194 */
@@ -11385,19 +11385,19 @@ body > .x-mask {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:174 */
 .x-fieldset-header-tool-default > .x-tool-img {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
     height: 15px;
     width: 15px;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:181 */
 .x-fieldset-header-tool-default.x-tool-over > .x-tool-img {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
     opacity: 0.9;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:187 */
 .x-fieldset-header-tool-default.x-tool-pressed > .x-tool-img {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:193 */
@@ -11644,12 +11644,12 @@ body > .x-mask {
     -webkit-touch-callout: none;
     color: #919191;
     background-color: #ececec;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     opacity: 0.7;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/picker/Date.scss:51 */
 div.x-datepicker-arrow:hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/picker/Date.scss:56 */
@@ -11864,7 +11864,7 @@ a.x-monthpicker-item-inner:hover {
     width: 16px;
     cursor: pointer;
     margin-top: 15px;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     opacity: 0.7;
     -webkit-touch-callout: none;
     color: #919191;
@@ -11872,7 +11872,7 @@ a.x-monthpicker-item-inner:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/picker/Date.scss:343 */
 a.x-monthpicker-yearnav-button:hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/picker/Date.scss:348 */
@@ -12570,7 +12570,7 @@ a.x-color-picker-item:hover {
     height: 12px;
     top: 5px;
     right: 3px;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
     opacity: 0.85;
     font: 12px/1 FontAwesome;
     color: #919191;
@@ -12581,13 +12581,13 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/field/Tag.scss:202 */
 .x-form-text-default .x-tagfield-item-close:hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=93);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
     opacity: 0.93;
     color: #919191;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/field/Tag.scss:213 */
 .x-form-text-default .x-tagfield-item-close:active {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/field/Tag.scss:223 */
@@ -13021,7 +13021,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/column/Action.scss:12 */
 .x-action-col-cell .x-item-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/column/Action.scss:16 */
@@ -13049,7 +13049,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/column/Check.scss:22 */
 .x-item-disabled .x-grid-checkcolumn {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/column/Check.scss:27 */
@@ -13496,7 +13496,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-grid-cell-small {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -13757,12 +13757,12 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/menu/Menu.scss:382 */
 .x-menu-item-default.x-menu-item-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/menu/Menu.scss:387 */
 .x-ie9m .x-menu-item-default.x-menu-item-disabled .x-menu-item-icon-ui {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/menu/Menu.scss:391 */
@@ -13985,22 +13985,22 @@ a.x-color-picker-item:hover {
 .x-box-scroller-menu-default {
     cursor: pointer;
     color: #919191;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-menu-default.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-menu-default.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     opacity: 0.7;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-menu-default.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -14607,7 +14607,7 @@ div.x-border-layout-ct {
     z-index: 100;
     font-size: 1px;
     line-height: 10px;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
     background-color: #ececec;
     color: #919191;
@@ -14751,7 +14751,7 @@ div.x-border-layout-ct {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Resizer.scss:153 */
 .x-window .x-window-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Resizer.scss:157 */
@@ -14768,7 +14768,7 @@ div.x-border-layout-ct {
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Resizer.scss:170 */
 .x-resizable-handle-over,
 .x-resizable-pinned .x-resizable-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/resizer/Resizer.scss:176 */
@@ -15785,7 +15785,7 @@ div.x-border-layout-ct {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2872 */
 .x-tab.x-tab-disabled.x-tab-default .x-tab-inner-default {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2877 */
@@ -15794,7 +15794,7 @@ div.x-border-layout-ct {
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2896 */
 .x-tab.x-tab-disabled.x-tab-default .x-tab-icon-el-default {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2901 */

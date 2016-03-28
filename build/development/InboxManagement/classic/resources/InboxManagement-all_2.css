@@ -274,7 +274,7 @@
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:3119 */
 .x-tab-default.x-tab-disabled .x-tab-close-btn {
     color: #fff;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
     background-position: 0 0;
 }
@@ -510,22 +510,22 @@
 .x-box-scroller-tab-bar-default {
     cursor: pointer;
     color: #fff;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-tab-bar-default.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-tab-bar-default.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     opacity: 0.7;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-tab-bar-default.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -719,22 +719,22 @@
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:181 */
 .x-box-scroller-breadcrumb-default {
     cursor: pointer;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-breadcrumb-default.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: 0.8;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-breadcrumb-default.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-breadcrumb-default.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -1426,7 +1426,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-plain-toolbar-small {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -1997,7 +1997,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-plain-toolbar-medium {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -2568,7 +2568,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1081 */
 .x-btn-disabled.x-btn-plain-toolbar-large {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/button/Button.scss:1100 */
@@ -2715,7 +2715,7 @@
 .x-ie8 .x-btn-plain-toolbar-small-disabled .x-btn-icon-el,
 .x-ie8 .x-btn-plain-toolbar-medium-disabled .x-btn-icon-el,
 .x-ie8 .x-btn-plain-toolbar-large-disabled .x-btn-icon-el {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:276 */
@@ -2981,7 +2981,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:850 */
 .x-panel-light-resizable .x-panel-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
@@ -4440,7 +4440,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:850 */
 .x-panel-light-framed-resizable .x-panel-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
@@ -8280,7 +8280,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2872 */
 .x-tab.x-tab-disabled.x-tab-navigation .x-tab-inner-navigation {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2877 */
@@ -8289,7 +8289,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2896 */
 .x-tab.x-tab-disabled.x-tab-navigation .x-tab-icon-el-navigation {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2901 */
@@ -8829,7 +8829,7 @@
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tab/Tab.scss:3119 */
 .x-tab-navigation.x-tab-disabled .x-tab-close-btn {
     color: #fff;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3;
     background-position: 0 0;
 }
@@ -9065,22 +9065,22 @@
 .x-box-scroller-tab-bar-navigation {
     cursor: pointer;
     color: #fff;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:191 */
 .x-box-scroller-tab-bar-navigation.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:197 */
 .x-box-scroller-tab-bar-navigation.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     opacity: 0.7;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Box.scss:203 */
 .x-box-scroller-tab-bar-navigation.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
     cursor: default;
 }
@@ -9436,7 +9436,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/panel/Panel.scss:850 */
 .x-panel-navigation-resizable .x-panel-handle {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 }
 /* http://localhost:1841/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */

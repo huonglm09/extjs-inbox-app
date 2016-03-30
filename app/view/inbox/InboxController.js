@@ -1,11 +1,11 @@
 Ext.define('InboxManagement.view.inbox.InboxController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.inbox-inbox',
+	requires: [
+		'Ext.util.History'
+	],
 	onItemSelected: function() {
-		this.setCurrentView('main-inbox-detail');
-		/*this.redirectTo('inbox/1');*/
-		/*InboxManagement.Global.setCurrentView('main-inbox-detail');*/
-		//Ext.Msg.confirm('Confirm', 'Are you ok?', 'onConfirm', this);
+		this.redirectTo('inbox/1');
 	},
 
 	onConfirm: function(choice) {
@@ -27,24 +27,25 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
 	onBeforeInboxSelect: function(id, action) {
 		var me = this;
 		var main = me.getView();
+		action.resume();
 		/*var Inbox = Ext.data.schema.Schema.lookupEntity('Inbox');
 		Inbox.load(1, {
 			success: function(poi) {
 				console.log(poi);
 			}
 		});*/
-		/*Ext.Ajax.request({
-			url: '/api/inbox/' + id,
-			nosim: true, // ignored by normal Ajax request
-			success: function() {
-				action.resume();
-			}
-		});*/
+		// Ext.Ajax.request({
+		// 	url: '/api/inbox/' + id,
+		// 	nosim: true, // ignored by normal Ajax request
+		// 	success: function() {
+		// 		action.resume();
+		// 	}
+		// });
 	},
 	onInboxSelect: function(id) {
-		/*this.setCurrentView('main-inbox-detail');*/
+		console.log(id);
+		this.setCurrentView('main-inbox-detail');
 
-		this.getFilmsGrid().fireEvent('selectInbox', id);
 
 	},
 

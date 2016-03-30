@@ -15,20 +15,25 @@ Ext.define('InboxManagement.view.inbox.List', {
         type: 'inbox'
     },
 
+    /*bind: {
+        store: '{inbox}'
+    },*/
+
     columns: [{
-        text: 'Name',
-        dataIndex: 'name'
+        text: 'Subject',
+        dataIndex: 'mail_subject'
     }, {
-        text: 'Email',
-        dataIndex: 'email',
+        text: 'From',
+        dataIndex: 'from_user_email',
         flex: 1
     }, {
-        text: 'Phone',
-        dataIndex: 'phone',
+        text: 'To',
+        dataIndex: 'to_user_email',
         flex: 1
     }],
     listeners: {
         select: 'onItemSelected',
+        selectInbox: 'onFilmSelect'
         scope: 'controller'
     }
 });

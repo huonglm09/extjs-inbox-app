@@ -1,30 +1,39 @@
 Ext.define('InboxManagement.store.Inbox', {
     extend: 'Ext.data.Store',
     alias: 'store.inbox',
-    fields: [
-        'name', 'email', 'phone'
+    requires: [
+        'InboxManagement.Global'
     ],
-    data: {
+
+    model: 'InboxManagement.model.Inbox',
+
+    pageSize: 20,
+
+    autoLoad: true,
+    /*data: {
         data: [{
-            name: 'Jean Luc',
-            email: "jeanluc.picard@enterprise.com",
-            phone: "555-111-1111"
+            from_user_email: 'jeanluc.picard@enterprise.com',
+            to_user_email: 'jeanluc.picard@enterprise.com',
+            mail_subject: 'Subject 1'
         }, {
-            name: 'Worf',
-            email: "worf.moghsson@enterprise.com",
-            phone: "555-222-2222"
+            from_user_email: 'jeanluc.picard@enterprise.com',
+            to_user_email: 'worf.moghsson@enterprise.com',
+            mail_subject: 'Subject 2'
         }, {
-            name: 'Deanna',
-            email: "deanna.troi@enterprise.com",
-            phone: "555-333-3333"
+            from_user_email: 'jeanluc.picard@enterprise.com',
+            to_user_email: 'worf.moghsson@enterprise.com',
+            mail_subject: 'Subject 3'
         }, {
-            name: 'Data',
-            email: "mr.data@enterprise.com",
-            phone: "555-444-4444"
+            from_user_email: 'jeanluc.picard@enterprise.com',
+            to_user_email: 'worf.moghsson@enterprise.com',
+            mail_subject: 'Subject 4'
         }]
-    },
+    },*/
     proxy: {
-        type: 'memory',
+        /*url: InboxManagement.Global.getApiUrl() + 'api/inbox'*/
+        type: 'rest',
+        url: 'api/inbox',
+        model: 'InboxManagement.model.Inbox',
         reader: {
             type: 'json',
             rootProperty: 'data'

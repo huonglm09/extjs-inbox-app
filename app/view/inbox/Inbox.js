@@ -10,8 +10,8 @@ Ext.define('InboxManagement.view.inbox.Inbox', {
     viewModel: {
         type: 'inbox-inbox'
     },
-
     items: [{
-        xtype: 'main-inbox-list'
+        xtype: 'main-inbox-list',
+        itemId: 'mailContent'
     }]
 });

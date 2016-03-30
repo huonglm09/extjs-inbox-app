@@ -33,7 +33,6 @@ Ext.define('InboxManagement.view.inbox.List', {
     }],
     listeners: {
         select: 'onItemSelected',
-        selectInbox: 'onFilmSelect'
         scope: 'controller'
     }
 });

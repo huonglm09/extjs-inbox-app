@@ -92,8 +92,9 @@ Ext.define('InboxManagement.view.main.Main', {
         title: 'Inbox',
         id: 'inbox',
         iconCls: 'fa-inbox',
+        /*viewType: 'main-inbox',*/
         items: [{
-            xtype: 'main-inbox'
+            xtype: 'main-inbox',
         }]
     }, {
         title: 'Write',

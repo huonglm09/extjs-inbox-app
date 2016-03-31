@@ -18,10 +18,17 @@ Ext.define('InboxManagement.view.inbox.List', {
     /*bind: {
         store: '{inbox}'
     },*/
+    viewConfig: {
+        preserveScrollOnRefresh: true,
+        preserveScrollOnReload: true
+    },
+    headerBorders: false,
+    rowLines: false,
 
     columns: [{
         text: 'Subject',
-        dataIndex: 'mail_subject'
+        dataIndex: 'mail_subject',
+        width: 200
     }, {
         text: 'From',
         dataIndex: 'from_user_email',
@@ -32,7 +39,7 @@ Ext.define('InboxManagement.view.inbox.List', {
         flex: 1
     }],
     listeners: {
-        select: 'onItemSelected',
+        cellclick: 'onItemSelected',
         scope: 'controller'
     }
 });

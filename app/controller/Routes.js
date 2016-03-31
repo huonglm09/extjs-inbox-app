@@ -122,7 +122,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Change view when change tab
      * */
     changeTab: function(tab) {
-        console.log(tab);
+
         if (InboxManagement.Global.getCurrentView() !== 'app-main') {
             Ext.widget('app-main');
             InboxManagement.Global.setCurrentView('app-main');

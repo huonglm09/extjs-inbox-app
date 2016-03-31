@@ -4,53 +4,33 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
 	requires: [
 		'Ext.util.History'
 	],
-	onItemSelected: function() {
-		this.redirectTo('inbox/1');
+
+	init: function() {
+
+		this.setCurrentView('main-inbox-list');
 	},
 
-	onConfirm: function(choice) {
-		if (choice === 'yes') {
-			//
-		}
+	onBackBtnClick: function() {
+		this.setCurrentView('main-inbox-list');
 	},
 
-	routes: {
-		'inbox/:id': {
-			before: 'onBeforeInboxSelect',
-			action: 'onInboxSelect',
-			conditions: {
-				':id': '([0-9]+)'
-			}
-		}
+	onItemSelected: function(view, td, cellIndex, record, tr, rowIndex, e, eOpts) {
+
+		this.setCurrentView('main-inbox-detail', {
+			record: record
+		});
 	},
 
-	onBeforeInboxSelect: function(id, action) {
-		var me = this;
-		var main = me.getView();
-		action.resume();
-		/*var Inbox = Ext.data.schema.Schema.lookupEntity('Inbox');
-		Inbox.load(1, {
-			success: function(poi) {
-				console.log(poi);
-			}
-		});*/
-		// Ext.Ajax.request({
-		// 	url: '/api/inbox/' + id,
-		// 	nosim: true, // ignored by normal Ajax request
-		// 	success: function() {
-		// 		action.resume();
-		// 	}
-		// });
-	},
-	onInboxSelect: function(id) {
-		console.log(id);
-		this.setCurrentView('main-inbox-detail');
 
+	beforeDetailsRender: function(view) {
+		var record = view.record ? view.record : {};
 
+		view.down('#mailBody').setHtml(record.get('id'));
 	},
 
 	setCurrentView: function(view, params) {
-		var contentPanel = this.getView();
+
+		var contentPanel = this.getView().down('#contentPanel');
 
 		//We skip rendering for the following scenarios:
 		// * There is no contentPanel
@@ -59,6 +39,7 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
 		if (!contentPanel || view === '' || (contentPanel.down() && contentPanel.down().xtype === view)) {
 			return false;
 		}
+
 
 		Ext.suspendLayouts();
 
@@ -71,5 +52,5 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
 
 		Ext.resumeLayouts(true);
 
-	},
+	}
 });

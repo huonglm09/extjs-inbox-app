@@ -45,6 +45,18 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'Dashboard\Admin\DashboardController@index');
     Route::get('dashboard', 'Dashboard\Admin\DashboardController@index');
 });
+
+/*
+ * API Inbox Management
+ *
+ * */
+
+Route::group(['prefix'=> 'api'],function(){
+    Route::get('email-inbox/{user_email}','Email\EmailController@getEmailsInbox');
+    Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
+    Route::any('write-email','Email\EmailController@sentMailToOther');
+});
+
 /*
   |--------------------------------------------------------------------------
   | Frontend

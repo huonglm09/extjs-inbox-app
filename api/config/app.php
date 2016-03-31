@@ -149,7 +149,12 @@ return [
         /*
          * Import excel file maatwebsite
          * */
-        'Maatwebsite\Excel\ExcelServiceProvider'
+        'Maatwebsite\Excel\ExcelServiceProvider',
+        /*
+         * tymondesigns/jwt-auth
+         * */
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+
     ],
 
     /*
@@ -198,6 +203,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
     ],
 
 ];

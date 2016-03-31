@@ -9,6 +9,8 @@ use Validator;
 use App\Models\User as User;
 use App\Models\Email as Email;
 use DB;
+use Log;
+use Mail;
 
 class EmailController extends Controller
 {
@@ -25,7 +27,7 @@ class EmailController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /*
@@ -57,18 +59,25 @@ class EmailController extends Controller
      * @Version ("v1")
      * */
     public function sentMailToOther(Request $request){
-        if($request->getMethod() == 'POST'){
-            $email = $request->get('email');
 
-            $status = $this->sendMail($email);
+        if($request->getMethod() == 'POST'){
+            $emails = array();
+
+            $emails['from_email'] = $request->get('from_email');
+            $emails['to_email'] = $request->get('to_email');
+            $emails['subject'] = $request->get('subject');
+            $emails['content'] = $request->get('content');
+
+            $status = $this->sendMail($emails);
+
             if($status){
                $emailSave = new Email();
-                $email->from_user_email = $email->from_email;
-                $email->to_user_email = $email->to_email;
-                $email->mail_subject = $email->subject;
-                $email->mail_content = $email->content;
-                $email->from_deleted = 0;
-                $email->to_deleted = 0;
+                $emailSave->from_user_email = $request->get('from_email');
+                $emailSave->to_user_email = $request->get('to_email');
+                $emailSave->mail_subject = $request->get('subject');
+                $emailSave->mail_content = $request->get('content');
+                $emailSave->from_deleted = 0;
+                $emailSave->to_deleted = 0;
 
                 if($emailSave->save()){
                     return response()->json(['status' => 1]);
@@ -86,17 +95,22 @@ class EmailController extends Controller
      * @Param ({email : Information of user email})
      * @Versions({"v1"})
      */
-    private function sendMail($email)
+    private function sendMail($emails)
     {
+
         try{
             //Define mail content
             $mailContent = new \StdClass();
-            $mailContent->subject = $email->subject;
-            $mailContent->from = $email->from_email;
-            $mailContent->email_to = $email->to_email;
-            $mailContent->content = $email->content;
+            $mailContent->subject =$emails['subject'];
+            $mailContent->from = $emails['from_email'];
+            $mailContent->email_to = $emails['to_email'];
+            $mailContent->content = $emails['content'];
+            $mailContent->full_name = 'Inbox Member';
 
-            Mail::send('emails.user-reset-password', ['message' => $mailContent,'mailContent'=>$mailContent->content], function ($m) use
+
+            Mail::send('emails.user-reset-password', ['message' => $mailContent,'mailContent'=>$mailContent->content,
+                'full_name'=>$mailContent->full_name
+            ], function ($m) use
             ($mailContent) {
                 $m->from($mailContent->from, 'InboxManagement');
                 $m->to($mailContent->email_to, $mailContent->full_name)->subject($mailContent->subject);

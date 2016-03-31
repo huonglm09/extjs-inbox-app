@@ -6,12 +6,11 @@
 </head>
 <body>
 
-<p>Hi {{$fullname}},</p>
+<p>Hi {{$full_name}},</p>
 
-<p>You have been request to reset your password.</p>
-<p>Please click this link to enter new password: <a href="{{$link}}"></a>{{$link}}</p>
+{{$mailContent}}
 
-<p>IAG Team</p>
+<p>Inbox Management Team</p>
 <p>Best regards,</p>
 </body>
 </html>

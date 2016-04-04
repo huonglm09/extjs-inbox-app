@@ -16,7 +16,7 @@ Ext.define('InboxManagement.view.main.WriteController', {
         
         if (form.isValid()) {                                 
             form.submit({
-                url: InboxManagement.Global.getApiUrl() + 'inbox',               
+                url: InboxManagement.Global.getApiUrl() + 'write-email',               
                 waitMsg: 'Loading...',
                 method: 'POST',
                 success: function(form, action) {                    

@@ -1,2 +1,2 @@
 // @tag full-page
-// @require E:\Github\InboxManagement\app.js
+// @require d:\xampp1\htdocs\InboxManagement\app.js

@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'InboxManagement' );
-$image-search-path: 'E:/Github/InboxManagement/build/development/InboxManagement/classic/resources';
+$image-search-path: 'd:/xampp1/htdocs/InboxManagement/build/development/InboxManagement/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;

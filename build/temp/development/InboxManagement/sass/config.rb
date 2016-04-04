@@ -1,2 +1,2 @@
 Compass.add_project_configuration('..\..\..\..\..\sass\config.rb')
-cache_path = 'E:\Github\InboxManagement/build/.sass-cache'
+cache_path = 'd:\xampp1\htdocs\InboxManagement/build/.sass-cache'

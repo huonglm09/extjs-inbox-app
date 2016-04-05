@@ -21,6 +21,7 @@ Ext.define('InboxManagement.view.main.WriteController', {
                 method: 'POST',
                 success: function(form, action) {                    
                     var res = Ext.decode(action.response.responseText);             
+                    form.reset();
                     me.redirectTo('sent');
                 }, failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);  

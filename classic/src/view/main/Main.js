@@ -107,9 +107,9 @@ Ext.define('InboxManagement.view.main.Main', {
         title: 'Sent',
         id: 'sent',
         iconCls: 'fa-send',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'main-sent',
+        }]
     }, {
         title: 'Trash',
         id: 'trash',

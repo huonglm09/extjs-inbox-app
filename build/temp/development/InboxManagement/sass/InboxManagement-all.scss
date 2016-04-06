@@ -962,9 +962,11 @@ $include-inboxmanagement-global: dynamic(true);;
 $include-inboxmanagement-controller-routes: dynamic(true);;
 $include-inboxmanagement-model-base: dynamic(true);;
 $include-inboxmanagement-model-inbox: dynamic(true);;
+$include-inboxmanagement-model-sent: dynamic(true);;
 $include-inboxmanagement-model-user: dynamic(true);;
 $include-inboxmanagement-store-inbox: dynamic(true);;
 $include-inboxmanagement-store-personnel: dynamic(true);;
+$include-inboxmanagement-store-sent: dynamic(true);;
 $include-inboxmanagement-store-write: dynamic(true);;
 $include-inboxmanagement-view-auth-login: dynamic(true);;
 $include-inboxmanagement-view-auth-logincontroller: dynamic(true);;
@@ -980,6 +982,12 @@ $include-inboxmanagement-view-main-mainmodel: dynamic(true);;
 $include-inboxmanagement-view-main-write: dynamic(true);;
 $include-inboxmanagement-view-main-writecontroller: dynamic(true);;
 $include-inboxmanagement-view-main-writemodel: dynamic(true);;
+$include-inboxmanagement-view-sent-detail: dynamic(true);;
+$include-inboxmanagement-view-sent-detailmodel: dynamic(true);;
+$include-inboxmanagement-view-sent-list: dynamic(true);;
+$include-inboxmanagement-view-sent-sent: dynamic(true);;
+$include-inboxmanagement-view-sent-sentcontroller: dynamic(true);;
+$include-inboxmanagement-view-sent-sentmodel: dynamic(true);;
 $output-paths: ("path": "../../classic/resources", "shared": "../../resources");
 
 /* ======================== ETC ======================== */

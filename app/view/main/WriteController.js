@@ -8,6 +8,10 @@ Ext.define('InboxManagement.view.main.WriteController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.write',
     onDiscard: function() {
+        var me = this,                                      
+            form = me.lookupReference('write_form');       
+            form.reset();
+            
         this.redirectTo('inbox');
     },
     onWrite: function(btn) {        

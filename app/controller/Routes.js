@@ -73,7 +73,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Unmatched route method.  On any unmatched route it redirects to the home route
      * */
     onUnmatchedRoute: function() {
-        this.redirectTo('inbox', false);
+        this.redirectTo('profile', false);
     },
     /*
      * Login route method.  Loads the login form
@@ -115,8 +115,12 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * Logout route method
      * */
-    onLogout: function() {
+    onLogout: function() {        
         this.changeTab('logout');
+        localStorage.removeItem("LoggedIn");  
+        InboxManagement.Global.setUser(null); 
+        this.getView().destroy();
+        this.redirectTo('login'); 
     },
     /*
      * Change view when change tab
@@ -174,7 +178,7 @@ Ext.define('InboxManagement.controller.Routes', {
         if (!loggedIn) {
             action.resume();
         } else {
-            this.redirectTo('inbox', false);
+            this.redirectTo('profile', false);
         }
     },
     /*

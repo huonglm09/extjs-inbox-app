@@ -7,7 +7,7 @@ Ext.define('InboxManagement.Global', {
         /*
          * URL to the Laravel directory
          * */
-        apiUrl: 'http://' + window.location.host + window.location.pathname + 'services/public/',
+        apiUrl: 'http://' + window.location.host + window.location.pathname + 'api/public/api/',
         /*
          * User var.  This is updated upon successful login
          * */

@@ -44,25 +44,13 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     fieldLabel: 'Email',
                     width: '100%',
                     bind: 'asdfasdf'                    
-                }
-            ],
-            dockedItems: [
-                {
-                    xtype: 'toolbar',
-                    dock: 'bottom',
-                    id: 'save-profile',
-                    cls: 'save',
-                    items: [
-                        '->', {
-                            xtype: 'button',
-                            text: 'Save',
-                            width: 100,
-                            height: 35,
-                            handler: 'onSaveProfile'
-                        }
-                    ]
-
-                }
+                }, {
+                    xtype: 'button',
+                    text: 'Save',
+                    width: 100,
+                    height: 35,
+                    handler: 'onSaveProfile'
+                }                
             ]
         },
         {

@@ -136,3 +136,45 @@ $ui-header-noborder-adjust: false
 #send:hover {
     background-color: #90b962;
 }
+.x-window-header-title-default > .x-title-text-default:after {
+    display: none !important;
+}
+.login-form {
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 20px 15px 50px #ffffff;
+    -moz-box-shadow: 20px 15px 50px #ffffff;
+    -webkit-box-shadow: 20px 15px 50px #ffffff;
+}
+.login-bottom {
+    border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+}
+.login-form .x-window-header-default-top {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn-default-toolbar-small {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn-inner-default-toolbar-small {
+    color: #ffffff;
+    border-color: #31ade5;
+}
+.login-bottom .x-btn-inner-default-toolbar-small.x-btn-over {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn.x-btn-pressed.x-btn-default-toolbar-small {
+    background-color: #35baf6 !important;
+    color: #ffffff;
+    border-color: #31ade5;
+}
+.login-bg {    
+    position: absolute !important;
+}
+.login-bg .x-panel-body-default {
+    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
+    background-size: cover !important;
+}

@@ -14,7 +14,7 @@ Ext.define('InboxManagement.view.main.Main', {
         'Ext.window.MessageBox',
         'InboxManagement.view.main.MainController',
         'InboxManagement.view.main.MainModel',
-        'InboxManagement.view.main.Write'
+        'InboxManagement.view.write.Write'
     ],
     controller: 'main',
     viewModel: 'main',

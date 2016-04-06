@@ -17,7 +17,6 @@ Ext.define('InboxManagement.view.auth.Login', {
     autoShow: true,
     height: 250,
     width: 350,
-    modal: true,
     resizable: false,
     movable: false,
     closable: false,

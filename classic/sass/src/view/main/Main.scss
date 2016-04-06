@@ -171,7 +171,10 @@ $ui-header-noborder-adjust: false
     color: #ffffff;
     border-color: #31ade5;
 }
-body > .x-mask {
-    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30%;
-    background-size: cover;
+.login-bg {    
+    position: absolute !important;
+}
+.login-bg .x-panel-body-default {
+    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
+    background-size: cover !important;
 }

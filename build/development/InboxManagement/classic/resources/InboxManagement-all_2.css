@@ -10313,8 +10313,12 @@ tr.x-grid-subtable-row {
     color: #fff;
     border-color: #31ade5;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:175 */
-body > .x-mask {
-    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30%;
-    background-size: cover;
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:174 */
+.login-bg {
+    position: absolute !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:177 */
+.login-bg .x-panel-body-default {
+    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
+    background-size: cover !important;
 }

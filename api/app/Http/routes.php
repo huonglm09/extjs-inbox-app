@@ -55,6 +55,11 @@ Route::group(['prefix'=> 'api'],function(){
     Route::get('email-inbox/{user_email}','Email\EmailController@getEmailsInbox');
     Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
     Route::any('write-email','Email\EmailController@sentMailToOther');
+    
+    Route::any('auth/login','\App\Http\Controllers\Auth\AuthController@login');
+    Route::any('auth/loggedin','\App\Http\Controllers\Auth\AuthController@loggedin');
+    Route::any('auth/logout','\App\Http\Controllers\Auth\AuthController@logout');
+    Route::any('auth/register','\App\Http\Controllers\Auth\AuthController@register');
 });
 
 /*

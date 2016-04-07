@@ -56,6 +56,12 @@ Route::group(['prefix'=> 'api'],function(){
     Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
     Route::any('write-email','Email\EmailController@sentMailToOther');
     Route::post('authenticate', 'Email\EmailController@authenticate');
+
+    Route::any('emails/delete','Email\EmailController@deleteEmail');
+
+    /*User*/
+    Route::any('users', 'User\Backend\UserController@getUsers');
+
 });
 
 /*

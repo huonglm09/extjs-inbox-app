@@ -3,7 +3,8 @@ Ext.define('InboxManagement.view.profile.Profile', {
     requires: [        
         'Ext.layout.container.HBox',
         'InboxManagement.view.profile.ProfileController',
-        'InboxManagement.view.profile.ProfileModel'
+        'InboxManagement.view.profile.ProfileModel',
+        'InboxManagement.view.profile.Users'
     ],
     xtype: 'profile',    
     controller: 'profile',
@@ -57,7 +58,9 @@ Ext.define('InboxManagement.view.profile.Profile', {
             title: 'Users',
             flex: 4,
             margin: '0 10 0 0',
-            html: 'width : 100'
+            items: [{
+                xtype: 'users'
+            }]
         }
     ]    
 });

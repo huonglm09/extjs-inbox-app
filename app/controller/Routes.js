@@ -141,51 +141,45 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * LoggedIn method.  Checks if the user has a valid logon session
      * */
-    loggedIn: function() {
+    loggedIn: function() {          
         var me = this,
-            // Get a reference to the route action
-            args = Ext.Array.slice(arguments),
-            // Get a reference to the route action
-            action = args.pop();
-        //        me.startToken(); // Set the start token to the current hash
-        //        Ext.Ajax.request({
-        //            url: InboxManagement.Global.getApiUrl() + '/auth/login',
-        //            method: 'GET',
-        //            // If successful continue loading the route
-        //            success: function(response) {
-        //                var res = Ext.decode(response.responseText);
-        //                InboxManagement.Global.setUser(res.user); // Update the global user var
-        var loggedIn = localStorage.getItem("LoggedIn");
-        if (loggedIn) {
-            action.resume();
-        } else {
-            this.redirectTo('login', false);
-        }
-        //            },
-        //            // If not logged in redirect to the login route
-        //            failure: function() {
-        ////                me.redirectTo('login', false);
-        //            }
-        //        });
+        args = Ext.Array.slice(arguments), 
+        action = args.pop(); 
+        Ext.Ajax.request({
+            url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
+            method:'GET',                
+            success:function(response){
+                var res = Ext.decode(response.responseText);
+                InboxManagement.Global.setUser(res.data);
+                action.resume();
+            },                
+            failure:function() {
+                me.redirectTo('login');
+            }
+        });           
     },
     beforeLogin: function() {
         var me = this,
-            // Get a reference to the route action
-            args = Ext.Array.slice(arguments),
-            // Get a reference to the route action
-            action = args.pop();
-        var loggedIn = localStorage.getItem("LoggedIn");
-        if (!loggedIn) {
-            action.resume();
-        } else {
-            this.redirectTo('profile', false);
-        }
+        args = Ext.Array.slice(arguments), 
+        action = args.pop(); 
+        Ext.Ajax.request({
+            url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
+            method: 'GET',                
+            success:function(response){
+                var res = Ext.decode(response.responseText);
+                InboxManagement.Global.setUser(res.data);
+                me.redirectTo('profile', false);
+            },                
+            failure:function() {
+                action.resume();
+            }
+        });
     },
     /*
      * StartToken method.  Updates the global startToken var with the current hash
      * */
-    startToken: function() {
-        //InboxManagement.Global.setStartToken(Ext.util.History.getToken());
+    startToken:function() {
+        InboxManagement.Global.setStartToken(Ext.util.History.getToken());
     },
     /*
      * Close windows method will close any open windows between routes

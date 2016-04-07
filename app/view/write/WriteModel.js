@@ -8,7 +8,7 @@ Ext.define('InboxManagement.view.write.WriteModel', {
         'InboxManagement.Global'
     ],
     data: {
-        email: 'huonglm@qsoft.com'
+        email: 'kmahuong.09@gmail.com'
     }
 });
 

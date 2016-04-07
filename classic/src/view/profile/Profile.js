@@ -4,11 +4,15 @@ Ext.define('InboxManagement.view.profile.Profile', {
         'Ext.layout.container.HBox',
         'InboxManagement.view.profile.ProfileController',
         'InboxManagement.view.profile.ProfileModel',
-        'InboxManagement.view.profile.Users'
+        'InboxManagement.view.profile.Users',
+        'InboxManagement.store.Profile'
     ],
     xtype: 'profile',    
     controller: 'profile',
     viewModel: {
+        type: 'profile'
+    },
+    store: {
         type: 'profile'
     },
     layout: {
@@ -36,7 +40,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
             items: [{
                     fieldLabel: 'First Name',
                     width: '100%',
-                    bind: 'asdfasdf'                    
+                    bind: '{data.data.firstName}'                    
                 }, {
                     fieldLabel: 'Last Name',
                     width: '100%',

@@ -69,15 +69,15 @@ Ext.define('InboxManagement.Application', {
             mail_subject: 'Demo email 7'
         }];    
     
-//        Ext.ux.ajax.SimManager.init({
-//            delay: 500
-//        }).register({
-//            'api/inbox': {
-//                type: 'json', // use JsonSimlet (type is like xtype for components)
-//                status: 200,
-//                data: data
-//            }
-//        });
+        Ext.ux.ajax.SimManager.init({
+            delay: 500
+        }).register({
+            'api/inbox': {
+                type: 'json', // use JsonSimlet (type is like xtype for components)
+                status: 200,
+                data: data
+            }
+        });
 
     }
 });

@@ -60,6 +60,7 @@ Route::group(['prefix'=> 'api'],function(){
     Route::any('auth/loggedin','\App\Http\Controllers\Auth\AuthController@loggedin');
     Route::any('auth/logout','\App\Http\Controllers\Auth\AuthController@logout');
     Route::any('auth/register','\App\Http\Controllers\Auth\AuthController@register');
+    Route::any('auth/profile','\App\Http\Controllers\Auth\AuthController@profile');
 });
 
 /*

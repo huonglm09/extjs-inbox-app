@@ -186,5 +186,20 @@ class AuthController extends Controller {
                     ], 200);
         }
     }
+    
+    public function profile()
+    {
+        if (!Auth::check()) {
+            return response([
+                'loggedin' => false,
+                'data' => null
+                    ], 400);
+        } else {
+            return response([
+                'loggedin' => true,
+                'data' => Auth::user()
+                    ], 200);
+        }
+    }
 
 }

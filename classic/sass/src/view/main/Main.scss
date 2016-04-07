@@ -1,12 +1,61 @@
 /**
  * Generates a set of style rules for the "navigation" tab UI.
  */
-@include extjs-tab-panel-ui($ui: "navigation", $ui-tab-background-color: transparent, $ui-tab-background-color-over: #505050, $ui-tab-background-color-active: #303030, $ui-tab-background-gradient: "none", $ui-tab-background-gradient-over: "none", $ui-tab-background-gradient-active: "none", $ui-tab-color: #acacac, $ui-tab-color-over: #c4c4c4, $ui-tab-color-active: #fff, $ui-tab-glyph-color: #acacac, $ui-tab-glyph-color-over: #c4c4c4, $ui-tab-glyph-color-active: #fff, $ui-tab-glyph-opacity: 1, $ui-tab-border-radius: 0, $ui-tab-border-width: 0, $ui-tab-inner-border-width: 0, $ui-tab-padding: 24px, $ui-tab-margin: 0, $ui-tab-font-size: 15px, $ui-tab-font-size-over: 15px, $ui-tab-font-size-active: 15px, $ui-tab-line-height: 19px, $ui-tab-font-weight: bold, $ui-tab-font-weight-over: bold, $ui-tab-font-weight-active: bold, $ui-tab-icon-width: 24px, $ui-tab-icon-height: 24px, $ui-tab-icon-spacing: 5px, $ui-bar-background-color: #404040, $ui-bar-background-gradient: "none", $ui-bar-padding: 0, $ui-strip-height: 0);
+@include extjs-tab-panel-ui(
+$ui: 'navigation',
+$ui-tab-background-color: transparent,
+$ui-tab-background-color-over: #505050,
+$ui-tab-background-color-active: #303030,
+$ui-tab-background-gradient: 'none',
+$ui-tab-background-gradient-over: 'none',
+$ui-tab-background-gradient-active: 'none',
+$ui-tab-color: #acacac,
+$ui-tab-color-over: #c4c4c4,
+$ui-tab-color-active: #fff,
+$ui-tab-glyph-color: #acacac,
+$ui-tab-glyph-color-over: #c4c4c4,
+$ui-tab-glyph-color-active: #fff,
+$ui-tab-glyph-opacity: 1,
+$ui-tab-border-radius: 0,
+$ui-tab-border-width: 0,
+$ui-tab-inner-border-width: 0,
+$ui-tab-padding: 24px,
+$ui-tab-margin: 0,
+$ui-tab-font-size: 15px,
+$ui-tab-font-size-over: 15px,
+$ui-tab-font-size-active: 15px,
+$ui-tab-line-height: 19px,
+$ui-tab-font-weight: bold,
+$ui-tab-font-weight-over: bold,
+$ui-tab-font-weight-active: bold,
+$ui-tab-icon-width: 24px,
+$ui-tab-icon-height: 24px,
+$ui-tab-icon-spacing: 5px,
+$ui-bar-background-color: #404040,
+$ui-bar-background-gradient: 'none',
+$ui-bar-padding: 0,
+$ui-strip-height: 0
+);
 
 /**
  * Generates a set of style rules for the "navigation" panel UI.
  */
-@include extjs-panel-ui($ui: "navigation", $ui-header-color: #fff, $ui-header-glyph-color: #fff, $ui-header-glyph-opacity: 1, $ui-header-font-size: 20px, $ui-header-line-height: 24px, $ui-header-font-weight: bold, $ui-header-icon-height: 24px, $ui-header-icon-width: 24px, $ui-header-icon-spacing: 15px, $ui-header-background-color: $base-color, $ui-header-padding: 0, $ui-header-text-margin: 36px, $ui-header-noborder-adjust: false);
+@include extjs-panel-ui(
+$ui: 'navigation',
+$ui-header-color: #fff,
+$ui-header-glyph-color: #fff,
+$ui-header-glyph-opacity: 1,
+$ui-header-font-size: 20px,
+$ui-header-line-height: 24px,
+$ui-header-font-weight: bold,
+$ui-header-icon-height: 24px,
+$ui-header-icon-width: 24px,
+$ui-header-icon-spacing: 15px,
+$ui-header-background-color: $base-color,
+$ui-header-padding: 0,
+$ui-header-text-margin: 36px,
+$ui-header-noborder-adjust: false
+);
 
 .x-title-icon-navigation {
     font-family: FontAwesome;
@@ -34,73 +83,98 @@
 }
 
 .x-tab-focus.x-tab-navigation {
-    outline: none;
+    outline: none;    
 }
-
 .x-tab-text.x-tab-icon-left > .x-tab-icon-el-navigation {
     margin-right: 10px;
 }
-
 .x-tab-bar-navigation {
     background-color: #32404e;
 }
-
-.x-tab.x-tab-active.x-tab-navigation {
+.x-tab.x-tab-active.x-tab-navigation {  
     background-color: #475360;
-    border-left: 5px solid #35baf6;
-
-    //cc3232
+    border-left: 5px solid #35baf6; //cc3232
 }
-
 .x-tab-icon-el-navigation {
     font-size: 18px;
 }
-
 .x-tab-inner-navigation {
     font-weight: normal;
     font-size: 14px;
 }
-
 .x-panel-header-title-navigation {
     top: 0px !important;
     left: 0px !important;
 }
-
 .x-panel-header-title-navigation .logo {
-    width: 270px;
+    width: 270px;        
 }
-
 .x-tab-navigation:hover {
-    background-color: #3c4a57 !important;
+    background-color: #3c4a57 !important;    
 }
-
 .x-form-item-body-default .x-toolbar-default {
     border-bottom: 1px solid #d0d0d0 !important;
     z-index: 1;
 }
-
 .x-form-item-body-default .x-component.x-html-editor-input.x-box-item.x-component-default {
     padding: 10px;
 }
-
-#send {
-    border: 1px solid #84b351;
+#send {    
+    border: 1px solid #84b351;    
     background-color: #9cc96b;
 }
-
 #discard {
-    border: 1px solid #cf2f3f;
+    border: 1px solid #cf2f3f;    
     background-color: #e44959;
 }
-
 .write-btn span {
-    color: #ffffff !important;
+    color: #ffffff !important;    
 }
-
 #discard:hover {
     background-color: #d24352;
 }
-
 #send:hover {
     background-color: #90b962;
+}
+.x-window-header-title-default > .x-title-text-default:after {
+    display: none !important;
+}
+.login-form {
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 20px 15px 50px #ffffff;
+    -moz-box-shadow: 20px 15px 50px #ffffff;
+    -webkit-box-shadow: 20px 15px 50px #ffffff;
+}
+.login-bottom {
+    border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+}
+.login-form .x-window-header-default-top {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn-default-toolbar-small {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn-inner-default-toolbar-small {
+    color: #ffffff;
+    border-color: #31ade5;
+}
+.login-bottom .x-btn-inner-default-toolbar-small.x-btn-over {
+    background-color: #35baf6;
+}
+.login-bottom .x-btn.x-btn-pressed.x-btn-default-toolbar-small {
+    background-color: #35baf6 !important;
+    color: #ffffff;
+    border-color: #31ade5;
+}
+.login-bg {    
+    position: absolute !important;
+}
+.login-bg .x-panel-body-default {
+    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
+    background-size: cover !important;
 }

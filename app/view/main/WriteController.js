@@ -8,6 +8,10 @@ Ext.define('InboxManagement.view.main.WriteController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.write',
     onDiscard: function() {
+        var me = this,                                      
+            form = me.lookupReference('write_form');       
+            form.reset();
+            
         this.redirectTo('inbox');
     },
     onWrite: function(btn) {        
@@ -16,11 +20,12 @@ Ext.define('InboxManagement.view.main.WriteController', {
         
         if (form.isValid()) {                                 
             form.submit({
-                url: InboxManagement.Global.getApiUrl() + 'inbox',               
+                url: InboxManagement.Global.getApiUrl() + 'write-email',               
                 waitMsg: 'Loading...',
                 method: 'POST',
                 success: function(form, action) {                    
                     var res = Ext.decode(action.response.responseText);             
+                    form.reset();
                     me.redirectTo('sent');
                 }, failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);  

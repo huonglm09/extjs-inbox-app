@@ -32,7 +32,7 @@ Ext.define('InboxManagement.Application', {
          * Calling the registerVtypes method in the Global singleton to set up the vtypes to use in the application
          * */
         //InboxManagement.Global.registerVtypes();
-        /*var data = [{
+        var data = [{
             id: 1,
             from_user_email: 'user1@gmail.com',
             to_user_email: 'user2@gmail.com',
@@ -67,16 +67,17 @@ Ext.define('InboxManagement.Application', {
             from_user_email: 'user2@gmail.com',
             to_user_email: 'user4@gmail.com',
             mail_subject: 'Demo email 7'
-        }];
-        Ext.ux.ajax.SimManager.init({
-            delay: 500
-        }).register({
-            'api/inbox': {
-                type: 'json', // use JsonSimlet (type is like xtype for components)
-                status: 200,
-                data: data
-            }
-        });*/
+        }];    
+    
+//        Ext.ux.ajax.SimManager.init({
+//            delay: 500
+//        }).register({
+//            'api/inbox': {
+//                type: 'json', // use JsonSimlet (type is like xtype for components)
+//                status: 200,
+//                data: data
+//            }
+//        });
 
     }
 });

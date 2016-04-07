@@ -2,13 +2,13 @@ Ext.define('InboxManagement.view.main.Write', {
     extend: 'Ext.form.Panel',
     xtype: 'write',
     alias: 'write',
-    requires: [
+    requires: [        
         'Ext.button.Button',
         'Ext.form.field.Text',
         'Ext.form.field.File',
         'Ext.form.field.HtmlEditor',
         'InboxManagement.view.main.WriteController',
-        'InboxManagement.view.main.WriteModel'
+        'InboxManagement.view.main.WriteModel'        
     ],
     viewModel: {
         type: 'write'
@@ -28,12 +28,15 @@ Ext.define('InboxManagement.view.main.Write', {
         {
             xtype: 'form',            
             reference: 'write_form',
-            items: [
-                {
+            items: [{
+                    xtype : 'hidden',  
+                    name  : 'from_email',
+                    bind  : '{email}'
+                }, {
                     xtype: 'textfield',
                     fieldLabel: 'To:',
                     allowBlank: false,
-                    name: 'to',
+                    name: 'to_email',
                     vtype: 'email',
                     width: '100%',
                     emptyText: 'example@qsoft.com'
@@ -47,7 +50,7 @@ Ext.define('InboxManagement.view.main.Write', {
                 }, {
                     xtype: 'htmleditor',
                     flex: 1,
-                    name: 'message',
+                    name: 'content',
                     minHeight: 400,
                     fieldLabel: 'Message:'
                 }

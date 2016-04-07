@@ -4,9 +4,11 @@
 Ext.define('InboxManagement.view.main.WriteModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.write',
+    requires: [
+        'InboxManagement.Global'
+    ],
     data: {
-        name: 'Inbox Management'        
+        email: 'huonglm@qsoft.com'
     }
-
 });
 

@@ -1,21 +1,21 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
  */
 Route::get('/', 'IndexController@index');
 Route::get('/home', 'IndexController@index');
 /*
-|--------------------------------------------------------------------------
-| Authentication
-|--------------------------------------------------------------------------
+  |--------------------------------------------------------------------------
+  | Authentication
+  |--------------------------------------------------------------------------
  */
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -29,9 +29,9 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::any('auth/forgot-password', 'Auth\PasswordController@forgot');
 Route::any('auth/new-password/{token}', 'Auth\PasswordController@newPassword');
 /*
-|--------------------------------------------------------------------------
-| Backend
-|--------------------------------------------------------------------------
+  |--------------------------------------------------------------------------
+  | Backend
+  |--------------------------------------------------------------------------
  */
 Route::group(['prefix' => 'admin'], function () {
     //Admin User
@@ -51,18 +51,33 @@ Route::group(['prefix' => 'admin'], function () {
  *
  * */
 
-Route::group(['prefix' => 'api'], function () {
-    Route::get('email-inbox/{user_email}', 'Email\EmailController@getEmailsInbox');
-    Route::get('email-sent/{user_email}', 'Email\EmailController@getEmailSent');
-    Route::any('write-email', 'Email\EmailController@sentMailToOther');
+Route::group(['prefix'=> 'api'],function(){
+    Route::get('email-inbox/{user_email}','Email\EmailController@getEmailsInbox');
+    Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
+    Route::any('write-email','Email\EmailController@sentMailToOther');
+
+
+    Route::any('emails/delete','Email\EmailController@deleteEmail');
+
+    /*User*/
+    Route::any('users', 'User\Backend\UserController@getUsers');
+
+    /*Auth*/
+    Route::any('auth/login','\App\Http\Controllers\Auth\AuthController@login');
+    Route::any('auth/loggedin','\App\Http\Controllers\Auth\AuthController@loggedin');
+    Route::any('auth/logout','\App\Http\Controllers\Auth\AuthController@logout');
+    Route::any('auth/register','\App\Http\Controllers\Auth\AuthController@register');
+    Route::any('auth/profile','\App\Http\Controllers\Auth\AuthController@profile');
 });
 
 /*
-|--------------------------------------------------------------------------
-| Frontend
-|--------------------------------------------------------------------------
+  |--------------------------------------------------------------------------
+  | Frontend
+  |--------------------------------------------------------------------------
  */
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', 'User\Frontend\UserController@index');
     Route::get('/profile/{id}', 'User\Frontend\UserController@profile')->where('id', '[0-9]+');
 });
+
+

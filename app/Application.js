@@ -32,7 +32,7 @@ Ext.define('InboxManagement.Application', {
          * Calling the registerVtypes method in the Global singleton to set up the vtypes to use in the application
          * */
         //InboxManagement.Global.registerVtypes();
-        var data = [{
+        /*var data = [{
             id: 1,
             from_user_email: 'user1@gmail.com',
             to_user_email: 'user2@gmail.com',
@@ -76,7 +76,7 @@ Ext.define('InboxManagement.Application', {
                 status: 200,
                 data: data
             }
-        });
+        });*/
 
     }
 });

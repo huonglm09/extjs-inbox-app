@@ -10175,98 +10175,98 @@ tr.x-grid-subtable-row {
     border-color: #5fa2dd !important;
     border-width: 1px !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:60 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:11 */
 .x-title-icon-navigation {
     font-family: FontAwesome;
     color: #fff;
     font-size: 24px;
     line-height: 24px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:67 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:18 */
 .x-tab-icon-el-navigation {
     font-family: FontAwesome;
     color: #acacac;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:71 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:22 */
 .x-tab-over .x-tab-icon-el-navigation {
     color: #c4c4c4;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:75 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:26 */
 .x-tab-active .x-tab-icon-el-navigation {
     color: #fff;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:80 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:31 */
 .x-panel-header-title-navigation > .x-title-text-navigation:after {
     top: 30px;
     right: -24px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:85 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:36 */
 .x-tab-focus.x-tab-navigation {
     outline: none;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:88 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:40 */
 .x-tab-text.x-tab-icon-left > .x-tab-icon-el-navigation {
     margin-right: 10px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:91 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:44 */
 .x-tab-bar-navigation {
     background-color: #32404e;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:94 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:48 */
 .x-tab.x-tab-active.x-tab-navigation {
     background-color: #475360;
     border-left: 5px solid #35baf6;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:98 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:55 */
 .x-tab-icon-el-navigation {
     font-size: 18px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:101 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:59 */
 .x-tab-inner-navigation {
     font-weight: normal;
     font-size: 14px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:105 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:64 */
 .x-panel-header-title-navigation {
     top: 0px !important;
     left: 0px !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:109 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:69 */
 .x-panel-header-title-navigation .logo {
     width: 270px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:112 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:73 */
 .x-tab-navigation:hover {
     background-color: #3c4a57 !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:115 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:77 */
 .x-form-item-body-default .x-toolbar-default {
     border-bottom: 1px solid #d0d0d0 !important;
     z-index: 1;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:119 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:82 */
 .x-form-item-body-default .x-component.x-html-editor-input.x-box-item.x-component-default {
     padding: 10px;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:122 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:86 */
 #send {
     border: 1px solid #84b351;
     background-color: #9cc96b;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:126 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:91 */
 #discard {
     border: 1px solid #cf2f3f;
     background-color: #e44959;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:130 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:96 */
 .write-btn span {
     color: #fff !important;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:133 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:100 */
 #discard:hover {
     background-color: #d24352;
 }
-/* http://localhost:1841/classic/sass/src/view/main/Main.scss:136 */
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:104 */
 #send:hover {
     background-color: #90b962;
 }

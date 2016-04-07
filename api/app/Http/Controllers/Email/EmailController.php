@@ -11,6 +11,8 @@ use App\Models\Email as Email;
 use DB;
 use Log;
 use Mail;
+use JWTAuth;
+use TymonJWTAuthExceptionsJWTException;
 
 class EmailController extends Controller
 {
@@ -28,8 +30,26 @@ class EmailController extends Controller
     public function __construct()
     {
 //        $this->middleware('auth');
+//        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
     }
 
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        try {
+            // verify the credentials and create a token for the user
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            // something went wrong
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        // if no errors are encountered we can return a JWT
+        return response()->json(compact('token'));
+    }
     /*
      * Get List Email Inbox By User Email
      * @GET("/api/email-inbox/{user_email}")

@@ -45,6 +45,19 @@ class UserController extends Controller
     }
 
     /*
+     * API get All User
+     *
+     *@GET("/api/users")
+     *@Param: ()
+     *@Version("v1")
+     */
+    public function getUsers(){
+        $users = User::all();
+
+        return response()->json(['status'=> 1, 'users'=> $users]);
+    }
+
+    /*
      *Create a new User
      *
      *@POST("/admin/users/create")

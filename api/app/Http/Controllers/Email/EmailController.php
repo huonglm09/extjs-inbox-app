@@ -11,6 +11,8 @@ use App\Models\Email as Email;
 use DB;
 use Log;
 use Mail;
+use JWTAuth;
+use TymonJWTAuthExceptionsJWTException;
 
 class EmailController extends Controller
 {
@@ -28,6 +30,7 @@ class EmailController extends Controller
     public function __construct()
     {
 //        $this->middleware('auth');
+//        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
     }
 
     /*
@@ -122,4 +125,33 @@ class EmailController extends Controller
         }
 
     }
+
+    /*
+     * Delete Email
+     * @POST("/api/emails/delete}")
+     * @Param ({email_id, is_inbox})
+     * @Versions({"v1"})
+     */
+      public function deleteEmail(Request $request){
+
+          if($request->getMethod() == 'POST'){
+                $email_id = $request->get('email_id');
+                $is_inbox = $request->get('is_inbox');
+
+                $email = Email::find($is_inbox);
+
+              if($is_inbox == 1){
+                  $email->from_deleted = 1;
+              }else{
+                  $email->to_deleted = 1;
+              }
+              if($email->save()){
+                  return response()->json(['status'=>1]);
+              }
+
+          }
+
+          return response()->json(['status'=>0]);
+      }
+
 }

@@ -32,7 +32,7 @@ class AuthController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -44,9 +44,9 @@ class AuthController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'email' => 'required|email|max:255|unique:users',
-                    'password' => 'required|confirmed|min:6',
+            'email' => 'required|email|max:255|unique:users',
+            //'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -128,13 +128,25 @@ class AuthController extends Controller {
 
     public function register()
     {
-        // Simulate post data
+        $params = \Input::all();
         $post_data = [
-            'email' => 'philinh2003@hotmail.com',
-            'password' => '12345678',
-            'firstName' => 'Leo',
-            'lastName' => 'PhiL'
+            'email' => isset($params['email']) ? $params['email'] : null,
+            'password' => isset($params['password']) ? $params['password'] : null,
+            'firstName' => isset($params['firstName']) ? $params['firstName'] : null,
+            'lastName' => isset($params['lastName']) ? $params['lastName'] : null
         ];
+        
+        
+        $validator = $this->validator($post_data);
+        
+        //var_dump($validator->errors()->count(), $validator->errors()->all());die();
+        
+        if($validator->errors()->count() > 0){
+            return response(
+                [
+                    'message' => $validator->errors()->all()
+                ], 500);
+        }
         
         // Try to save the user
         try {

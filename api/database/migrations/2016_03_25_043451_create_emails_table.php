@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateEmailsTable extends Migration
 {
@@ -14,8 +14,8 @@ class CreateEmailsTable extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('from_user_email',255);
-            $table->string('to_user_email',255);
+            $table->string('from_user_email', 255);
+            $table->string('to_user_email', 255);
             $table->string('mail_subject');
             $table->string('mail_content');
             $table->integer('from_deleted');

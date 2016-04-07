@@ -4,7 +4,13 @@
  * Sencha Cmd when upgrading.
  */
 Ext.application({
-    name: 'InboxManagement',
+	name: 'InboxManagement',
 
-    extend: 'InboxManagement.Application'
+	extend: 'InboxManagement.Application'
 });
+
+/*Ext.Loader.setConfig({
+	enabled: true
+});
+
+Ext.Loader.setPath('Ext.ux', 'D:/ext-6.0.1/build/packages/ux');*/

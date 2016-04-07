@@ -100,11 +100,11 @@ class EmailController extends Controller
                 $emailSave->to_deleted = 0;
 
                 if($emailSave->save()){
-                    return response()->json(['status' => 1]);
+                    return response()->json(['status' => 1, 'success' => true]);
                 }
             }
         }
-        return response()->json(['status' => 0]);
+        return response()->json(['status' => 0, 'success' => false]);
     }
 
     /*

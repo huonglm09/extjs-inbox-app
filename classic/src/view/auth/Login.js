@@ -17,13 +17,13 @@ Ext.define('InboxManagement.view.auth.Login', {
     autoShow: true,
     height: 250,
     width: 350,
-    modal: true,
     resizable: false,
     movable: false,
     closable: false,
     title: 'Login',
     iconCls: 'x-fa fa-user', // Added a font-awesome icon to the window
     layout: 'fit',
+    cls: 'login-form',
     items: [
         {
             xtype: 'form',
@@ -38,8 +38,7 @@ Ext.define('InboxManagement.view.auth.Login', {
                     allowBlank: false,
                     margin: '0 0 20 0',
                     vtype: 'email' // Using the built in email vtype
-                },
-                {
+                }, {
                     xtype: 'textfield',
                     anchor: '100%',
                     fieldLabel: 'Password',
@@ -48,8 +47,7 @@ Ext.define('InboxManagement.view.auth.Login', {
                     allowBlank: false,
                     margin: '0 0 20 0',
                     reference: 'password_field'
-                },
-                {
+                }, {
                     xtype: 'checkboxfield',
                     anchor: '100%',
                     fieldLabel: 'Remember Me',
@@ -63,36 +61,14 @@ Ext.define('InboxManagement.view.auth.Login', {
         {
             xtype: 'toolbar',
             dock: 'bottom',
+            cls: 'login-bottom',
             items: [
-                {
+                '->', {
                     xtype: 'button',
                     text: 'Submit',
+                    width: 100,
+                    height: 35,
                     handler: 'onSubmit'
-                },
-                {
-                    xtype: 'tbfill'
-                },
-                {
-                    xtype: 'splitbutton',
-                    text: 'Options',
-                    menu: {
-                        xtype: 'menu',
-                        width: 160,
-                        items: [
-                            {
-                                xtype: 'menuitem',
-                                text: 'Register',
-                                iconCls: 'x-fa fa-user-plus', // Font-awesome icon for the menu item
-                                handler: 'onRegister'
-                            },
-                            {
-                                xtype: 'menuitem',
-                                text: 'Recover Password',
-                                iconCls: 'x-fa fa-user-secret', // Font-awesome icon for the menu item
-                                handler: 'onRecoverPassword'
-                            }
-                        ]
-                    }
                 }
             ]
 

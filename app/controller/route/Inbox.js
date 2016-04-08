@@ -17,6 +17,7 @@
 
 		onInboxListRender: function() {
 			var el = Ext.getCmp('inbox-content-panel');
+
 			Ext.suspendLayouts();
 
 			el.removeAll(true);

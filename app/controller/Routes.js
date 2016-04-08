@@ -85,6 +85,8 @@ Ext.define('InboxManagement.controller.Routes', {
      * Inbox route method
      * */
     onInbox: function() {
+        var el = Ext.getCmp('main-tabs');
+        console.log(el);
         this.changeTab('inbox');
     },
     /*

@@ -19,7 +19,8 @@ Ext.define('InboxManagement.Application', {
      * Define the router controller
      * */
     controllers: [
-        'Routes'
+        'Routes',
+        'route.Inbox'
     ],
     stores: [],
 
@@ -75,6 +76,15 @@ Ext.define('InboxManagement.Application', {
         //                data: data
         //            }
         //        });
+
+        var loggedIn = localStorage.getItem("LoggedIn");
+        if (loggedIn) {
+            this.redirectTo('login', false);
+        } else {
+            Ext.create({
+                xtype: 'app-main'
+            });
+        }
 
     }
 });

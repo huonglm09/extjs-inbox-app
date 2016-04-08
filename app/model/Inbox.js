@@ -18,5 +18,17 @@ Ext.define('InboxManagement.model.Inbox', {
 	}, {
 		name: 'created_at',
 		type: 'date'
-	}]
+	}],
+
+	proxy: {
+		type: 'rest',
+		url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + localStorage.getItem('email'),
+		headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+		},
+		reader: {
+			rootProperty: 'data'
+		}
+	}
 });

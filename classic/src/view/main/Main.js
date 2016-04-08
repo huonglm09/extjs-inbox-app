@@ -9,6 +9,7 @@ Ext.define('InboxManagement.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
     id: 'main-tabs',
+    itemId: 'main-tabs',
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',

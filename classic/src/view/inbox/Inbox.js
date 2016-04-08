@@ -11,7 +11,7 @@ Ext.define('InboxManagement.view.inbox.Inbox', {
         type: 'main-inbox'
     },
 
-    itemId: 'inboxMainContainer',
+    id: 'inboxMainContainer',
 
     layout: {
         type: 'hbox',
@@ -20,12 +20,9 @@ Ext.define('InboxManagement.view.inbox.Inbox', {
 
     items: [{
         xtype: 'container',
-        itemId: 'contentPanel',
+        itemId: 'inbox-content-panel',
+        id: 'inbox-content-panel',
         margin: '0 20 20 0',
-        flex: 1,
-        layout: {
-            type: 'anchor',
-            anchor: '100%'
-        }
+        flex: 1
     }]
 });

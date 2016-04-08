@@ -53,7 +53,7 @@ Ext.define('InboxManagement.controller.Routes', {
                 before: 'loggedIn',
                 action: 'onTrash'
             },
-            // Trash route
+            // Profile route
             'profile': {
                 before: 'loggedIn',
                 action: 'onProfile'
@@ -79,8 +79,10 @@ Ext.define('InboxManagement.controller.Routes', {
      * Login route method.  Loads the login form
      * */
     onLogin: function() {
-        Ext.widget('auth_login');
-        InboxManagement.Global.setCurrentView('auth_login');
+        if (InboxManagement.Global.getCurrentView() !== 'auth_login') {
+            Ext.widget('auth_login');
+            InboxManagement.Global.setCurrentView('auth_login');
+        }        
     },
     /*
      * Inbox route method
@@ -115,18 +117,13 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * Logout route method
      * */
-    onLogout: function() {        
-        this.changeTab('logout');
-        localStorage.removeItem("LoggedIn");  
-        InboxManagement.Global.setUser(null); 
-        this.getView().destroy();
-        this.redirectTo('login'); 
+    onLogout: function() {                
+        this.changeTab('logout');                     
     },
     /*
      * Change view when change tab
      * */
     changeTab: function(tab) {
-
         if (InboxManagement.Global.getCurrentView() !== 'app-main') {
             Ext.widget('app-main');
             InboxManagement.Global.setCurrentView('app-main');

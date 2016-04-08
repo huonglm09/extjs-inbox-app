@@ -54,7 +54,7 @@ class UserController extends Controller
     public function getUsers(){
         $users = User::all();
 
-        return response()->json(['status'=> 1, 'users'=> $users]);
+        return response()->json(['success'=> true, 'status'=> 1, 'users'=> $users]);
     }
 
     /*

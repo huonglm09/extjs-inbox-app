@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "users": [
+        {"id": 1, "name": "linhnp", "email": "linhnp@demo.com"},
+        {"id": 2, "name": "thedv", "email": "thedv@demo.com"},
+        {"id": 3, "name": "manhnt", "email": "manhnt@demo.com"},
+        {"id": 4, "name": "hapt", "email": "hapt@demo.com"},
+        {"id": 5, "name": "huonglm", "email": "huonglm@demo.com"}
+    ]
+}

@@ -18,9 +18,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                 form = me.lookupReference('login_form'),
                 password;
 
-        if (form.isValid()) {
-            // Submit login form
-            var formData = form.getForm().getValues();
+        if (form.isValid()) {            
             form.submit({
                 url: InboxManagement.Global.getApiUrl() + 'auth/login',
                 waitMsg: 'Loading...',
@@ -29,7 +27,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                     var res = Ext.decode(action.response.responseText);
                     win.close();
                     InboxManagement.Global.setUser(res.data);
-                    me.redirectTo('inbox');
+                    me.redirectTo('profile');
                 },
                 failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);

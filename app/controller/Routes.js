@@ -2,8 +2,7 @@ Ext.define('InboxManagement.controller.Routes', {
     extend: 'Ext.app.Controller',
     requires: [
         'Ext.util.History',
-        'InboxManagement.Global',
-        'InboxManagement.view.auth.Login'
+        'InboxManagement.Global'
     ],
     /*
      * Listen for unmatched route
@@ -115,12 +114,12 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * Logout route method
      * */
-    onLogout: function() {        
+    onLogout: function() {
         this.changeTab('logout');
-        localStorage.removeItem("LoggedIn");  
-        InboxManagement.Global.setUser(null); 
+        localStorage.removeItem("LoggedIn");
+        InboxManagement.Global.setUser(null);
         this.getView().destroy();
-        this.redirectTo('login'); 
+        this.redirectTo('login');
     },
     /*
      * Change view when change tab

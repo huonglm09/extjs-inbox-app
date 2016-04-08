@@ -947,7 +947,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 }
                 
                 if (!(skipLoaded && entry.done)) {
-                    if (includeUses && item.uses.length) {
+                    if (includeUses && item.uses && item.uses.length) {
                         dependencies = item.requires.concat(item.uses);
                     }
                     else {

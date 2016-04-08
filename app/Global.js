@@ -1,6 +1,6 @@
 Ext.define('InboxManagement.Global', {
     requires: [
-        'Ext.form.field.VTypes'
+
     ],
     singleton: true,
     config: {

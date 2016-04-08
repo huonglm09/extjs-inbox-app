@@ -2,14 +2,11 @@ Ext.define('InboxManagement.Application', {
     extend: 'Ext.app.Application',
     requires: [
         'InboxManagement.Global',
-        'Ext.container.Viewport',
         'Ext.grid.column.Date',
         'Ext.ux.ajax.SimManager',
         'Ext.ux.ajax.Simlet',
         'Ext.data.proxy.Proxy',
         'Ext.data.proxy.Ajax',
-        'Ext.layout.container.Fit',
-        'Ext.grid.Panel',
         'Ext.data.Store',
         'Ext.data.reader.Json'
     ],
@@ -67,17 +64,17 @@ Ext.define('InboxManagement.Application', {
             from_user_email: 'user2@gmail.com',
             to_user_email: 'user4@gmail.com',
             mail_subject: 'Demo email 7'
-        }];    
-    
-//        Ext.ux.ajax.SimManager.init({
-//            delay: 500
-//        }).register({
-//            'api/inbox': {
-//                type: 'json', // use JsonSimlet (type is like xtype for components)
-//                status: 200,
-//                data: data
-//            }
-//        });
+        }];
+
+        //        Ext.ux.ajax.SimManager.init({
+        //            delay: 500
+        //        }).register({
+        //            'api/inbox': {
+        //                type: 'json', // use JsonSimlet (type is like xtype for components)
+        //                status: 200,
+        //                data: data
+        //            }
+        //        });
 
     }
 });

@@ -3,7 +3,7 @@ Ext.define('InboxManagement.model.Inbox', {
 
 	fields: [{
 		name: 'id',
-		type: 'integer',
+		type: 'integer'
 	}, {
 		name: 'from_user_email',
 		type: 'string',

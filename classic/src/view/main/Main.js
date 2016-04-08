@@ -94,7 +94,7 @@ Ext.define('InboxManagement.view.main.Main', {
         iconCls: 'fa-inbox',
         /*viewType: 'main-inbox',*/
         items: [{
-            xtype: 'main-inbox',
+            xtype: 'main-inbox'
         }]
     }, {
         title: 'Write',
@@ -108,7 +108,7 @@ Ext.define('InboxManagement.view.main.Main', {
         id: 'sent',
         iconCls: 'fa-send',
         items: [{
-            xtype: 'main-sent',
+            xtype: 'main-sent'
         }]
     }, {
         title: 'Trash',

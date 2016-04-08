@@ -1,4 +1,4 @@
-Ext.define('InboxManagement.view.main.Write', {
+Ext.define('InboxManagement.view.write.Write', {
     extend: 'Ext.form.Panel',
     xtype: 'write',
     alias: 'write',
@@ -7,8 +7,8 @@ Ext.define('InboxManagement.view.main.Write', {
         'Ext.form.field.Text',
         'Ext.form.field.File',
         'Ext.form.field.HtmlEditor',
-        'InboxManagement.view.main.WriteController',
-        'InboxManagement.view.main.WriteModel'        
+        'InboxManagement.view.write.WriteController',
+        'InboxManagement.view.write.WriteModel'        
     ],
     viewModel: {
         type: 'write'

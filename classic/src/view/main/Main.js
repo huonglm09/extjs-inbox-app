@@ -15,7 +15,8 @@ Ext.define('InboxManagement.view.main.Main', {
         'Ext.window.MessageBox',
         'InboxManagement.view.main.MainController',
         'InboxManagement.view.main.MainModel',
-        'InboxManagement.view.main.Write'
+        'InboxManagement.view.write.Write',        
+        'InboxManagement.view.profile.Profile'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -25,20 +26,6 @@ Ext.define('InboxManagement.view.main.Main', {
     titleRotation: 0,
     tabRotation: 0,
     header: {
-        //        items: [{
-        //                xtype: 'button',
-        //                text: 'My Account',
-        //                menu: [{
-        //                        text: 'Profile',
-        //                        iconCls: 'x-fa fa-user',
-        //                        width: 220
-        //                    }, {
-        //                        text: 'Logout',
-        //                        iconCls: 'x-fa fa-sign-out',
-        //                        handler: 'onLogout',
-        //                        width: 220
-        //                    }]
-        //            }],
         layout: {
             align: 'stretchmax'
         },
@@ -86,9 +73,9 @@ Ext.define('InboxManagement.view.main.Main', {
         title: 'Profile',
         id: 'profile',
         iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'profile'
+        }]
     }, {
         title: 'Inbox',
         id: 'inbox',
@@ -129,69 +116,3 @@ Ext.define('InboxManagement.view.main.Main', {
 });
 
 
-
-/**
- * This example demonstrates the treelist widget.
- */
-//Ext.define('InboxManagement.view.main.Main', {
-//    extend: 'Ext.panel.Panel',
-//    xtype: 'tree-list',
-//    title: 'Inbox Management',
-//    controller: 'tree-list',
-//    iconCls: 'x-fa fa-envelope',
-//    layout: 'border',
-//    viewModel: {
-//        type: 'tree-list'
-//    },
-//    header: {
-//        items: [{
-//                xtype: 'button',
-//                text: 'My Account',
-//                menu: [{
-//                        text: 'Profile',                  
-//                        iconCls: 'x-fa fa-user',
-//                        handler: 'onToggleConfig',
-//                        config: 'expanderOnly'
-//                    }, {
-//                        text: 'Logout',             
-//                        iconCls: 'x-fa fa-sign-out',
-//                        handler: 'onToggleConfig',
-//                        config: 'singleExpand'
-//                    }]
-//            }]
-//    },
-//    items: [{
-//            region: 'west',
-//            width: 250,
-//            split: true,
-//            reference: 'treelistContainer',
-//            layout: {
-//                type: 'vbox',
-//                align: 'stretch'
-//            },
-//            border: false,
-//            scrollable: 'y',
-//            items: [{
-//                    xtype: 'button',
-//                    text: 'Nav',
-//                    enableToggle: true,
-//                    reference: 'navBtn',
-//                    toggleHandler: 'onToggleNav'                    
-//                }, {
-//                    xtype: 'button',
-//                    text: 'Micro',
-//                    enableToggle: true,
-//                    toggleHandler: 'onToggleMicro'
-//                }, {
-//                    xtype: 'treelist',
-//                    reference: 'treelist',
-//                    bind: '{navItems}'
-//                }]
-//        }, {
-//            region: 'center',
-//            bodyPadding: 10,
-//            bind: {
-//                html: '{selectionText}'
-//            }
-//        }]
-//});

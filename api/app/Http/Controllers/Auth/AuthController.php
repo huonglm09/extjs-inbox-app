@@ -6,7 +6,6 @@ use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
 use Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
@@ -23,15 +22,14 @@ class AuthController extends Controller {
       |
      */
 
-    use AuthenticatesAndRegistersUsers;
+use AuthenticatesAndRegistersUsers;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
@@ -41,12 +39,11 @@ class AuthController extends Controller {
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:users',
-            //'password' => 'required|confirmed|min:6',
-            'password' => 'required|min:6',
+                    'email' => 'required|email|max:255|unique:users',
+                    //'password' => 'required|confirmed|min:6',
+                    'password' => 'required|min:6',
         ]);
     }
 
@@ -56,34 +53,27 @@ class AuthController extends Controller {
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         return User::create([
-            'firstName' => $data['firstName'],
-            'lastName' => $data['lastName'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+                    'firstName' => $data['firstName'],
+                    'lastName' => $data['lastName'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
         ]);
     }
 
-    public function loggedin()
-    {
+    public function loggedin() {
         // Check to see if we are logged in via remember me cookie
         if (!Auth::check()) {
             // If not then return false
-            return response([
-                'loggedin' => false
-                    ], 400);
+            return response(['success' => false, 'loggedin' => false], 400);
         } else {
             // If so then return true as we still have a valid session cookie
-            return response([
-                'loggedin' => true
-                    ], 200);
+            return response(['success' => true, 'loggedin' => true, 'data' => Auth::user()], 200);
         }
     }
 
-    public function login()
-    {
+    public function login() {
         $params = \Input::all();
         $post_data = [
             'email' => isset($params['email']) ? $params['email'] : null,
@@ -96,38 +86,26 @@ class AuthController extends Controller {
         // Attempt to log in
         if (Auth::attempt($post_data, $remember)) {
             // If login is successful return true and user data
-            return response([
-                'loggedin' => true,
-                'data' => Auth::user()
-                    ], 200);
+            return response(['success' => true, 'loggedin' => true, 'data' => Auth::user()], 200);
         } else {
             // Login attempt failed so check if the user exists
             $user = User::whereEmail($post_data['email'])->first();
             if (count($user) === 0) {
                 // If user does not exist then return false
-                return response([
-                    'user' => false,
-                    'message' => 'User does not exist'
-                        ], 400);
+                return response(['success' => false, 'user' => false, 'message' => 'User does not exist'], 400);
             } else {
                 // If user does exist then check the password.  If the password doesn't match then return false
                 if (!Hash::check($post_data['password'], $user->password)) {
-                    return response([
-                        'password' => false,
-                        'message' => 'Wrong password'
-                            ], 400);
+                    return response(['success' => false, 'password' => false, 'message' => 'Wrong password'], 400);
                 } else {
                     // It's all jacked up
-                    return response([
-                        'message' => 'Server error'
-                            ], 500);
+                    return response(['success' => false, 'message' => 'Server error'], 500);
                 }
             }
         }
     }
 
-    public function register()
-    {
+    public function register() {
         $params = \Input::all();
         $post_data = [
             'email' => isset($params['email']) ? $params['email'] : null,
@@ -135,19 +113,19 @@ class AuthController extends Controller {
             'firstName' => isset($params['firstName']) ? $params['firstName'] : null,
             'lastName' => isset($params['lastName']) ? $params['lastName'] : null
         ];
-        
-        
+
+
         $validator = $this->validator($post_data);
-        
+
         //var_dump($validator->errors()->count(), $validator->errors()->all());die();
-        
-        if($validator->errors()->count() > 0){
+
+        if ($validator->errors()->count() > 0) {
             return response(
-                [
-                    'message' => $validator->errors()->all()
-                ], 500);
+                    [
+                'message' => $validator->errors()->all()
+                    ], 500);
         }
-        
+
         // Try to save the user
         try {
             $user = $this->create($post_data);
@@ -176,29 +154,18 @@ class AuthController extends Controller {
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
         Auth::logout();
-        if (!Auth::check()) {
-            // If not then return false
-            return response([
-                'loggedin' => false
-                    ], 200);
+        if (!Auth::check()) {            
+            return response(['success' => true, 'loggedin' => false], 200);
         }
     }
-    
-    public function profile()
-    {
+
+    public function profile() {
         if (!Auth::check()) {
-            return response([
-                'loggedin' => false,
-                'data' => null
-                    ], 400);
+            return response(['success' => false, 'loggedin' => false, 'data' => null], 400);
         } else {
-            return response([
-                'loggedin' => true,
-                'data' => Auth::user()
-                    ], 200);
+            return response(['success' => true, 'loggedin' => true, 'data' => Auth::user()], 200);
         }
     }
 

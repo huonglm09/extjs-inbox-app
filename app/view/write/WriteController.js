@@ -4,7 +4,7 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('InboxManagement.view.main.WriteController', {
+Ext.define('InboxManagement.view.write.WriteController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.write',
     onDiscard: function() {

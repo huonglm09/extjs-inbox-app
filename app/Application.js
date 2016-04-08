@@ -20,7 +20,8 @@ Ext.define('InboxManagement.Application', {
      * */
     controllers: [
         'Routes',
-        'route.Inbox'
+        'route.Inbox',
+        'route.Sent'
     ],
     stores: [],
 

@@ -26,17 +26,17 @@ Ext.define('InboxManagement.view.sent.List', {
             width: 200
         }, {
             text: 'To',
-            dataIndex: 'To_user_email',
+            dataIndex: 'to_user_email',
             flex: 1
         }
         , {
             text: 'Content',
-            dataIndex: 'content_sent_email',
+            dataIndex: 'mail_content',
             flex: 1
         }
         , {
             text: 'Created at',
-            dataIndex: 'created_sent_email',
+            dataIndex: 'created_at',
             flex: 1
         }],
     listeners: {

@@ -18,13 +18,5 @@ Ext.define('InboxManagement.model.Inbox', {
 	}, {
 		name: 'created_at',
 		type: 'date'
-	}],
-	proxy: {
-		type: 'rest',
-		url: 'api/inbox',
-		reader: {
-			type: 'json',
-			rootProperty: 'data'
-		}
-	}
+	}]
 });

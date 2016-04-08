@@ -14,9 +14,13 @@ Ext.define('InboxManagement.store.Inbox', {
     autoLoad: true,
 
     proxy: {
-        /*url: InboxManagement.Global.getApiUrl() + 'api/inbox'*/
-        type: 'rest',
-        url: 'api/inbox',
+        type: 'jsonp',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '
+        },
+        url: 'http://localhost:8000/api/email-inbox/' + localStorage.getItem('email'),
+        callbackKey: 'callback',
         reader: {
             type: 'json',
             rootProperty: 'data'

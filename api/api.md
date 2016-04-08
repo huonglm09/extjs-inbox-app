@@ -22,8 +22,8 @@
 ### Delete Email
   * @POST("/api/emails/delete")
   * @Param ({email_id, is_inbox})
-    ** is_inbox == 1 : delete from my inbox
-    ** is_inbox == 0 : delete from my sent
+    * is_inbox == 1 : delete from my inbox
+    * is_inbox == 0 : delete from my sent
   * @Version ("v1")
 
 ### Get All User

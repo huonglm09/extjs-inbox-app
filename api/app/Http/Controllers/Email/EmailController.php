@@ -46,12 +46,12 @@ class EmailController extends Controller
 
     /*
      * Get Email detail
-     * @GET("/api/email-inbox/{user_email}")
+     * @GET("/api/email-detail/{user_email}/{id}")
      * @Param : ({'user_email','id'})
      * @Version ("v1")
      * */
     public function getEmailsDetail($user_email, $id){
-        $email_detail = Email::where('to_user_email','=',$user_email)->where('id','=',$id)->where('to_deleted','!=',1)->get();
+        $email_detail = Email::where('id','=',$id)->get();
         if (!empty($email_detail)) {
             return response()->json(['emails'=>$email_detail, 'status'=>1]);
         }else{

@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix'=> 'api'],function(){
     Route::get('email-inbox/{user_email}','Email\EmailController@getEmailsInbox');
-    Route::get('email-inbox/{user_email}/{id}','Email\EmailController@getEmailsDetail');
+    Route::get('email-detail/{user_email}/{id}','Email\EmailController@getEmailsDetail');
     Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
     Route::any('write-email','Email\EmailController@sentMailToOther');
 

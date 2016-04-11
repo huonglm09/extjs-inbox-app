@@ -2,8 +2,7 @@ Ext.define('InboxManagement.controller.Routes', {
     extend: 'Ext.app.Controller',
     requires: [
         'Ext.util.History',
-        'InboxManagement.Global',
-        'InboxManagement.view.auth.Login'
+        'InboxManagement.Global'
     ],
     /*
      * Listen for unmatched route
@@ -88,7 +87,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Inbox route method
      * */
     onInbox: function() {
-        this.changeTab('inbox');
+        /*this.changeTab('inbox');*/
     },
     /*
      * Write route method
@@ -100,7 +99,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Sent route method
      * */
     onSent: function() {
-        this.changeTab('sent');
+//        this.changeTab('sent');
     },
     /*
      * Trash route method
@@ -118,7 +117,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Logout route method
      * */
     onLogout: function() {                
-        this.changeTab('logout');                     
+        this.changeTab('logout');
     },
     /*
      * Change view when change tab
@@ -138,36 +137,36 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * LoggedIn method.  Checks if the user has a valid logon session
      * */
-    loggedIn: function() {          
+    loggedIn: function() {
         var me = this,
-        args = Ext.Array.slice(arguments), 
-        action = args.pop(); 
+            args = Ext.Array.slice(arguments),
+            action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
-            method:'GET',                
-            success:function(response){
+            method: 'GET',
+            success: function(response) {
                 var res = Ext.decode(response.responseText);
                 InboxManagement.Global.setUser(res.data);
                 action.resume();
-            },                
-            failure:function() {
+            },
+            failure: function() {
                 me.redirectTo('login');
             }
-        });           
+        });
     },
     beforeLogin: function() {
         var me = this,
-        args = Ext.Array.slice(arguments), 
-        action = args.pop(); 
+            args = Ext.Array.slice(arguments),
+            action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
-            method: 'GET',                
-            success:function(response){
+            method: 'GET',
+            success: function(response) {
                 var res = Ext.decode(response.responseText);
                 InboxManagement.Global.setUser(res.data);
                 me.redirectTo('profile', false);
-            },                
-            failure:function() {
+            },
+            failure: function() {
                 action.resume();
             }
         });
@@ -175,7 +174,7 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * StartToken method.  Updates the global startToken var with the current hash
      * */
-    startToken:function() {
+    startToken: function() {
         InboxManagement.Global.setStartToken(Ext.util.History.getToken());
     },
     /*

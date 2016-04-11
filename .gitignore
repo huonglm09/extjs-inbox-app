@@ -1,3 +1,8 @@
 ## NetBeans
 nbproject/
 nbbuild/
+build/*
+
+sass/example/*
+classic.json
+modern.json

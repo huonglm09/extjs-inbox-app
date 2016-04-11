@@ -3,7 +3,7 @@ Ext.define('InboxManagement.model.Inbox', {
 
 	fields: [{
 		name: 'id',
-		type: 'integer',
+		type: 'integer'
 	}, {
 		name: 'from_user_email',
 		type: 'string',
@@ -19,11 +19,15 @@ Ext.define('InboxManagement.model.Inbox', {
 		name: 'created_at',
 		type: 'date'
 	}],
+
 	proxy: {
 		type: 'rest',
-		url: 'api/inbox',
+		url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + localStorage.getItem('email'),
+		headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+		},
 		reader: {
-			type: 'json',
 			rootProperty: 'data'
 		}
 	}

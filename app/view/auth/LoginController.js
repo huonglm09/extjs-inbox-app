@@ -18,7 +18,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                 form = me.lookupReference('login_form'),
                 password;
 
-        if (form.isValid()) {            
+        if (form.isValid()) { 
             form.submit({
                 url: InboxManagement.Global.getApiUrl() + 'auth/login',
                 waitMsg: 'Loading...',

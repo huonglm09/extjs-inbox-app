@@ -45,6 +45,23 @@ class EmailController extends Controller
     }
 
     /*
+     * Get Email detail
+     * @GET("/api/email-inbox/{user_email}")
+     * @Param : ({'user_email','id'})
+     * @Version ("v1")
+     * */
+    public function getEmailsDetail($user_email, $id){
+        $email_detail = Email::where('to_user_email','=',$user_email)->where('id','=',$id)->where('to_deleted','!=',1)->get();
+        if (!empty($email_detail)) {
+            return response()->json(['emails'=>$email_detail, 'status'=>1]);
+        }else{
+            return response()->json(['status'=>0]);
+        }
+        
+    }
+    
+
+    /*
      * Get List Email Sent By User Email
      * @GET("/api/email-sent/{user_email}")
      * @Param : ({'user_email'})

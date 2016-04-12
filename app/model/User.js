@@ -1,13 +1,7 @@
 Ext.define('InboxManagement.model.User', {
-	extend: 'InboxManagement.model.Base',
-
-	fields: [{
-			name: 'name',
-			type: 'string'
-		}, {
-			name: 'email',
-			type: 'string'
-		}
-
-	]
+    extend: 'Ext.data.Model',
+    requires: [
+        'Ext.data.reader.Json'
+    ],
+    fields: ['id', 'firstName', 'lastName', 'email', 'created_at', 'updated_at']
 });

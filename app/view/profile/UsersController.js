@@ -9,6 +9,6 @@ Ext.define('InboxManagement.view.profile.UsersController', {
     alias: 'controller.users',
     
     onItemSelected: function() {
-        alert('a');
+        
     }
 });

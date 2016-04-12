@@ -8,102 +8,24 @@ Ext.define('InboxManagement.view.main.MainController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.main',
     onItemSelected: function(sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+
     },
     onConfirm: function(choice) {
-        if (choice === 'yes') {
-            //
-        }
+
     },
-    onLogout: function() {
-        localStorage.removeItem("LoggedIn");  
-        InboxManagement.Global.setUser(null); 
-        this.getView().destroy();
-        this.redirectTo('login');        
+    onChangeTab: function(tabPanel, newCard, oldCard, eOpts) {
+        if (newCard.title === 'Logout') {   
+            var me = this;
+            Ext.Ajax.request({
+                url: InboxManagement.Global.getApiUrl() + 'auth/logout',
+                method: 'GET',                
+                success:function(response){   
+                    me.getView().destroy();
+                    me.redirectTo('login');       
+                }, failure:function() {
+                    me.redirectTo('profile'); 
+                }
+            });                          
+        }
     }
 });
-
-
-//Ext.define('InboxManagement.view.main.MainController', {
-//    extend: 'Ext.app.ViewController',
-//
-//    alias: 'controller.tree-list',
-//
-//    onToggleConfig: function (menuitem) {
-//        var treelist = this.lookupReference('treelist');
-//
-//        treelist.setConfig(menuitem.config, menuitem.checked);
-//    },
-//
-//    onToggleMicro: function (button, pressed) {
-//        var treelist = this.lookupReference('treelist'),
-//            navBtn = this.lookupReference('navBtn'),
-//            ct = treelist.ownerCt;
-//
-//        treelist.setMicro(pressed);
-//
-//        if (pressed) {
-//            navBtn.setPressed(true);
-//            navBtn.disable();
-//            this.oldWidth = ct.width;
-//            ct.setWidth(44);
-//        } else {
-//            ct.setWidth(this.oldWidth);
-//            navBtn.enable();
-//        }
-//
-//        // IE8 has an odd bug with handling font icons in pseudo elements;
-//        // it will render the icon once and not update it when something
-//        // like text color is changed via style addition or removal.
-//        // We have to force icon repaint by adding a style with forced empty
-//        // pseudo element content, (x-sync-repaint) and removing it back to work
-//        // around this issue.
-//        // See this: https://github.com/FortAwesome/Font-Awesome/issues/954
-//        // and this: https://github.com/twbs/bootstrap/issues/13863
-//        if (Ext.isIE8) {
-//            this.repaintList(treelist, pressed);
-//        }
-//    },
-//
-//    onToggleNav: function (button, pressed) {
-//        var treelist = this.lookupReference('treelist'),
-//            ct = this.lookupReference('treelistContainer');
-//
-//        treelist.setExpanderFirst(!pressed);
-//        treelist.setUi(pressed ? 'nav' : null);
-//        treelist.setHighlightPath(pressed);
-//        ct[pressed ? 'addCls' : 'removeCls']('treelist-with-nav');
-//        
-//        if (Ext.isIE8) {
-//            this.repaintList(treelist);
-//        }
-//    },
-//    
-//    init: function() {
-//        
-//    },
-//    
-//    repaintList: function(treelist, microMode) {
-//        treelist.getStore().getRoot().cascadeBy(function(node) {
-//            var item, toolElement;
-//            
-//            item = treelist.getItem(node);
-//            
-//            if (item && item.isTreeListItem) {
-//                if (microMode) {
-//                    toolElement = item.getToolElement();
-//                    
-//                    if (toolElement && toolElement.isVisible(true)) {
-//                        toolElement.syncRepaint();
-//                    }
-//                }
-//                else {
-//                    if (item.element.isVisible(true)) {
-//                        item.iconElement.syncRepaint();
-//                        item.expanderElement.syncRepaint();
-//                    }
-//                }
-//            }
-//        });
-//    }
-//});

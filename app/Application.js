@@ -78,14 +78,14 @@ Ext.define('InboxManagement.Application', {
         //            }
         //        });
 
-        var loggedIn = localStorage.getItem("LoggedIn");
-        if (loggedIn) {
-            this.redirectTo('login', false);
-        } else {
-            Ext.create({
-                xtype: 'app-main'
-            });
-        }
+//        var loggedIn = localStorage.getItem("LoggedIn");
+//        if (loggedIn) {
+//            this.redirectTo('login', false);
+//        } else {
+//            Ext.create({
+//                xtype: 'app-main'
+//            });
+//        }
 
     }
 });

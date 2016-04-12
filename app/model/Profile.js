@@ -5,5 +5,5 @@ Ext.define('InboxManagement.model.Profile', {
         'Ext.data.reader.Json'
     ],
 
-    fields: ['firstName', 'lastName', 'email']
+    fields: ['id', 'firstName', 'lastName', 'email']
 });

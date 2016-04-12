@@ -69,6 +69,10 @@ Ext.define('InboxManagement.view.main.Main', {
             }
         }
     },
+    
+    listeners: {
+        tabchange: 'onChangeTab'
+    },
     items: [{
         title: 'Profile',
         id: 'profile',
@@ -80,7 +84,6 @@ Ext.define('InboxManagement.view.main.Main', {
         title: 'Inbox',
         id: 'inbox',
         iconCls: 'fa-inbox',
-        /*viewType: 'main-inbox',*/
         items: [{
             xtype: 'main-inbox'
         }]

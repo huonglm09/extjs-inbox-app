@@ -87,7 +87,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Inbox route method
      * */
     onInbox: function() {
-        /*this.changeTab('inbox');*/
+        this.changeTab('inbox');
     },
     /*
      * Write route method
@@ -99,7 +99,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Sent route method
      * */
     onSent: function() {
-//        this.changeTab('sent');
+        this.changeTab('sent');
     },
     /*
      * Trash route method

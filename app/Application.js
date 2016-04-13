@@ -14,7 +14,7 @@ Ext.define('InboxManagement.Application', {
     /*
      * The default hash for the router
      * */
-    defaultToken: 'inbox',
+    defaultToken: 'profile',
     /*
      * Define the router controller
      * */

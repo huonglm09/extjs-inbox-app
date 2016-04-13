@@ -34,6 +34,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
             xtype: 'form',
             defaultType: 'textfield',
             reference: 'profile-form',
+            cls: 'profile-form',
             items: [{
                     xtype: 'hiddenfield',
                     name: 'id',
@@ -55,6 +56,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     bind: '{profile.data.items.0.email}'
                 }, {
                     xtype: 'button',
+                    cls: 'btn btn-save',
                     text: 'Save',
                     width: 100,
                     height: 35,
@@ -66,6 +68,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
             title: 'Users',
             flex: 4,
             margin: '0 10 0 0',
+            cls: 'profile-form',
             items: [{
                     xtype: 'users'
                 }]

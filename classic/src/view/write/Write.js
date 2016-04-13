@@ -66,14 +66,16 @@ Ext.define('InboxManagement.view.write.Write', {
                 padding: '10 20 10 20',
                 id: 'discard',
                 cls: 'write-btn',
-                handler: 'onDiscard'
+                handler: 'onDiscard',
+                iconCls: 'x-fa fa-times-circle'                
             }, {
                 xtype: 'button',
                 text: 'Send',
                 padding: '10 20 10 20',
                 id: 'send',
                 cls: 'write-btn',
-                handler: 'onWrite'
+                handler: 'onWrite',
+                iconCls: 'x-fa fa-send'
             }
         ]
     }

@@ -42,7 +42,11 @@ Ext.define('InboxManagement.view.profile.Profile', {
     },
     items: [
         {
-            title: 'Profile',
+            title: {
+                bind : {
+                    html: '<i class="mark-color"></i><div class="title-panel">Profile</div>'
+                }
+            },
             flex: 2,
             margin: '0 10 0 0',
             xtype: 'form',
@@ -95,12 +99,17 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     text: 'Save',
                     width: 100,
                     height: 35,
-                    handler: 'onSaveProfile'
+                    handler: 'onSaveProfile',
+                    iconCls: 'x-fa fa-check'                    
                 }
             ]
         },
-        {
-            title: 'Users',
+        {            
+            title: {
+                bind : {
+                    html: '<i class="mark-color"></i><div class="title-panel">Users</div>'
+                }
+            },
             flex: 4,
             margin: '0 10 0 0',
             cls: 'profile-form',

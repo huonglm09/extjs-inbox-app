@@ -7,13 +7,14 @@ Ext.define('InboxManagement.view.sent.List', {
     requires: [
         'InboxManagement.store.Sent'
     ],
-    title: 'Sent mail',
+    title: {
+        bind: {
+            html: '<i class="mark-color"></i><div class="title-panel">Sent</div>'
+        }
+    },
     store: {
         type: 'sent'
     },
-    /*bind: {
-     store: '{inbox}'
-     },*/
     viewConfig: {
         preserveScrollOnRefresh: true,
         preserveScrollOnReload: true

@@ -161,12 +161,12 @@ $ui-header-noborder-adjust: false
         -webkit-border-radius: 8px 0px 0px !important;*/
 }
 .btn-save {
-    border: 1px solid #90c258;
-    background-color: #9cc96b;
+    border: 1px solid #35baf6;
+    background-color: #35baf6;
 }
 .btn-save:hover {
-    border-color: #84b351;
-    background-color: #90b962;
+    border-color: #38C0FF;
+    background-color: #38C0FF;
 }
 .profile-form .btn-save {
     float: right;
@@ -259,6 +259,9 @@ $ui-header-noborder-adjust: false
     border-color: #7c7c7d;
     background-color: #888889;
 }
+.x-btn-inner-default-small {
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif !important;
+}
 .login-form .x-btn-inner-default-small {
     font: 500 14px/34px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif !important;
 }
@@ -288,4 +291,23 @@ $ui-header-noborder-adjust: false
     opacity: 0.85 !important;
     line-height: 40px !important;
     padding-left: 10px !important;
+}
+.mark-color {
+    position: absolute;    
+    background: #38c0ff;    
+    width: 12px;    
+    height: 12px;    
+    display: block;    
+    left: 0px;    
+    top: 50%;
+    margin-top: -6px;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    box-shadow: 0px 0px 10px #ffffff;
+    -moz-box-shadow: 0px 0px 10px #ffffff;
+    -webkit-box-shadow: 0px 0px 10px #ffffff;
+}
+.title-panel {
+    margin-left: 20px;
 }

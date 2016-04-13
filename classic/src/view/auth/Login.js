@@ -89,7 +89,7 @@ Ext.define('InboxManagement.view.auth.Login', {
                     text: 'Create Account',
                     width: '100%',
                     height: 50,
-//                    handler: 'onSubmit',
+                    //handler: 'onSubmit',
                     iconCls: 'x-btn-icon-el-gray-large x-fa fa-user-plus',
                     iconAlign: 'right'
                 }

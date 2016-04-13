@@ -12,7 +12,7 @@ Ext.define('InboxManagement.view.profile.Users', {
         type: 'users'
     },
     columns: [
-        {text: 'STT', dataIndex: 'id'},
+        {text: 'Id', dataIndex: 'id'},
         {text: 'First Name', dataIndex: 'firstName', flex: 1},
         {text: 'Last Name', dataIndex: 'lastName', flex: 1},
         {text: 'Email', dataIndex: 'email', flex: 1.5},

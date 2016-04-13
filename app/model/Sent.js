@@ -20,8 +20,8 @@ Ext.define('InboxManagement.model.Sent', {
         }],
     proxy: {
         type: 'rest',
-        url: InboxManagement.Global.getApiUrl() + 'email-sent/hapt123@gmail.com' ,
-//        url: InboxManagement.Global.getApiUrl() + 'email-sent/' + localStorage.getItem('email'),
+//        url: InboxManagement.Global.getApiUrl() + 'email-sent/hapt123@gmail.com' ,
+        url: InboxManagement.Global.getApiUrl() + 'email-sent/' + localStorage.getItem('email'),
         headers: {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')

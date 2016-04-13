@@ -41,7 +41,7 @@
 
 
 ### pieChart : Inbox - sent Email
-  * @POST("/api/pie-charts/{user_email}")
+  * @GET("/api/pie-charts/{user_email}")
   * @Param: ('')
   * @Return : ['status'=>1,'inbox'=>total_inbox_email, 'sent'=> total_sent_email])
   * @Version ("v1")

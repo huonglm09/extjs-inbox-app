@@ -7,11 +7,26 @@
 Ext.define('InboxManagement.view.profile.ProfileController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.profile',
-    onSaveProfile: function(btn) {        
+    onSaveProfile: function(btn) {
         var me = this,
-            form = me.lookupReference('profile-form');            
-        if (form.isValid()) {            
-            var formData = form.getForm().getValues();            
+                form = me.lookupReference('profile-form');
+        if (form.isValid()) {
+            var formData = form.getForm().getValues();
+            if (formData.password && formData.retype) {
+                if (formData.password !== formData.retype) {
+                    Ext.MessageBox.show({
+                        title: 'Save Profile',
+                        msg: 'Password and retype must the same',
+                        icon: Ext.MessageBox.ERROR,
+                        width: 400,
+                        closable: false,
+                        buttons: Ext.MessageBox.OK
+                    });
+                    
+                    return false;
+                } 
+            } 
+            
             form.submit({
                 url: InboxManagement.Global.getApiUrl() + 'users/update/' + formData.email,
                 waitMsg: 'Loading...',
@@ -22,7 +37,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                         title: 'Save Profile',
                         msg: res.message,
                         icon: Ext.MessageBox.ERROR,
-                        width: 400,                        
+                        width: 400,
                         closable: false,
                         buttons: Ext.MessageBox.OK
                     });
@@ -38,7 +53,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                         buttons: Ext.MessageBox.OK
                     });
                 }
-            });
+            });                   
         }
     }
 });

@@ -14,7 +14,7 @@ Ext.define('InboxManagement.Application', {
     /*
      * The default hash for the router
      * */
-    defaultToken: 'inbox',
+    defaultToken: 'profile',
     /*
      * Define the router controller
      * */
@@ -23,14 +23,8 @@ Ext.define('InboxManagement.Application', {
         'route.Inbox',
         'route.Sent'
     ],
-    stores: [],
-
-
+ 
     launch: function() {
-        /*
-         * Calling the registerVtypes method in the Global singleton to set up the vtypes to use in the application
-         * */
-        //InboxManagement.Global.registerVtypes();
         var data = [{
             id: 1,
             from_user_email: 'user1@gmail.com',

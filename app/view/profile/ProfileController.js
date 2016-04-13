@@ -7,18 +7,25 @@
 Ext.define('InboxManagement.view.profile.ProfileController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.profile',
-    onSaveProfile: function(btn) {
+    onSaveProfile: function(btn) {        
         var me = this,
-            form = me.lookupReference('profile-form');
-
-        if (form.isValid()) {
-            var formData = form.getForm().getValues();
+            form = me.lookupReference('profile-form');            
+        if (form.isValid()) {            
+            var formData = form.getForm().getValues();            
             form.submit({
-                url: InboxManagement.Global.getApiUrl() + 'users/edit/' + formData.id,
+                url: InboxManagement.Global.getApiUrl() + 'users/update/' + formData.email,
                 waitMsg: 'Loading...',
                 method: 'POST',
                 success: function(form, action) {
                     var res = Ext.decode(action.response.responseText);
+                    Ext.MessageBox.show({
+                        title: 'Save Profile',
+                        msg: res.message,
+                        icon: Ext.MessageBox.ERROR,
+                        width: 400,                        
+                        closable: false,
+                        buttons: Ext.MessageBox.OK
+                    });
                 },
                 failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);
@@ -26,7 +33,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                         title: 'Save Profile',
                         msg: res.message,
                         icon: Ext.MessageBox.ERROR,
-                        width: 200,
+                        width: 400,
                         closable: false,
                         buttons: Ext.MessageBox.OK
                     });

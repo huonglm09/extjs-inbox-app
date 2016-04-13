@@ -65,7 +65,7 @@ class UserController extends Controller
      *@Version("v1")
      */
     public function updateUser($email, Request $request){
-        $user = User::where('email','=',$email)->get();
+        $user = User::where('email','=',$email)->first();
 
         if (empty($user)) {
             return response()->json(['status'=>0]);            
@@ -86,13 +86,13 @@ class UserController extends Controller
             }
 
             if($user->save()){
-                return response()->json(['status'=>1]);
+                return response()->json(['success'=> true, 'status'=>1, 'message' => 'Your profile has been saved successfull']);
             }else{
-                return response()->json(['status'=>0]);
+                return response()->json(['success'=> false, 'status'=>0, 'message' => 'An error happen in process save your profile']);
             }
         }
 
-        return response()->json(['status'=>0]);
+        return response()->json(['success'=> false, 'status'=>0, 'message' => 'An error happen in process save your profile']);
     }
 
     /*

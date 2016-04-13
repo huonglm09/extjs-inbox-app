@@ -29,3 +29,19 @@
 ### Get All User
    * @GET("/api/users")
    * @Version ("v1")
+
+
+### API update user infor
+  * @POST("/api/users/update/{user_email}")
+  * @Param: ({'firstName','lastName', 'password'})
+  * @Return : status
+  	* status = 1: update success
+  	* status = 0: update false  
+  * @Version ("v1")
+
+
+### pieChart : Inbox - sent Email
+  * @GET("/api/pie-charts/{user_email}")
+  * @Param: ('')
+  * @Return : ['status'=>1,'inbox'=>total_inbox_email, 'sent'=> total_sent_email])
+  * @Version ("v1")

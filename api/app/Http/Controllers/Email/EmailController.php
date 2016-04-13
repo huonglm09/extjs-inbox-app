@@ -171,4 +171,20 @@ class EmailController extends Controller
           return response()->json(['status'=>0]);
       }
 
+      
+
+    /*
+     * pieChart : Inbox - sent Email
+     * @POST("/api/pie-charts}")
+     * @Param ({email_id})
+     * @Versions({"v1"})
+     */
+    public function pieChart($email){
+        $emails_inbox = Email::where('to_user_email','=',$email)->where('to_deleted','=',0)->count();
+        $emails_sent = Email::where('from_user_email','=',$email)->where('from_deleted','=',0)->count();
+
+        return response()->json(['status'=>1,'inbox'=>$emails_inbox, 'sent'=> $emails_sent]);
+    }
+
+
 }

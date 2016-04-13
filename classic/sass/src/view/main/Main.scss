@@ -186,54 +186,11 @@ $ui-header-noborder-adjust: false
 .x-webkit .x-form-text {
     height: 100%;
 }
-/*.login-form {
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 20px 15px 50px #ffffff;
-    -moz-box-shadow: 20px 15px 50px #ffffff;
-    -webkit-box-shadow: 20px 15px 50px #ffffff;
-}
-.login-bottom {
-    border-radius: 0px 0px 8px 8px;
-    -moz-border-radius: 0px 0px 8px 8px;
-    -webkit-border-radius: 0px 0px 8px 8px;
-}
-.login-form .x-window-header-default-top {
-    background-color: #35baf6;
-}
-.login-bottom .x-btn-default-toolbar-small {
-    background-color: #35baf6;
-}
-.login-bottom .x-btn-inner-default-toolbar-small {
-    color: #ffffff;
-    border-color: #31ade5;
-}
-.login-bottom .x-btn-inner-default-toolbar-small.x-btn-over {
-    background-color: #35baf6;
-}
-.login-bottom .x-btn.x-btn-pressed.x-btn-default-toolbar-small {
-    background-color: #35baf6 !important;
-    color: #ffffff;
-    border-color: #31ade5;
-}
-.login-bg {    
-    position: absolute !important;
-    border-radius: 0px !important;
-    -moz-border-radius: 0px !important;
-    -webkit-border-radius: 0px !important;
-}
-.login-bg .x-panel-body-default {
-    background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
-    background-size: cover !important;
-}*/
-
 .login-form {
     overflow: hidden;
-    box-shadow: 20px 15px 50px #ffffff;
-    -moz-box-shadow: 20px 15px 50px #ffffff;
-    -webkit-box-shadow: 20px 15px 50px #ffffff;
+    box-shadow: -3px 27px 58px #ffffff;
+    -moz-box-shadow: -3px 27px 58px #ffffff;
+    -webkit-box-shadow: -3px 27px 58px #ffffff;
     border: none;
 }
 .login-form .x-window-header-default-top {
@@ -264,4 +221,71 @@ $ui-header-noborder-adjust: false
 .login-bg .x-panel-body-default {
     background: url('../../../../../resources/images/background/bg.jpg') no-repeat center 30% !important;
     background-size: cover !important;
+}
+.line-or .x-panel-header-default-horizontal.x-header-noborder {
+    padding: 0;    
+}
+.line-or .x-panel-header-title-default > .x-title-text-default {
+    text-align: center;    
+    font-size: 13px;
+    line-height: 11px;
+    color: transparent;
+}
+.line-or .x-panel-header-default {
+    border: none !important;
+    background: url('../../../../../resources/images/background/line-or.jpg') no-repeat center center !important;
+}
+.btn-save.btn-save-login {
+    border: 1px solid #90c258;
+    background-color: #9cc96b;
+}
+.btn-save.btn-save-login:hover {
+    border-color: #84b351;
+    background-color: #90b962;
+}
+.btn-save.btn-save-face {
+    border: 1px solid #136ba5;
+    background-color: #167abc;
+}
+.btn-save.btn-save-face:hover {
+    border-color: #126398;
+    background-color: #1470ad;
+}
+.btn-save.btn-create-account {
+    border: 1px solid #878788;
+    background-color: #949495;
+}
+.btn-save.btn-create-account:hover {
+    border-color: #7c7c7d;
+    background-color: #888889;
+}
+.login-form .x-btn-inner-default-small {
+    font: 500 14px/34px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif !important;
+}
+.login-form .x-form-text-default {
+    height: 100% !important;
+    line-height: 100% !important;
+    padding: 0px 10px !important;
+    font: 300 14px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif !important;
+}
+.fa-angle-right:before,
+.fa-facebook-f:before, 
+.fa-facebook:before,
+.fa-user-plus:before {
+    font-family: FontAwesome !important;    
+}
+.login-form .fa-angle-right:before,
+.login-form .fa-facebook-f:before, 
+.login-form .fa-facebook:before,
+.login-form .fa-user-plus:before {
+    font-size: 24px !important;    
+    position: absolute !important;    
+    right: 10px !important;    
+    top: 10px !important;    
+}
+.login-form .x-window-header-default-top .x-title-text.x-title-text-default.x-title-item {
+    color: #404040 !important;
+    opacity: 0.85 !important;
+    line-height: 40px !important;
+    padding-left: 10px !important;
 }

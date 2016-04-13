@@ -15,20 +15,19 @@ Ext.define('InboxManagement.view.auth.Login', {
     ],
     controller: 'login',
     autoShow: true,
-    height: 485,
+    height: 505,
     width: 400,
     resizable: false,
     movable: false,
     closable: false,
-    title: 'Login',
-    iconCls: 'x-fa fa-user', 
+    title: 'Sign into your account',     
     layout: 'fit',
     cls: 'login-form',    
-    bodyPadding: 15,
+    bodyPadding: '0px 10px 10px 10px',
     items: [
         {
             xtype: 'form',
-            bodyPadding: 10,
+            bodyPadding: '0px 10px 10px 10px',
             reference: 'login_form',
             items: [
                 {
@@ -49,7 +48,7 @@ Ext.define('InboxManagement.view.auth.Login', {
                     margin: '0 0 20 0',
                     reference: 'password_field',
                     emptyText: 'Password',
-                    height: 50
+                    height: 50                    
                 }, {
                     xtype: 'checkboxfield',
                     anchor: '100%',
@@ -58,35 +57,41 @@ Ext.define('InboxManagement.view.auth.Login', {
                     name: 'remember'
                 }, {
                     xtype: 'button',
-                    cls: 'btn btn-save',
+                    cls: 'btn btn-save btn-save-login',
                     text: 'Submit',
                     width: '100%',
                     height: 50,
-                    handler: 'onSubmit'
+                    handler: 'onSubmit',
+                    iconCls: 'fa-angle-right',
+                    iconAlign: 'right'
                 }, {
                     title: 'OR',
-                    margin: '10 0 10 0',
+                    margin: '15 0 15 0',
                     cls: 'line-or',
-                    height: 10
+                    height: 15
                 }, {
                     xtype: 'button',
-                    cls: 'btn btn-save',
+                    cls: 'btn btn-save btn-save-face',
                     text: 'Login with Facebook',
                     width: '100%',
                     height: 50,
-                    handler: 'onSubmit'
+                    handler: 'onSubmit',
+                    iconCls: 'x-btn-icon-el-facebook-large x-fa fa-facebook',
+                    iconAlign: 'right'
                 }, {
                     title: 'OR',
-                    margin: '10 0 10 0',
+                    margin: '15 0 15 0',
                     cls: 'line-or',
-                    height: 10
+                    height: 15
                 }, {
                     xtype: 'button',
-                    cls: 'btn btn-save',
+                    cls: 'btn btn-save btn-create-account',
                     text: 'Create Account',
                     width: '100%',
                     height: 50,
-                    handler: 'onSubmit'
+//                    handler: 'onSubmit',
+                    iconCls: 'x-btn-icon-el-gray-large x-fa fa-user-plus',
+                    iconAlign: 'right'
                 }
             ]
         }

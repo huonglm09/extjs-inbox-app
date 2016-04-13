@@ -22,7 +22,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
         frame: true,
         bodyPadding: 10
     },
-    height: 400,
+    height: 450,
     initComponent: function() {
         this.callParent();
     },

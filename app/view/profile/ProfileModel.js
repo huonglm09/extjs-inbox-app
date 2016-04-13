@@ -2,6 +2,11 @@ Ext.define('InboxManagement.view.profile.ProfileModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.profile',
     data: {
-        profile : new InboxManagement.store.Profile()
+        profileStore : new InboxManagement.store.Profile()
+    }, 
+    formulas: {
+        profile: function(get) {
+            return get('profileStore').load();
+        }
     }
 });

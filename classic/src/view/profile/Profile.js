@@ -26,6 +26,20 @@ Ext.define('InboxManagement.view.profile.Profile', {
     initComponent: function() {
         this.callParent();
     },
+    listeners: {
+        afterrender: function(view) {            
+            //view.add({
+            //    xtype: 'multiselect',
+            //    scrollable: false,
+            //    allowBlank: true,
+            //    ddReorder: true,
+            //    fieldLabel: 'Multiselect',
+            //    store: view.getViewModel().getStore('profile'), 
+            //    valueField: 'id',
+            //    displayField: 'name'
+            //});
+        }  
+    },
     items: [
         {
             title: 'Profile',
@@ -40,6 +54,11 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     name: 'id',
                     bind: '{profile.data.items.0.id}' 
                 }, {
+                    fieldLabel: 'Email',
+                    width: '100%',
+                    name: 'email',
+                    bind: '{profile.data.items.0.email}'
+                }, {
                     fieldLabel: 'First Name',
                     width: '100%',
                     name: 'firstName',
@@ -48,12 +67,28 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     fieldLabel: 'Last Name',
                     width: '100%',
                     name: 'lastName',
-                    bind: '{profile.data.items.0.lastName}'
+                    bind: '{profile.data.items.0.lastName}'                
                 }, {
-                    fieldLabel: 'Email',
+                    fieldLabel: 'Mode',
+                    boxLabel: 'Allow change your password',
+                    xtype: 'checkbox',                    
+                    reference: 'changePassword'
+                }, {
+                    fieldLabel: 'Password',
                     width: '100%',
-                    name: 'email',
-                    bind: '{profile.data.items.0.email}'
+                    inputType: 'password',
+                    name: 'password',
+                    bind: {
+                        disabled: '{!changePassword.checked}'
+                    }
+                }, {
+                    fieldLabel: 'Retype',
+                    width: '100%',
+                    inputType: 'password',
+                    name: 'retype',
+                    bind: {
+                        disabled: '{!changePassword.checked}'
+                    }
                 }, {
                     xtype: 'button',
                     cls: 'btn btn-save',

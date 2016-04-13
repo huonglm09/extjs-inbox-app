@@ -11,7 +11,7 @@ Ext.define('InboxManagement.view.sent.SentController', {
 
 	onItemSelected: function(view, td, cellIndex, record, tr, rowIndex, e, eOpts) {
 
-		this.redirectTo('sent/' + record.get('id'));
+		this.redirectTo('email-detail/' + record.get('id'));
 	},
 
 

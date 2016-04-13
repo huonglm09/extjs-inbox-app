@@ -116,7 +116,8 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * Logout route method
      * */
-    onLogout: function() {                
+    onLogout: function() {   
+        localStorage.removeItem('email');
         this.changeTab('logout');
     },
     /*
@@ -147,6 +148,7 @@ Ext.define('InboxManagement.controller.Routes', {
             success: function(response) {
                 var res = Ext.decode(response.responseText);
                 InboxManagement.Global.setUser(res.data);
+                localStorage.setItem('email',res.data.email);
                 action.resume();
             },
             failure: function() {

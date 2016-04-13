@@ -6,7 +6,7 @@
             'sent': {
                 action: 'onSentListRender'
             },
-            'sent/:id': {
+            'email-detail/:id': {
                 before: 'beforeSentDetail',
                 action: 'onRenderDetailSent',
                 conditions: {
@@ -17,7 +17,7 @@
         onSentListRender: function () {
             var el = Ext.getCmp('sent-content-panel');
             Ext.suspendLayouts();
-
+            
             el.removeAll(true);
             el.add(
                     Ext.apply({

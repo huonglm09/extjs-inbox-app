@@ -57,14 +57,16 @@ Route::group(['prefix'=> 'api'],function(){
     Route::get('email-sent/{user_email}','Email\EmailController@getEmailSent');
     Route::any('write-email','Email\EmailController@sentMailToOther');
 
+    // chart email inbox-send
+    Route::any('pie-charts/{user_email}','Email\EmailController@pieChart');
 
-    
 
 
     Route::any('emails/delete','Email\EmailController@deleteEmail');
 
     /*User*/
     Route::any('users', 'User\Backend\UserController@getUsers');
+    Route::any('users/update/{user_email}', 'User\Backend\UserController@updateUser');
 
     /*Auth*/
     Route::any('auth/login','\App\Http\Controllers\Auth\AuthController@login');

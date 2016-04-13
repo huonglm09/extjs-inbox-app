@@ -58,6 +58,44 @@ class UserController extends Controller
     }
 
     /*
+     *API update user infor
+     *
+     *@POST("/api/users/update")
+     *@Param: ({'firstName','lastName', 'password'})
+     *@Version("v1")
+     */
+    public function updateUser($email, Request $request){
+        $user = User::where('email','=',$email)->get();
+
+        if (empty($user)) {
+            return response()->json(['status'=>0]);            
+        }
+
+        if($request->getMethod()=='POST'){
+
+            if($request->get('firstName')){
+                $user->firstName = $request->get('firstName');
+            }
+
+            if($request->get('lastName')){
+                $user->lastName = $request->get('lastName');
+            }
+
+            if($request->get('password')){
+                $user->password = $request->get('password');
+            }
+
+            if($user->save()){
+                return response()->json(['status'=>1]);
+            }else{
+                return response()->json(['status'=>0]);
+            }
+        }
+
+        return response()->json(['status'=>0]);
+    }
+
+    /*
      *Create a new User
      *
      *@POST("/admin/users/create")

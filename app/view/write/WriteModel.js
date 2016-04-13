@@ -7,8 +7,10 @@ Ext.define('InboxManagement.view.write.WriteModel', {
     requires: [
         'InboxManagement.Global'
     ],
-    data: {
-        email: 'kmahuong.09@gmail.com'
+    formulas: {       
+        user: function (get) {            
+            return InboxManagement.Global.getUser();
+        }
     }
 });
 

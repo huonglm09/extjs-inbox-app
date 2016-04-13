@@ -31,7 +31,7 @@ Ext.define('InboxManagement.view.write.Write', {
             items: [{
                     xtype : 'hidden',  
                     name  : 'from_email',
-                    bind  : '{email}'
+                    bind  : '{user.email}'
                 }, {
                     xtype: 'textfield',
                     fieldLabel: 'To:',

@@ -188,21 +188,10 @@ Ext.define('InboxManagement.view.dashboard.TopDashboard', {
         });
 
         this.items = [
-            {
-                title: {
-                    bind: {
-                        html: '<i class="mark-color"></i><div class="title-panel">Profile</div>'
-                    }
-                },
-                flex: 1,
-                margin: '0 30 0 0',
+            {                
+                flex: 1,                
                 xtype: chartInbox
-            }, {
-                title: {
-                    bind: {
-                        html: '<i class="mark-color"></i><div class="title-panel">Profile</div>'
-                    }
-                },
+            }, {                
                 flex: 1,
                 xtype: chartSent
             }

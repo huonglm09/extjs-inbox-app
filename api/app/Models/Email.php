@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use DB;
+use App\Models\User;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Email extends Model implements AuthenticatableContract, CanResetPasswordContract
@@ -21,5 +21,23 @@ class Email extends Model implements AuthenticatableContract, CanResetPasswordCo
      * @var string
      */
     protected $table = 'emails';
+
+    /**
+     * [fromUser description]
+     * @return [type] [description]
+     */
+    public function fromUser()
+    {
+        return $this->belongsTo(User::class, 'from_user_email', 'email');
+    }
+
+    /**
+     * [toUser description]
+     * @return [type] [description]
+     */
+    public function toUser()
+    {
+        return $this->belongsTo(User::class, 'to_user_email', 'email');
+    }
 
 }

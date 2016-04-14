@@ -6,3 +6,5 @@ build/*
 sass/example/*
 classic.json
 modern.json
+bower_components/*
+.idea/*

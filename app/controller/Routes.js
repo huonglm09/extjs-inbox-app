@@ -81,13 +81,13 @@ Ext.define('InboxManagement.controller.Routes', {
         if (InboxManagement.Global.getCurrentView() !== 'auth_login') {
             Ext.widget('auth_login');
             InboxManagement.Global.setCurrentView('auth_login');
-        }        
+        }
     },
     /*
      * Inbox route method
      * */
     onInbox: function() {
-        /*this.changeTab('inbox');*/
+        this.changeTab('inbox');
     },
     /*
      * Write route method
@@ -99,7 +99,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Sent route method
      * */
     onSent: function() {
-//        this.changeTab('sent');
+        //        this.changeTab('sent');
     },
     /*
      * Trash route method
@@ -116,7 +116,7 @@ Ext.define('InboxManagement.controller.Routes', {
     /*
      * Logout route method
      * */
-    onLogout: function() {   
+    onLogout: function() {
         localStorage.removeItem('email');
         this.changeTab('logout');
     },
@@ -148,7 +148,7 @@ Ext.define('InboxManagement.controller.Routes', {
             success: function(response) {
                 var res = Ext.decode(response.responseText);
                 InboxManagement.Global.setUser(res.data);
-                localStorage.setItem('email',res.data.email);
+                localStorage.setItem('email', res.data.email);
                 action.resume();
             },
             failure: function() {

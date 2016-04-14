@@ -1,4 +1,4 @@
-Ext.define('InboxManagement.model.Inbox', {
+Ext.define('InboxManagement.model.Email', {
 	extend: 'InboxManagement.model.Base',
 
 	fields: [{
@@ -16,29 +16,21 @@ Ext.define('InboxManagement.model.Inbox', {
 		name: 'mail_subject',
 		type: 'string'
 	}, {
-		name: 'from_user',
-		type: 'auto',
-		convert: function(value) {
-			return value.firstName + ' ' + value.lastName;
-		}
-	}, {
 		name: 'created_at',
-		type: 'date',
-		convert: function(value) {
-			return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
-			/*return new Date(value).toDateString();*/
-		}
+		type: 'date'
 	}],
 
 	proxy: {
 		type: 'rest',
-		url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + localStorage.getItem('email'),
+		url: InboxManagement.Global.getApiUrl() + 'email',
 		headers: {
 			'Accept': 'application/json',
 			'Authorization': 'Bearer ' + localStorage.getItem('access_token')
 		},
 		reader: {
-			rootProperty: 'emails'
+			rootProperty: function(data) {
+				return data.emails || data;
+			}
 		}
 	}
 });

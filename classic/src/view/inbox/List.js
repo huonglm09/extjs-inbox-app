@@ -22,18 +22,18 @@ Ext.define('InboxManagement.view.inbox.List', {
     headerBorders: false,
     rowLines: false,
     columns: [{
-            text: 'Subject',
-            dataIndex: 'mail_subject',
-            width: 200
-        }, {
-            text: 'From',
-            dataIndex: 'from_user_email',
-            flex: 1
-        }, {
-            text: 'To',
-            dataIndex: 'to_user_email',
-            flex: 1
-        }],
+        text: 'Subject',
+        dataIndex: 'mail_subject',
+        width: 200
+    }, {
+        text: 'From',
+        dataIndex: 'from_user',
+        flex: 1
+    }, {
+        text: 'Date sent',
+        dataIndex: 'created_at',
+        width: 250
+    }],
     listeners: {
         cellclick: 'onItemSelected',
         scope: 'controller'

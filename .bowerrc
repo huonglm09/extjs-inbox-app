@@ -1,0 +1,11 @@
+{
+	"directory": "bower_components",
+	"analytics": false,
+	"timeout": 120000,
+	"registry": {
+		"search": [
+			"https://bower.herokuapp.com"
+		]
+	},
+	"allow_root": true
+}

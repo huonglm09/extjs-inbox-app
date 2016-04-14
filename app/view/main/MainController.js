@@ -14,18 +14,29 @@ Ext.define('InboxManagement.view.main.MainController', {
 
     },
     onChangeTab: function(tabPanel, newCard, oldCard, eOpts) {
-        if (newCard.title === 'Logout') {   
+        if (newCard.title === 'Logout') {
             var me = this;
             Ext.Ajax.request({
                 url: InboxManagement.Global.getApiUrl() + 'auth/logout',
-                method: 'GET',                
-                success:function(response){   
+                method: 'GET',
+                success: function(response) {
                     me.getView().destroy();
-                    me.redirectTo('login');       
-                }, failure:function() {
-                    me.redirectTo('profile'); 
+                    me.redirectTo('login');
+                }, failure: function() {
+                    me.redirectTo('profile');
                 }
-            });                          
+            });
         }
+    },
+    onAxisLabelRender: function(axis, label, layoutContext) {
+        return Ext.util.Format.number(layoutContext.renderer(label) / 1000, '0,000');
+    },
+    onSeriesLabelRender: function(v) {
+        return Ext.util.Format.number(v / 1000, '0,000');
+    },
+    onSeriesTooltipRender: function(tooltip, record, item) {
+        var formatString = '0,000 (millions of USD)';
+        tooltip.setHtml(record.get('country') + ': ' +
+                Ext.util.Format.number(record.get('ind'), formatString));
     }
 });

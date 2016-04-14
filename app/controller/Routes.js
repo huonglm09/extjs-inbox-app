@@ -26,11 +26,16 @@ Ext.define('InboxManagement.controller.Routes', {
         refs: {
             tabPanel: '#main-tabs'
         },
-        routes: {
-            // Login route
-            'login': {
-                before: 'beforeLogin',
-                action: 'onLogin'
+        routes: {            
+            // Dashboard route
+            'dashboard': {
+                before: 'loggedIn',
+                action: 'onDashboard'
+            },
+            // Profile route
+            'profile': {
+                before: 'loggedIn',
+                action: 'onProfile'
             },
             // Inbox route
             'inbox': {
@@ -51,11 +56,11 @@ Ext.define('InboxManagement.controller.Routes', {
             'trash': {
                 before: 'loggedIn',
                 action: 'onTrash'
-            },
-            // Profile route
-            'profile': {
-                before: 'loggedIn',
-                action: 'onProfile'
+            },            
+            // Login route
+            'login': {
+                before: 'beforeLogin',
+                action: 'onLogin'
             },
             // Trash route
             'logout': {
@@ -72,7 +77,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Unmatched route method.  On any unmatched route it redirects to the home route
      * */
     onUnmatchedRoute: function() {
-        this.redirectTo('profile', false);
+        this.redirectTo('dashboard', false);
     },
     /*
      * Login route method.  Loads the login form
@@ -112,6 +117,12 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onProfile: function() {
         this.changeTab('profile');
+    },
+    /*
+     * Dashboard route method
+     * */
+    onDashboard: function() {
+        this.changeTab('dashboard');
     },
     /*
      * Logout route method
@@ -166,7 +177,7 @@ Ext.define('InboxManagement.controller.Routes', {
             success: function(response) {
                 var res = Ext.decode(response.responseText);
                 InboxManagement.Global.setUser(res.data);
-                me.redirectTo('profile', false);
+                me.redirectTo('dashboard', false);
             },
             failure: function() {
                 action.resume();

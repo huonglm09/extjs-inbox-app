@@ -53,19 +53,14 @@ class UserController extends Controller {
 
     public function getUsers(Request $request) {
         if (Auth::check()) {
-            $data = $request->all();            
-            $page = $data['page'];
+            $data = $request->all();                        
             $start = $data['start'];
             $limit = $data['limit'];
             $current = Auth::user();
-            
-            if(isset($data['demo'])) {
-                $users = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();            
-            } else {
-                $users = User::where('id', '!=', $current['id'])->get();
-            }                       
+            $totalUsers = User::where('id', '!=', $current['id'])->get();            
+            $users = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();                        
 
-            return response()->json(['success' => true, 'status' => 1, 'users' => $users]);
+            return response()->json(['success' => true, 'status' => 1, 'users' => $users, 'total' => count($totalUsers)]);
         }
 
         return response()->json(['success' => false, 'status' => 0]);

@@ -16,7 +16,8 @@ Ext.define('InboxManagement.store.Users', {
         reader: {
             type: 'json',
             rootProperty: 'users',
-            successProperty: 'success'
+            successProperty: 'success',
+            totalProperty: 'total'
         }
     }
 });

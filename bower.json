@@ -1,20 +1,21 @@
 {
-    "name": "inbox-management",
-    "homepage": "https://github.com/huonglm09/InboxManagement",
-    "authors": [
-        "Duong The <nopbongdem@gmail.com>"
-    ],
-    "description": "",
-    "main": "",
-    "license": "MIT",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "moment": "~2.12.0"
-    }
+  "name": "inbox-management",
+  "homepage": "https://github.com/huonglm09/InboxManagement",
+  "authors": [
+    "Duong The <nopbongdem@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.12.0",
+    "toastr": "^2.1.2"
+  }
 }

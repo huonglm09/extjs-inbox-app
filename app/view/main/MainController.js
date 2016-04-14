@@ -14,18 +14,19 @@ Ext.define('InboxManagement.view.main.MainController', {
 
     },
     onChangeTab: function(tabPanel, newCard, oldCard, eOpts) {
-        if (newCard.title === 'Logout') {   
+        if (newCard.title === 'Logout') {
             var me = this;
             Ext.Ajax.request({
                 url: InboxManagement.Global.getApiUrl() + 'auth/logout',
-                method: 'GET',                
-                success:function(response){   
+                method: 'GET',
+                success: function(response) {
                     me.getView().destroy();
-                    me.redirectTo('login');       
-                }, failure:function() {
-                    me.redirectTo('profile'); 
+                    me.redirectTo('login');
+                },
+                failure: function() {
+                    me.redirectTo('profile');
                 }
-            });                          
+            });
         }
     }
 });

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersTable extends Migration
 {
@@ -17,8 +17,9 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
+            $table->string('password', 60)->nullable();
+            $table->enum('provider', ['local', 'facebook', 'google', 'github'])->default('local');
+            $table->rememberToken()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

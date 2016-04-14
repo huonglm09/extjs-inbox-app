@@ -23,63 +23,46 @@ Ext.define('InboxManagement.Application', {
         'route.Inbox',
         'route.Sent'
     ],
- 
+
     launch: function() {
-        var data = [{
-            id: 1,
-            from_user_email: 'user1@gmail.com',
-            to_user_email: 'user2@gmail.com',
-            mail_subject: 'Demo email 1'
-        }, {
-            id: 2,
-            from_user_email: 'user1@gmail.com',
-            to_user_email: 'user2@gmail.com',
-            mail_subject: 'Demo email 2'
-        }, {
-            id: 3,
-            from_user_email: 'user2@gmail.com',
-            to_user_email: 'user3@gmail.com',
-            mail_subject: 'Demo email 3'
-        }, {
-            id: 4,
-            from_user_email: 'user2@gmail.com',
-            to_user_email: 'user1@gmail.com',
-            mail_subject: 'Demo email 4'
-        }, {
-            id: 5,
-            from_user_email: 'user3@gmail.com',
-            to_user_email: 'user2@gmail.com',
-            mail_subject: 'Demo email 5'
-        }, {
-            id: 6,
-            from_user_email: 'user1@gmail.com',
-            to_user_email: 'user3@gmail.com',
-            mail_subject: 'Demo email 6'
-        }, {
-            id: 7,
-            from_user_email: 'user2@gmail.com',
-            to_user_email: 'user4@gmail.com',
-            mail_subject: 'Demo email 7'
-        }];
-
-        //        Ext.ux.ajax.SimManager.init({
-        //            delay: 500
-        //        }).register({
-        //            'api/inbox': {
-        //                type: 'json', // use JsonSimlet (type is like xtype for components)
-        //                status: 200,
-        //                data: data
-        //            }
-        //        });
-
-//        var loggedIn = localStorage.getItem("LoggedIn");
-//        if (loggedIn) {
-//            this.redirectTo('login', false);
-//        } else {
-//            Ext.create({
-//                xtype: 'app-main'
-//            });
-//        }
+        Ext.create('Ext.container.Viewport', {
+            /*items: [{
+                xtype: 'panel',
+                html: '<center><div id="fblogin" class="fb-login-button">Login with Facebook</div></center>'
+            }],*/
+            listeners: {
+                render: function(obj, eOpts) {
+                    window.fbAsyncInit = Ext.bind(this.onFacebookInit, this);
+                    (function(d) {
+                        var js, id = 'facebook-jssdk',
+                            ref = d.getElementsByTagName('script')[0];
+                        if (d.getElementById(id)) {
+                            return;
+                        }
+                        js = d.createElement('script');
+                        js.id = id;
+                        js.async = true;
+                        js.src = "//connect.facebook.net/en_US/all.js";
+                        ref.parentNode.insertBefore(js, ref);
+                    }(document));
+                }
+            },
+            onFacebookInit: function() {
+                console.log('onFacebookInit');
+                var me = this;
+                FB.init({
+                    appId: '1528206814155438',
+                    status: true,
+                    xfbml: true,
+                    version: 'v2.6'
+                });
+                FB.Event.subscribe('auth.authResponseChange', Ext.bind(me.onFacebookAuthResponseChange, me));
+            },
+            onFacebookAuthResponseChange: function(response) {
+                this.down('panel').setVisible(false);
+                alert("Success fully Logged in");
+            }
+        });
 
     }
 });

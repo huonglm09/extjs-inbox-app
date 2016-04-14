@@ -73,6 +73,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::any('auth/logout', '\App\Http\Controllers\Auth\AuthController@logout');
     Route::any('auth/register', '\App\Http\Controllers\Auth\AuthController@register');
     Route::any('auth/profile', '\App\Http\Controllers\Auth\AuthController@profile');
+
+    Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
+        Route::post('facebook', 'FacebookController@store');
+    });
 });
 
 /*

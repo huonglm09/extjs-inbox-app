@@ -35,8 +35,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                     var res = Ext.decode(action.response.responseText);
                     Ext.MessageBox.show({
                         title: 'Save Profile',
-                        msg: res.message,
-                        icon: Ext.MessageBox.ERROR,
+                        msg: res.message,                        
                         width: 400,
                         closable: false,
                         buttons: Ext.MessageBox.OK

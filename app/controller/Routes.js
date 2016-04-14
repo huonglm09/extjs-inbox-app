@@ -99,7 +99,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * Sent route method
      * */
     onSent: function() {
-        //        this.changeTab('sent');
+        this.changeTab('sent');
     },
     /*
      * Trash route method

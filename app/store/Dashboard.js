@@ -4,7 +4,7 @@ Ext.define('InboxManagement.store.Dashboard', {
     requires: [
         'InboxManagement.Global'
     ],
-    
+    model: 'InboxManagement.model.Dashboard',
     autoLoad: true,
     proxy: {        
         type: 'ajax',        

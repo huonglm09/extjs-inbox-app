@@ -1,10 +1,10 @@
-Ext.define('InboxManagement.view.dashboard.TopDashboard', {
+Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
     extend: 'Ext.panel.Panel',
     requires: [
         'Ext.layout.container.HBox',
         'Ext.chart.theme.Muted'
     ],
-    xtype: 'top_dashboard',
+    xtype: 'bottom_dashboard',
     layout: {
         type: 'hbox',
         pack: 'start',
@@ -85,12 +85,7 @@ Ext.define('InboxManagement.view.dashboard.TopDashboard', {
                             tooltip: {
                                 trackMouse: true,
                                 renderer: 'onSeriesTooltipRender'
-                            },
-                            renderer: function(sprite, record, attr, index, store) {
-                                return Ext.apply(attr, {
-                                    fill: '#35baf6'
-                                });
-                            }
+                            }                            
                         }],
                     sprites: [{
                             type: 'text',
@@ -173,6 +168,11 @@ Ext.define('InboxManagement.view.dashboard.TopDashboard', {
                             tooltip: {
                                 trackMouse: true,
                                 renderer: 'onSeriesTooltipRender'
+                            },
+                            renderer: function(sprite, record, attr, index, store) {
+                                return Ext.apply(attr, {
+                                    fill: '#35baf6'
+                                });
                             }
                         }],
                     sprites: [{

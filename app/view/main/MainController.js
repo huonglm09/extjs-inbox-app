@@ -38,5 +38,8 @@ Ext.define('InboxManagement.view.main.MainController', {
         var formatString = '0,000 (millions of USD)';
         tooltip.setHtml(record.get('country') + ': ' +
                 Ext.util.Format.number(record.get('ind'), formatString));
+    },
+    onCompareSeriesTooltipRender: function (tooltip, record, item) {
+        tooltip.setHtml(record.get('name') + ': ' + ((record.get('value') / record.get('total')) * 100) + '%');
     }
 });

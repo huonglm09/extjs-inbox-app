@@ -58,7 +58,9 @@ Route::group(['prefix'=> 'api'],function(){
     Route::any('write-email','Email\EmailController@sentMailToOther');
 
     // chart email inbox-send
-    Route::any('pie-charts/{user_email}','Email\EmailController@pieChart');
+    Route::any('pie-charts/{user_email}','Email\EmailController@pieChart');    
+    Route::any('pie-charts/inbox/{user_email}','Email\EmailController@pieChartInbox');    
+    Route::any('pie-charts/sent/{user_email}','Email\EmailController@pieChartSent');
 
 
 

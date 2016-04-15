@@ -6,12 +6,12 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
         'InboxManagement.view.dashboard.DashboardController',
         'InboxManagement.view.dashboard.DashboardModel',
         'InboxManagement.store.Dashboard',
-        'InboxManagement.view.dashboard.TopDashboard'
+        'InboxManagement.view.dashboard.BottomDashboard'
     ],
     xtype: 'dashboard',
     controller: 'dashboard',
     viewModel: {
-        type: 'profile'
+        type: 'dashboard'
     },
     layout: {
         type: 'vbox',
@@ -35,14 +35,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                     insetPadding: 50,
                     innerPadding: 20,
                     store: {
-                        fields: ['os', 'data1'],
-                        data: [
-                            {os: 'Android', data1: 68.3},
-                            {os: 'BlackBerry', data1: 1.7},
-                            {os: 'iOS', data1: 17.9},
-                            {os: 'Windows Phone', data1: 10.2},
-                            {os: 'Others', data1: 1.9}
-                        ]
+                        type : 'dashboard'
                     },
                     legend: {
                         docked: 'bottom'
@@ -69,16 +62,16 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                         }],
                     series: [{
                             type: 'pie3d',
-                            angleField: 'data1',
+                            angleField: 'value',
                             donut: 50,
                             label: {
-                                field: 'os',
+                                field: 'name',
                                 display: 'outside'
                             },
                             highlight: true,
                             tooltip: {
                                 trackMouse: true,
-                                renderer: 'onSeriesTooltipRender'
+                                renderer: 'onCompareSeriesTooltipRender'
                             }
                         }]
                 }]
@@ -92,7 +85,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                 cls: 'border-zero',
                 bodyPadding: 0,
                 border: false,
-                xtype: 'top_dashboard'
+                xtype: 'bottom_dashboard'
             }
         ];
 

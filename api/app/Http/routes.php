@@ -53,10 +53,15 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('email-inbox/{user_email}', 'Email\EmailController@getEmailsInbox');
-    Route::get('email/{id}', 'Email\EmailController@show');
     Route::get('email-detail/{user_email}/{id}', 'Email\EmailController@getEmailsDetail');
     Route::get('email-sent/{user_email}', 'Email\EmailController@getEmailSent');
     Route::any('write-email', 'Email\EmailController@sentMailToOther');
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::group(['namespace' => 'Email'], function () {
+            Route::get('email/{id}', 'EmailController@show');
+        });
+    });
 
     // chart email inbox-send
     Route::any('pie-charts/{user_email}', 'Email\EmailController@pieChart');

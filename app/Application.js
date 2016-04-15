@@ -8,7 +8,8 @@ Ext.define('InboxManagement.Application', {
         'Ext.data.proxy.Proxy',
         'Ext.data.proxy.Ajax',
         'Ext.data.Store',
-        'Ext.data.reader.Json'
+        'Ext.data.reader.Json',
+        'InboxManagement.interceptor.Authenticate'
     ],
     name: 'InboxManagement',
     /*
@@ -25,6 +26,9 @@ Ext.define('InboxManagement.Application', {
     ],
 
     launch: function() {
+
+        InboxManagement.interceptor.Authenticate.init();
+
         Ext.create('Ext.container.Viewport', {
             /*items: [{
                 xtype: 'panel',

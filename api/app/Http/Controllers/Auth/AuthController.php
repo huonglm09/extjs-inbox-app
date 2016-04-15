@@ -86,7 +86,7 @@ use AuthenticatesAndRegistersUsers;
         // Attempt to log in
         if (Auth::attempt($post_data, $remember)) {
             // If login is successful return true and user data
-            return response(['success' => true, 'loggedin' => true, 'data' => Auth::user()], 200);
+            return response()->json(['success'=>true,'data'=>Auth::user()]);
         } else {
             // Login attempt failed so check if the user exists
             $user = User::whereEmail($post_data['email'])->first();

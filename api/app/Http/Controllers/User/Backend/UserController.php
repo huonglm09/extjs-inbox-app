@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\User\Backend;
 
 use App\Http\Requests;
@@ -8,15 +9,15 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Models\User as User;
 use DB;
+use Auth;
 
-class UserController extends Controller
-{
-
+class UserController extends Controller {
     /*
-    |--------------------------------------------------------------------------
-    | User Admin Controller
-    |--------------------------------------------------------------------------
-    */
+      |--------------------------------------------------------------------------
+      | User Admin Controller
+      |--------------------------------------------------------------------------
+     */
+
     private $_userModel;
 
     /**
@@ -24,8 +25,7 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
         //Init Entity Model
         $this->_userModel = new User();
@@ -36,8 +36,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
         //Get all users
         $users = $this->_userModel->all();
         //Response view
@@ -47,90 +46,101 @@ class UserController extends Controller
     /*
      * API get All User
      *
-     *@GET("/api/users")
-     *@Param: ()
-     *@Version("v1")
+     * @GET("/api/users")
+     * @Param: ()
+     * @Version("v1")
      */
-    public function getUsers(){
-        $users = User::all();
 
-        return response()->json(['success'=> true, 'status'=> 1, 'users'=> $users]);
+    public function getUsers(Request $request) {
+        if (Auth::check()) {
+            $data = $request->all();                        
+            $start = $data['start'];
+            $limit = $data['limit'];
+            $current = Auth::user();
+            $totalUsers = User::where('id', '!=', $current['id'])->get();            
+            $users = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();                        
+
+            return response()->json(['success' => true, 'status' => 1, 'users' => $users, 'total' => count($totalUsers)]);
+        }
+
+        return response()->json(['success' => false, 'status' => 0]);
     }
 
     /*
-     *API update user infor
+     * API update user infor
      *
-     *@POST("/api/users/update")
-     *@Param: ({'firstName','lastName', 'password'})
-     *@Version("v1")
+     * @POST("/api/users/update")
+     * @Param: ({'firstName','lastName', 'password'})
+     * @Version("v1")
      */
-    public function updateUser($email, Request $request){
-        $user = User::where('email','=',$email)->get();
+
+    public function updateUser($email, Request $request) {
+        $user = User::where('email', '=', $email)->first();
 
         if (empty($user)) {
-            return response()->json(['status'=>0]);            
+            return response()->json(['status' => 0]);
         }
 
-        if($request->getMethod()=='POST'){
+        if ($request->getMethod() == 'POST') {
 
-            if($request->get('firstName')){
+            if ($request->get('firstName')) {
                 $user->firstName = $request->get('firstName');
             }
 
-            if($request->get('lastName')){
+            if ($request->get('lastName')) {
                 $user->lastName = $request->get('lastName');
             }
 
-            if($request->get('password')){
-                $user->password = $request->get('password');
+            if ($request->get('password')) {
+                $user->password = Hash::make($request->get('password'));
             }
 
-            if($user->save()){
-                return response()->json(['status'=>1]);
-            }else{
-                return response()->json(['status'=>0]);
+            if ($user->save()) {
+                return response()->json(['success' => true, 'status' => 1, 'message' => 'Your profile has been saved successfull']);
+            } else {
+                return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile']);
             }
         }
 
-        return response()->json(['status'=>0]);
+        return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile']);
     }
 
     /*
-     *Create a new User
+     * Create a new User
      *
-     *@POST("/admin/users/create")
-     *@Param: ({'firstName','lastName', 'email', 'password', '', 'isCompanyAdmin'})
-     *@Version("v1")
+     * @POST("/admin/users/create")
+     * @Param: ({'firstName','lastName', 'email', 'password', '', 'isCompanyAdmin'})
+     * @Version("v1")
      */
-    public function create(Request $request)
-    {
+
+    public function create(Request $request) {
         if ($request->getMethod() == 'POST') {
 
             $datas = $request->all();
 
-            /*Validation form*/
+            /* Validation form */
             $validator = Validator::make($request->all(), [
-                'firstName' => 'required',
-                'lastName' => 'required',
-                'email' => 'required|email',
-                'newPassword' => 'required',
-                'confirmPass' => 'required|same:newPassword'
+                        'firstName' => 'required',
+                        'lastName' => 'required',
+                        'email' => 'required|email',
+                        'newPassword' => 'required',
+                        'confirmPass' => 'required|same:newPassword'
             ]);
 
-            /*Check exist email*/
+            /* Check exist email */
             $userExist = $this->checkEmailExist($request->get('email'));
 
             if ($userExist == false) {
                 $validator->errors()->add('email', 'This email already exists!');
                 return redirect('admin/users/create')
-                    ->withErrors($validator)
-                    ->withInput();
+                                ->withErrors($validator)
+                                ->withInput();
             }
 
             if ($validator->fails()) {
                 return redirect('admin/users/create')
-                    ->withErrors($validator)
-                    ->withInput();
+                                ->withErrors($validator)
+                                ->withInput();
             }
 
 
@@ -153,7 +163,7 @@ class UserController extends Controller
                 $datas['avatar'] = '';
             }
 
-            /*Save new user*/
+            /* Save new user */
             $user = new User();
             $user->firstName = $datas['firstName'];
             $user->lastName = $datas['lastName'];
@@ -169,46 +179,45 @@ class UserController extends Controller
             if ($user->save()) {
                 return redirect()->action('User\Backend\UserController@index');
             } else {
-
+                
             }
-
         }
         return view('user.backend.create');
     }
 
     /*
      * Update user's information
-     *@POST("/admin/users/edit")
-     *@Param: ({'firstName','lastName', 'email', 'password', 'isActive', 'avatar','status})
-     *@Version("v1")
+     * @POST("/admin/users/edit")
+     * @Param: ({'firstName','lastName', 'email', 'password', 'isActive', 'avatar','status})
+     * @Version("v1")
      */
-    public function edit($userID, Request $request)
-    {
+
+    public function edit($userID, Request $request) {
         $user = User::find($userID);
-        if($user == null) {
+        if ($user == null) {
             //Response view
             return redirect()->action('User\Backend\UserController@index');
         }
-        if($request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
 
             $datas = $request->all();
 
-            /*Validation form*/
+            /* Validation form */
             $validator = Validator::make($request->all(), [
-                'firstName' => 'required',
-                'lastName' => 'required',
-                'confirmPass' => 'same:newPassword'
+                        'firstName' => 'required',
+                        'lastName' => 'required',
+                        'confirmPass' => 'same:newPassword'
             ]);
 
             if ($validator->fails()) {
-                return redirect('admin/users/edit/'.$user->id)
-                    ->withErrors($validator)
-                    ->withInput();
+                return redirect('admin/users/edit/' . $user->id)
+                                ->withErrors($validator)
+                                ->withInput();
             }
 
 
-            $file = array_get($datas,'avatar');
-            if($file){
+            $file = array_get($datas, 'avatar');
+            if ($file) {
                 // SET UPLOAD PATH
                 $destinationPath = "uploads/avatar/";
                 // GET THE FILE EXTENSION
@@ -219,57 +228,56 @@ class UserController extends Controller
                 $upload_success = $file->move($destinationPath, $fileName);
 
 
-                if($upload_success){
+                if ($upload_success) {
                     $datas['avatar'] = $fileName;
                 }
-            }else{
+            } else {
                 $datas['avatar'] = $user->avatar;
             }
 
 
-            /*Save new user*/
+            /* Save new user */
             $user->firstName = $datas['firstName'];
             $user->lastName = $datas['lastName'];
             $user->avatar = $datas['avatar'];
 
             $user->isActive = $datas['isActive'];
 
-            if($datas['newPassword']){
+            if ($datas['newPassword']) {
                 $user->password = Hash::make($datas['newPassword']);
             }
 
-            if($user->save()){
+            if ($user->save()) {
                 //Response view
                 return redirect()->action('User\Backend\UserController@index');
-            }else{
-
+            } else {
+                
             }
-
         }
-        return view('user.backend.edit',['user'=>$user]);
+        return view('user.backend.edit', ['user' => $user]);
     }
 
     /*
      * Delete user's information
-     *@POST("/admin/users/delete/id")
-     *@Param: ({'id'})
-     *@Version("v1")
+     * @POST("/admin/users/delete/id")
+     * @Param: ({'id'})
+     * @Version("v1")
      */
-    public function delete($id, Request $request)
-    {
+
+    public function delete($id, Request $request) {
         $user = User::find($id);
-        if($user == null) {
+        if ($user == null) {
             //Response view
             return redirect()->action('User\Backend\UserController@index');
         }
-        if($request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
             $user->delete();
             //Get all users
             $users = $this->_userModel->all();
             //Response view
             return view('user.backend.index', ['users' => $users]);
         }
-        return view('user.backend.delete',['user'=>$user]);
+        return view('user.backend.delete', ['user' => $user]);
     }
 
     /**
@@ -277,8 +285,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function profile($id)
-    {
+    public function profile($id) {
         return view('user.backend.profile');
     }
 
@@ -287,8 +294,8 @@ class UserController extends Controller
      * @Param: ({'email'})
      * @Version("v1")
      * */
-    private function checkEmailExist($email)
-    {
+
+    private function checkEmailExist($email) {
         $userExist = User::where(array('email' => $email))->count();
         if ($userExist > 0) {
             return false;
@@ -296,4 +303,5 @@ class UserController extends Controller
             return true;
         }
     }
+
 }

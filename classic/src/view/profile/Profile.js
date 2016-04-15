@@ -55,13 +55,14 @@ Ext.define('InboxManagement.view.profile.Profile', {
             cls: 'profile-form',
             items: [{
                     xtype: 'hiddenfield',
-                    name: 'id',
-                    bind: '{profile.data.items.0.id}' 
+                    name: 'email',
+                    bind: '{profile.data.items.0.email}'
                 }, {
                     fieldLabel: 'Email',
                     width: '100%',
                     name: 'email',
-                    bind: '{profile.data.items.0.email}'
+                    bind: '{profile.data.items.0.email}',
+                    disabled: true
                 }, {
                     fieldLabel: 'First Name',
                     width: '100%',

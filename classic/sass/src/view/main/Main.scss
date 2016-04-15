@@ -56,14 +56,25 @@ $ui-header-padding: 0,
 $ui-header-text-margin: 36px,
 $ui-header-noborder-adjust: false
 );
-
+.main-wrapper .x-btn-default-small {
+    background: #35baf6;
+    border-color: #35baf6;
+}
+.main-wrapper .x-btn-default-small:hover, 
+.main-wrapper .x-btn-default-small:focus {
+    border-color: #38C0FF;
+    background-color: #38C0FF;
+}
+.main-wrapper .x-window-header-default {
+    background: #35baf6;
+    border-color: #35baf6;
+}
 .x-title-icon-navigation {
     font-family: FontAwesome;
     color: #fff;
     font-size: 24px;
     line-height: 24px;
 }
-
 .x-tab-icon-el-navigation {
     font-family: FontAwesome;
     color: #acacac;
@@ -76,7 +87,6 @@ $ui-header-noborder-adjust: false
         color: #fff;
     }
 }
-
 .x-panel-header-title-navigation > .x-title-text-navigation:after {
     top: 30px;
     right: -24px;
@@ -150,16 +160,6 @@ $ui-header-noborder-adjust: false
 .x-panel-header-default-framed-top {
     background-color: #32404e !important;
 }
-.x-panel-header-default-framed, .x-panel-default-framed {
-    /*    border-radius: 8px !important;
-        -moz-border-radius: 8px !important;
-        -webkit-border-radius: 8px !important;*/
-}
-.x-panel .x-panel-header-default-framed-top {
-    /*    border-radius: 8px 0px 0px !important;
-        -moz-border-radius: 8px 0px 0px !important;
-        -webkit-border-radius: 8px 0px 0px !important;*/
-}
 .btn-save {
     border: 1px solid #35baf6;
     background-color: #35baf6;
@@ -175,16 +175,16 @@ $ui-header-noborder-adjust: false
     border: 2px solid #32404e !important;    
     background-color: #32404e !important;
 }
-.x-panel-default {
-    /*    border-radius: 8px !important;
-        -moz-border-radius: 8px !important;
-        -webkit-border-radius: 8px !important;*/
-}
 .x-grid-body {
     border-width: 1px 1px 1px;
 }
 .x-webkit .x-form-text {
-    height: 100%;
+    height: 100% !important;
+    line-height: 100% !important;
+}
+.x-webkit .x-form-text.x-form-focus.x-field-form-focus {
+    height: 100% !important;
+    line-height: 100% !important;
 }
 .login-form {
     overflow: hidden;
@@ -310,4 +310,10 @@ $ui-header-noborder-adjust: false
 }
 .title-panel {
     margin-left: 20px;
+}
+.x-progress-default .x-progress-bar-default {
+    background: #35baf6 !important;
+}
+.border-zero {
+    border: none !important;
 }

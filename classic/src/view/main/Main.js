@@ -15,8 +15,9 @@ Ext.define('InboxManagement.view.main.Main', {
         'Ext.window.MessageBox',
         'InboxManagement.view.main.MainController',
         'InboxManagement.view.main.MainModel',
-        'InboxManagement.view.write.Write',        
-        'InboxManagement.view.profile.Profile'
+        'InboxManagement.view.write.Write',
+        'InboxManagement.view.profile.Profile',
+        'InboxManagement.view.dashboard.Dashboard'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -25,6 +26,7 @@ Ext.define('InboxManagement.view.main.Main', {
     tabBarHeaderPosition: 1,
     titleRotation: 0,
     tabRotation: 0,
+    cls: 'main-wrapper',
     header: {
         layout: {
             align: 'stretchmax'
@@ -69,53 +71,59 @@ Ext.define('InboxManagement.view.main.Main', {
             }
         }
     },
-    
     listeners: {
         tabchange: 'onChangeTab'
     },
     items: [{
-        title: 'Profile',
-        id: 'profile',
-        iconCls: 'fa-user',
-        items: [{
-            xtype: 'profile'
+            title: 'Dashboard',
+            id: 'dashboard',
+            iconCls: 'fa-desktop',
+            items: [{
+                    xtype: 'dashboard'
+                }]
+        }, {
+            title: 'Profile',
+            id: 'profile',
+            iconCls: 'fa-user',
+            items: [{
+                    xtype: 'profile'
+                }]
+        }, {
+            title: 'Inbox',
+            id: 'inbox',
+            iconCls: 'fa-inbox',
+            items: [{
+                    xtype: 'main-inbox'
+                }]
+        }, {
+            title: 'Write',
+            id: 'write',
+            iconCls: 'fa-edit',
+            items: [{
+                    xtype: 'write'
+                }]
+        }, {
+            title: 'Sent',
+            id: 'sent',
+            iconCls: 'fa-send',
+            items: [{
+                    xtype: 'main-sent'
+                }]
+        }, {
+            title: 'Trash',
+            id: 'trash',
+            iconCls: 'fa-trash-o',
+            bind: {
+                html: '{loremIpsum}'
+            }
+        }, {
+            title: 'Logout',
+            id: 'logout',
+            iconCls: 'fa-sign-out',
+            bind: {
+                html: '{loremIpsum}'
+            }
         }]
-    }, {
-        title: 'Inbox',
-        id: 'inbox',
-        iconCls: 'fa-inbox',
-        items: [{
-            xtype: 'main-inbox'
-        }]
-    }, {
-        title: 'Write',
-        id: 'write',
-        iconCls: 'fa-edit',
-        items: [{
-            xtype: 'write'
-        }]
-    }, {
-        title: 'Sent',
-        id: 'sent',
-        iconCls: 'fa-send',
-        items: [{
-            xtype: 'main-sent'
-        }]
-    }, {
-        title: 'Trash',
-        id: 'trash',
-        iconCls: 'fa-trash-o',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Logout',
-        id: 'logout',
-        iconCls: 'fa-sign-out',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }]
 });
 
 

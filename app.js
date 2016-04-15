@@ -8,9 +8,3 @@ Ext.application({
 
 	extend: 'InboxManagement.Application'
 });
-
-/*Ext.Loader.setConfig({
-	enabled: true
-});
-
-Ext.Loader.setPath('Ext.ux', 'D:/ext-6.0.1/build/packages/ux');*/

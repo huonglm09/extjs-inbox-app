@@ -27,7 +27,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                     var res = Ext.decode(action.response.responseText);
                     win.close();
                     InboxManagement.Global.setUser(res.data);
-                    me.redirectTo('profile');
+                    me.redirectTo('dashboard');
                 },
                 failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);
@@ -77,7 +77,6 @@ Ext.define('InboxManagement.view.auth.LoginController', {
      * @return {[type]}      [description]
      */
     onFBLogin: function(win) {
-
         var self = this;
         window.FB.api('/me', {
             fields: 'email,first_name,last_name'
@@ -100,12 +99,5 @@ Ext.define('InboxManagement.view.auth.LoginController', {
      * */
     onRegister: function() {
         this.redirectTo('register', false);
-    },
-    /*
-     * onRecoverPassword method is called when the options - recover password menu item is selected.  Redirects to
-     * password route
-     * */
-    onRecoverPassword: function() {
-        this.redirectTo('password', false);
     }
 });

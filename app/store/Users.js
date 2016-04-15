@@ -6,15 +6,18 @@ Ext.define('InboxManagement.store.Users', {
     ],
     model: 'InboxManagement.model.User',
     autoLoad: true,
+    pageSize: 1,
     proxy: {
         type: 'ajax',
+        enablePaging: true,
         api: {
             read: InboxManagement.Global.getApiUrl() + 'users'
         },
         reader: {
             type: 'json',
             rootProperty: 'users',
-            successProperty: 'success'
+            successProperty: 'success',
+            totalProperty: 'total'
         }
     }
 });

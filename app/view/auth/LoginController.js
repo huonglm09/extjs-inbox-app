@@ -26,6 +26,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                 success: function(form, action) {
                     var res = Ext.decode(action.response.responseText);
                     win.close();
+                    InboxManagement.service.Authenticate.setCurrentUser(res.data);
                     InboxManagement.Global.setUser(res.data);
                     me.redirectTo('dashboard');
                 },

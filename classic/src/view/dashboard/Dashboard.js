@@ -5,7 +5,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
         'Ext.layout.container.VBox',
         'InboxManagement.view.dashboard.DashboardController',
         'InboxManagement.view.dashboard.DashboardModel',
-        'InboxManagement.store.Dashboard',
+        'InboxManagement.store.Dashboard',       
         'InboxManagement.view.dashboard.BottomDashboard'
     ],
     xtype: 'dashboard',
@@ -25,11 +25,11 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
         height: 400
     },
     initComponent: function() {
-        var chart = Ext.create('Ext.Panel', {
+        var chartVerus = Ext.create('Ext.Panel', {
             items: [{
                     xtype: 'polar',
                     reference: 'chart',
-                    width: '50%',
+                    width: '100%',
                     height: 420,
                     margin: '0 0 50 0',
                     insetPadding: 50,
@@ -80,7 +80,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
         this.items = [
             {
                 margin: '0 0 30 0',
-                xtype: chart
+                xtype: chartVerus
             }, {
                 cls: 'border-zero',
                 bodyPadding: 0,

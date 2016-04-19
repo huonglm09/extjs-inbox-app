@@ -2,7 +2,9 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
     extend: 'Ext.panel.Panel',
     requires: [
         'Ext.layout.container.HBox',
-        'Ext.chart.theme.Muted'
+        'Ext.chart.theme.Muted',
+        'InboxManagement.store.DashboardSent',
+        'InboxManagement.store.DashboardInbox'
     ],
     xtype: 'bottom_dashboard',
     layout: {
@@ -30,14 +32,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         type: 'muted'
                     },
                     store: {
-                        fields: ['country', 'agr', 'ind', 'ser'],
-                        data: [
-                            {country: 'USA', agr: 188217, ind: 2995787, ser: 12500746},
-                            {country: 'China', agr: 918138, ind: 3611671, ser: 3792665},
-                            {country: 'Japan', agr: 71568, ind: 1640091, ser: 4258274},
-                            {country: 'UK', agr: 17084, ind: 512506, ser: 1910915},
-                            {country: 'Russia', agr: 78856, ind: 727906, ser: 1215198}
-                        ]
+                        type: 'dashboardsent'
                     },
                     animation: {
                         easing: 'easeOut',
@@ -47,11 +42,11 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                     axes: [{
                             type: 'numeric3d',
                             position: 'bottom',
-                            fields: 'ind',
-                            maximum: 4000000,
+                            fields: 'total',
+                            maximum: 40,
                             majorTickSteps: 10,
                             renderer: 'onAxisLabelRender',
-                            title: 'Billions of USD',
+                            title: 'Total email sent',
                             grid: {
                                 odd: {
                                     fillStyle: 'rgba(245, 245, 245, 1.0)'
@@ -63,7 +58,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         }, {
                             type: 'category3d',
                             position: 'left',
-                            fields: 'country',
+                            fields: 'fullName',
                             label: {
                                 textAlign: 'right'
                             },
@@ -71,25 +66,30 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         }],
                     series: [{
                             type: 'bar3d',
-                            xField: 'country',
-                            yField: 'ind',
+                            xField: 'fullName',
+                            yField: 'total',
                             style: {
                                 minGapWidth: 10
                             },
                             highlight: true,
                             label: {
-                                field: 'ind',
+                                field: 'total',
                                 display: 'insideEnd',
                                 renderer: 'onSeriesLabelRender'
                             },
                             tooltip: {
                                 trackMouse: true,
-                                renderer: 'onSeriesTooltipRender'
-                            }                            
+                                renderer: 'onSeriesTooltipRenderSent'
+                            },                            
+                            renderer: function(sprite, record, attr, dateex, store) {
+                                return Ext.apply(attr, {
+                                    fill: '#115fa6'
+                                });
+                            }
                         }],
                     sprites: [{
                             type: 'text',
-                            text: 'Received',
+                            text: 'Sent to users',
                             fontSize: 22,
                             width: 100,
                             height: 30,
@@ -99,7 +99,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                 }]
         });
 
-        var chartInbox = Ext.create('Ext.Panel', {
+         var chartInbox = Ext.create('Ext.Panel', {
             width: '50%',
             items: [{
                     xtype: 'cartesian',
@@ -113,14 +113,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         type: 'muted'
                     },
                     store: {
-                        fields: ['country', 'agr', 'ind', 'ser'],
-                        data: [
-                            {country: 'USA', agr: 188217, ind: 2995787, ser: 12500746},
-                            {country: 'China', agr: 918138, ind: 3611671, ser: 3792665},
-                            {country: 'Japan', agr: 71568, ind: 1640091, ser: 4258274},
-                            {country: 'UK', agr: 17084, ind: 512506, ser: 1910915},
-                            {country: 'Russia', agr: 78856, ind: 727906, ser: 1215198}
-                        ]
+                        type: 'dashboardinbox'
                     },
                     animation: {
                         easing: 'easeOut',
@@ -130,11 +123,11 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                     axes: [{
                             type: 'numeric3d',
                             position: 'bottom',
-                            fields: 'ind',
-                            maximum: 4000000,
+                            fields: 'total',
+                            maximum: 40,
                             majorTickSteps: 10,
                             renderer: 'onAxisLabelRender',
-                            title: 'Billions of USD',
+                            title: 'Total email received',
                             grid: {
                                 odd: {
                                     fillStyle: 'rgba(245, 245, 245, 1.0)'
@@ -146,7 +139,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         }, {
                             type: 'category3d',
                             position: 'left',
-                            fields: 'country',
+                            fields: 'fullName',
                             label: {
                                 textAlign: 'right'
                             },
@@ -154,30 +147,25 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                         }],
                     series: [{
                             type: 'bar3d',
-                            xField: 'country',
-                            yField: 'ind',
+                            xField: 'fullName',
+                            yField: 'total',
                             style: {
                                 minGapWidth: 10
                             },
                             highlight: true,
                             label: {
-                                field: 'ind',
+                                field: 'total',
                                 display: 'insideEnd',
                                 renderer: 'onSeriesLabelRender'
                             },
                             tooltip: {
                                 trackMouse: true,
-                                renderer: 'onSeriesTooltipRender'
-                            },
-                            renderer: function(sprite, record, attr, index, store) {
-                                return Ext.apply(attr, {
-                                    fill: '#35baf6'
-                                });
+                                renderer: 'onSeriesTooltipRenderInbox'
                             }
                         }],
                     sprites: [{
                             type: 'text',
-                            text: 'Sent',
+                            text: 'Received from users',
                             fontSize: 22,
                             width: 100,
                             height: 30,

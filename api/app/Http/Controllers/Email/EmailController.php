@@ -189,7 +189,44 @@ class EmailController extends Controller {
         $emails_inbox = Email::where('to_user_email', '=', $email)->where('to_deleted', '=', 0)->count();
         $emails_sent = Email::where('from_user_email', '=', $email)->where('from_deleted', '=', 0)->count();
 
-        return response()->json(['success' => true, 'status' => 1, 'inbox' => $emails_inbox, 'sent' => $emails_sent]);
+        return response()->json(['success' => true, 'data' => [['name' => 'Received', 'value' => $emails_inbox, 'total' => $emails_inbox + $emails_sent], ['name' => 'Sent', 'value' => $emails_sent, 'total' => $emails_inbox + $emails_sent]]]);
     }
+    
+    /*
+     * pieChart : Inbox - sent Email
+     * @POST("/api/pie-charts}")
+     * @Param ({email_id})
+     * @Versions({"v1"})
+     */
 
+    public function pieChartSent($email) {        
+        $emails_sent = DB::table('emails')
+                ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
+                ->join('users', 'emails.to_user_email', '=', 'users.email')
+                ->where('from_user_email', '=', $email)
+                ->where('from_deleted', '=', 0)
+                ->groupBy('to_user_email')
+                ->get();
+        
+        return response()->json(['success' => true, 'data' => $emails_sent]);
+    }
+    
+    /*
+     * pieChart : Inbox - sent Email
+     * @POST("/api/pie-charts}")
+     * @Param ({email_id})
+     * @Versions({"v1"})
+     */
+
+    public function pieChartInbox($email) {
+                $emails_sent = DB::table('emails')
+                ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
+                ->join('users', 'emails.from_user_email', '=', 'users.email')
+                ->where('to_user_email', '=', $email)
+                ->where('from_deleted', '=', 0)
+                ->groupBy('from_user_email')
+                ->get();
+        
+        return response()->json(['success' => true, 'data' => $emails_sent]);        
+    }
 }

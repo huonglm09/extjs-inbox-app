@@ -29,14 +29,22 @@ Ext.define('InboxManagement.view.main.MainController', {
         }
     },
     onAxisLabelRender: function(axis, label, layoutContext) {
-        return Ext.util.Format.number(layoutContext.renderer(label) / 1000, '0,000');
+        return Ext.util.Format.number(layoutContext.renderer(label) / 1, '0,000');
     },
     onSeriesLabelRender: function(v) {
-        return Ext.util.Format.number(v / 1000, '0,000');
+        return Ext.util.Format.number(v / 1, '0,000');
     },
-    onSeriesTooltipRender: function(tooltip, record, item) {
-        var formatString = '0,000 (millions of USD)';
-        tooltip.setHtml(record.get('country') + ': ' +
-                Ext.util.Format.number(record.get('ind'), formatString));
+    onSeriesTooltipRenderSent: function(tooltip, record, item) {
+        var formatString = '0,000 (Total sent)';
+        tooltip.setHtml(record.get('to_user_email') + ': ' +
+                Ext.util.Format.number(record.get('total'), formatString));
+    },
+    onSeriesTooltipRenderInbox: function(tooltip, record, item) {
+        var formatString = '0,000 (Total received)';
+        tooltip.setHtml(record.get('from_user_email') + ': ' +
+                Ext.util.Format.number(record.get('total'), formatString));
+    },
+    onCompareSeriesTooltipRender: function (tooltip, record, item) {
+        tooltip.setHtml(record.get('name') + ': ' + ((record.get('value') / record.get('total')) * 100) + '%');
     }
 });

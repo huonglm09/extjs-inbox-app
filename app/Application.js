@@ -51,11 +51,10 @@ Ext.define('InboxManagement.Application', {
                     }(document));
                 }
             },
-            onFacebookInit: function() {
-                console.log('onFacebookInit');
+            onFacebookInit: function() {                
                 var me = this;
                 FB.init({
-                    appId: '1528206814155438',
+                    appId: '223670991356420',
                     status: true,
                     xfbml: true,
                     version: 'v2.6'

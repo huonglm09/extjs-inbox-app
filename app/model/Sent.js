@@ -10,7 +10,7 @@ Ext.define('InboxManagement.model.Sent', {
         }, {
             name: 'to_user_email',
             type: 'auto',
-            convert: function (value) {
+            convert: function(value) {
                 return value;
             }
         }, {
@@ -19,14 +19,12 @@ Ext.define('InboxManagement.model.Sent', {
         }, {
             name: 'created_at',
             type: 'date',
-            convert: function (value) {
+            convert: function(value) {
                 return value;
-//                return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
             }
         }],
     proxy: {
         type: 'rest',
-//        url: InboxManagement.Global.getApiUrl() + localStorage.getItem('email') ,
         url: InboxManagement.Global.getApiUrl() + 'email-sent/' + InboxManagement.service.Authenticate.getCurrentUser().email || '',
         headers: {
             'Accept': 'application/json',

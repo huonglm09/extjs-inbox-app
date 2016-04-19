@@ -18,6 +18,9 @@ Ext.define('InboxManagement.view.sent.SentController', {
 	beforeDetailsRender: function(view) {
 		/*console.log(view);*/
 		var record = view.record ? view.record : {};
-		view.down('#mailBody').setHtml(record.get('mail_content'));
+		view.down('#mailBody').setHtml(
+                       'Mail subject: ' +  record.get('mail_subject')+ ' <br>'+
+                        record.get('mail_content')
+                );
 	}
 });

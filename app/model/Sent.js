@@ -20,7 +20,8 @@ Ext.define('InboxManagement.model.Sent', {
             name: 'created_at',
             type: 'date',
             convert: function (value) {
-                return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
+                return value;
+//                return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
             }
         }],
     proxy: {

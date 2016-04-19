@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Email;
 
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Email as Email;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Validator;
+use App\Models\User as User;
+use App\Models\Email as Email;
+use DB;
 use Log;
 use Mail;
+use JWTAuth;
+use TymonJWTAuthExceptionsJWTException;
 
 class EmailController extends Controller {
     /*
@@ -191,7 +198,7 @@ class EmailController extends Controller {
 
         return response()->json(['success' => true, 'data' => [['name' => 'Received', 'value' => $emails_inbox, 'total' => $emails_inbox + $emails_sent], ['name' => 'Sent', 'value' => $emails_sent, 'total' => $emails_inbox + $emails_sent]]]);
     }
-    
+
     /*
      * pieChart : Inbox - sent Email
      * @POST("/api/pie-charts}")
@@ -199,7 +206,7 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    public function pieChartSent($email) {        
+    public function pieChartSent($email) {
         $emails_sent = DB::table('emails')
                 ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
                 ->join('users', 'emails.to_user_email', '=', 'users.email')
@@ -207,10 +214,10 @@ class EmailController extends Controller {
                 ->where('from_deleted', '=', 0)
                 ->groupBy('to_user_email')
                 ->get();
-        
+
         return response()->json(['success' => true, 'data' => $emails_sent]);
     }
-    
+
     /*
      * pieChart : Inbox - sent Email
      * @POST("/api/pie-charts}")
@@ -219,14 +226,15 @@ class EmailController extends Controller {
      */
 
     public function pieChartInbox($email) {
-                $emails_sent = DB::table('emails')
+        $emails_sent = DB::table('emails')
                 ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
                 ->join('users', 'emails.from_user_email', '=', 'users.email')
                 ->where('to_user_email', '=', $email)
                 ->where('from_deleted', '=', 0)
                 ->groupBy('from_user_email')
                 ->get();
-        
-        return response()->json(['success' => true, 'data' => $emails_sent]);        
+
+        return response()->json(['success' => true, 'data' => $emails_sent]);
     }
+
 }

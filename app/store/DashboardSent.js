@@ -9,7 +9,7 @@ Ext.define('InboxManagement.store.DashboardSent', {
     proxy: {        
         type: 'ajax',        
         api: {
-            read: InboxManagement.Global.getApiUrl() + 'pie-charts/sent/kmahuong.09@gmail.com'
+            read: InboxManagement.Global.getApiUrl() + 'pie-charts/sent/' + InboxManagement.service.Authenticate.getCurrentUser().email
         },
         reader: {
             type: 'json',

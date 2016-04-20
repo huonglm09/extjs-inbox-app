@@ -1,14 +1,6 @@
 Ext.define('InboxManagement.view.auth.LoginController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.login',
-    init: function() {
-        new Ext.Panel({
-            width: '100%',
-            height: '100%',
-            cls: 'login-bg',
-            renderTo: document.body
-        });
-    },
+    alias: 'controller.login',    
     /*
      * Form submit method
      * */

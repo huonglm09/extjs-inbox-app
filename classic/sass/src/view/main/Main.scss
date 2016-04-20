@@ -319,3 +319,6 @@ $ui-header-noborder-adjust: false
 .border-zero {
     border: none !important;
 }
+.x-component, .x-container {
+    position: inherit !important;
+}

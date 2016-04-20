@@ -24,6 +24,16 @@ Ext.define('InboxManagement.view.auth.Login', {
     layout: 'fit',
     cls: 'login-form',
     bodyPadding: '0px 10px 10px 10px',
+    initComponent: function() {
+        Ext.create('Ext.Panel', {
+            width: '100%',
+            height: '100%',
+            cls: 'login-bg',
+            renderTo: Ext.getBody()
+        });
+
+        this.callParent();
+    },
     items: [{
             xtype: 'form',
             bodyPadding: '0px 10px 10px 10px',

@@ -37,7 +37,8 @@
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
             },
             reader: {
-                rootProperty: 'emails'
+                rootProperty: 'emails',
+                totalProperty: 'total'
             }
         }
     });

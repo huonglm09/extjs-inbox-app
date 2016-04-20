@@ -41,9 +41,15 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function getEmailsInbox($user_email) {
+    public function getEmailsInbox($user_email, Request $request) {
+        $data = $request->all();               
+        $start = $data['start'];
+        $limit = $data['limit'];
+       
         $emails_inbox = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->get();
-        return response()->json(['emails' => $emails_inbox]);
+        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->skip($start)->take($limit)->get();   
+        
+        return response()->json(['emails' => $emails_inbox_paginate, 'total' => count($emails_inbox)]);
     }
 
     /**
@@ -83,9 +89,15 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function getEmailSent($user_email) {
-        $emails_sent = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->get();
-        return response()->json(['emails' => $emails_sent]);
+    public function getEmailSent($user_email, Request $request) {
+        $data = $request->all();               
+        $start = $data['start'];
+        $limit = $data['limit'];
+        
+        $emails_sent = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->get();    
+        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->skip($start)->take($limit)->get();           
+        
+        return response()->json(['emails' => $emails_sent_paginate, 'total' => count($emails_sent)]);
     }
 
     /*

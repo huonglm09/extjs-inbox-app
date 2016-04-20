@@ -31,7 +31,8 @@ Ext.define('InboxManagement.model.Sent', {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         },
         reader: {
-            rootProperty: 'emails'
+            rootProperty: 'emails',
+            totalProperty: 'total'
         }
     }
 });

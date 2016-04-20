@@ -1,26 +1,18 @@
 Ext.define('InboxManagement.view.sent.SentController', {
-	extend: 'Ext.app.ViewController',
-	alias: 'controller.sent-sent',
-	requires: [
-		'Ext.util.History'
-	],
+    extend: 'Ext.app.ViewController',
+    alias: 'controller.sent-sent',
+    requires: [
+        'Ext.util.History'
+    ],
+    onBackBtnClick: function() {
+        this.redirectTo('sent');
+    },
+    onItemSelected: function(view, td, cellIndex, record, tr, rowIndex, e, eOpts) {
 
-	onBackBtnClick: function() {
-		this.redirectTo('sent');
-	},
-
-	onItemSelected: function(view, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-
-		this.redirectTo('email-detail/' + record.get('id'));
-	},
-
-
-	beforeDetailsRender: function(view) {
-		/*console.log(view);*/
-		var record = view.record ? view.record : {};
-		view.down('#mailBody').setHtml(
-                       'Mail subject: ' +  record.get('mail_subject')+ ' <br>'+
-                        record.get('mail_content')
-                );
-	}
+        this.redirectTo('email-detail/' + record.get('id'));
+    },
+    beforeDetailsRender: function(view) {
+        var record = view.record ? view.record : {};
+        view.down('#mailBody').setHtml(record.get('mail_content'));
+    }
 });

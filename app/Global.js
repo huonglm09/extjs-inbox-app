@@ -1,6 +1,5 @@
 Ext.define('InboxManagement.Global', {
     requires: [
-
     ],
     singleton: true,
     config: {

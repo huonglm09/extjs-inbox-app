@@ -2,13 +2,13 @@ Ext.define('InboxManagement.view.write.Write', {
     extend: 'Ext.form.Panel',
     xtype: 'write',
     alias: 'write',
-    requires: [        
+    requires: [
         'Ext.button.Button',
         'Ext.form.field.Text',
         'Ext.form.field.File',
         'Ext.form.field.HtmlEditor',
         'InboxManagement.view.write.WriteController',
-        'InboxManagement.view.write.WriteModel'        
+        'InboxManagement.view.write.WriteModel'
     ],
     viewModel: {
         type: 'write'
@@ -26,12 +26,12 @@ Ext.define('InboxManagement.view.write.Write', {
     },
     items: [
         {
-            xtype: 'form',            
+            xtype: 'form',
             reference: 'write_form',
             items: [{
-                    xtype : 'hidden',  
-                    name  : 'from_email',
-                    bind  : '{user.email}'
+                    xtype: 'hidden',
+                    name: 'from_email',
+                    bind: '{user.email}'
                 }, {
                     xtype: 'textfield',
                     fieldLabel: 'To:',
@@ -67,7 +67,7 @@ Ext.define('InboxManagement.view.write.Write', {
                 id: 'discard',
                 cls: 'write-btn',
                 handler: 'onDiscard',
-                iconCls: 'x-fa fa-times-circle'                
+                iconCls: 'x-fa fa-times-circle'
             }, {
                 xtype: 'button',
                 text: 'Send',

@@ -26,7 +26,7 @@ Ext.define('InboxManagement.controller.Routes', {
         refs: {
             tabPanel: '#main-tabs'
         },
-        routes: {            
+        routes: {
             // Dashboard route
             'dashboard': {
                 before: 'loggedIn',
@@ -56,7 +56,7 @@ Ext.define('InboxManagement.controller.Routes', {
             'trash': {
                 before: 'loggedIn',
                 action: 'onTrash'
-            },            
+            },
             // Login route
             'login': {
                 before: 'beforeLogin',
@@ -140,7 +140,7 @@ Ext.define('InboxManagement.controller.Routes', {
             InboxManagement.Global.setCurrentView('app-main');
         }
         var tabPanel = this.getTabPanel(),
-            child;
+                child;
         if (typeof tabPanel !== "undefined") {
             child = tabPanel.getComponent(tab);
             tabPanel.setActiveTab(child);
@@ -151,8 +151,8 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     loggedIn: function() {
         var me = this,
-            args = Ext.Array.slice(arguments),
-            action = args.pop();
+                args = Ext.Array.slice(arguments),
+                action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
             method: 'GET',
@@ -169,8 +169,8 @@ Ext.define('InboxManagement.controller.Routes', {
     },
     beforeLogin: function() {
         var me = this,
-            args = Ext.Array.slice(arguments),
-            action = args.pop();
+                args = Ext.Array.slice(arguments),
+                action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
             method: 'GET',
@@ -195,13 +195,13 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     closeWindows: function() {
         var args = Ext.Array.slice(arguments), // Get a reference to the route action
-            action = args.pop(); // Get a reference to the route action
+                action = args.pop(); // Get a reference to the route action
         Ext.WindowMgr.each(
-            function(win) {
-                if (win.isVisible()) {
-                    win.close(true);
+                function(win) {
+                    if (win.isVisible()) {
+                        win.close(true);
+                    }
                 }
-            }
         );
         action.resume();
     }

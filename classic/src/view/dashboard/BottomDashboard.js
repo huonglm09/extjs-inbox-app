@@ -80,7 +80,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                             tooltip: {
                                 trackMouse: true,
                                 renderer: 'onSeriesTooltipRenderSent'
-                            },                            
+                            },
                             renderer: function(sprite, record, attr, dateex, store) {
                                 return Ext.apply(attr, {
                                     fill: '#115fa6'
@@ -99,7 +99,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                 }]
         });
 
-         var chartInbox = Ext.create('Ext.Panel', {
+        var chartInbox = Ext.create('Ext.Panel', {
             width: '50%',
             items: [{
                     xtype: 'cartesian',
@@ -176,10 +176,10 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
         });
 
         this.items = [
-            {                
-                flex: 1,                
+            {
+                flex: 1,
                 xtype: chartInbox
-            }, {                
+            }, {
                 flex: 1,
                 xtype: chartSent
             }

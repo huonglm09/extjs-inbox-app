@@ -44,7 +44,7 @@ Ext.define('InboxManagement.view.main.MainController', {
         tooltip.setHtml(record.get('from_user_email') + ': ' +
                 Ext.util.Format.number(record.get('total'), formatString));
     },
-    onCompareSeriesTooltipRender: function (tooltip, record, item) {
+    onCompareSeriesTooltipRender: function(tooltip, record, item) {
         tooltip.setHtml(record.get('name') + ': ' + ((record.get('value') / record.get('total')) * 100) + '%');
     }
 });

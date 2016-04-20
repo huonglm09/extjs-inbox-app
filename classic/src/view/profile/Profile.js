@@ -27,7 +27,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
         this.callParent();
     },
     listeners: {
-        afterrender: function(view) {            
+        afterrender: function(view) {
             //view.add({
             //    xtype: 'multiselect',
             //    scrollable: false,
@@ -38,12 +38,12 @@ Ext.define('InboxManagement.view.profile.Profile', {
             //    valueField: 'id',
             //    displayField: 'name'
             //});
-        }  
+        }
     },
     items: [
         {
             title: {
-                bind : {
+                bind: {
                     html: '<i class="mark-color"></i><div class="title-panel">Profile</div>'
                 }
             },
@@ -72,11 +72,11 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     fieldLabel: 'Last Name',
                     width: '100%',
                     name: 'lastName',
-                    bind: '{profile.data.items.0.lastName}'                
+                    bind: '{profile.data.items.0.lastName}'
                 }, {
                     fieldLabel: 'Mode',
                     boxLabel: 'Allow change your password',
-                    xtype: 'checkbox',                    
+                    xtype: 'checkbox',
                     reference: 'changePassword'
                 }, {
                     fieldLabel: 'Password',
@@ -101,13 +101,13 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     width: 100,
                     height: 35,
                     handler: 'onSaveProfile',
-                    iconCls: 'x-fa fa-check'                    
+                    iconCls: 'x-fa fa-check'
                 }
             ]
         },
-        {            
+        {
             title: {
-                bind : {
+                bind: {
                     html: '<i class="mark-color"></i><div class="title-panel">Users</div>'
                 }
             },

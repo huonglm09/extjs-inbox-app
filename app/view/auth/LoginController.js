@@ -96,9 +96,9 @@ Ext.define('InboxManagement.view.auth.LoginController', {
     /*
      * onRegister method is called when the options - register menu item is selected.  Redirects to register route
      * */
-    onRegister: function() {                
+    onRegister: function() {
         var me = this;
-        var register = Ext.create('Ext.window.Window', {            
+        var register = Ext.create('Ext.window.Window', {
             layout: 'fit',
             autoShow: true,
             height: 580,
@@ -106,11 +106,11 @@ Ext.define('InboxManagement.view.auth.LoginController', {
             resizable: false,
             movable: false,
             controller: 'login',
-            closable: false,            
+            closable: false,
             cls: 'login-form',
             title: 'Signup',
             bodyPadding: '0px 10px 10px 10px',
-            items: {                
+            items: {
                 xtype: 'form',
                 bodyPadding: '0px 10px 10px 10px',
                 reference: 'register',
@@ -129,7 +129,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                         inputType: 'password',
                         name: 'password',
                         allowBlank: false,
-                        margin: '0 0 20 0',                        
+                        margin: '0 0 20 0',
                         emptyText: 'Password',
                         height: 50
                     }, {
@@ -138,7 +138,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                         inputType: 'password',
                         name: 'retype',
                         allowBlank: false,
-                        margin: '0 0 20 0',                        
+                        margin: '0 0 20 0',
                         emptyText: 'Retype Password',
                         height: 50
                     }, {
@@ -146,7 +146,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                         anchor: '100%',
                         name: 'firstName',
                         allowBlank: false,
-                        margin: '0 0 20 0',                        
+                        margin: '0 0 20 0',
                         emptyText: 'First Name',
                         height: 50
                     }, {
@@ -154,19 +154,19 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                         anchor: '100%',
                         name: 'lastName',
                         allowBlank: false,
-                        margin: '0 0 20 0',                        
+                        margin: '0 0 20 0',
                         emptyText: 'Last Name',
-                        height: 50    
+                        height: 50
                     }, {
                         xtype: 'button',
                         cls: 'btn btn-save btn-save-login',
                         text: 'Save',
                         width: '100%',
                         height: 50,
-                        handler: 'onRegisterSave', 
+                        handler: 'onRegisterSave',
                         iconCls: 'fa-angle-right',
                         iconAlign: 'right'
-                    }, { 
+                    }, {
                         title: 'OR',
                         margin: '15 0 15 0',
                         cls: 'line-or',
@@ -186,13 +186,13 @@ Ext.define('InboxManagement.view.auth.LoginController', {
             }
         }).show();
     },
-    onRegisterSave: function(btn) {               
-        var me = this,                                                      
-            win = btn.up('window'),
-            form = me.lookupReference('register');          
-            
+    onRegisterSave: function(btn) {
+        var me = this,
+                win = btn.up('window'),
+                form = me.lookupReference('register');
+
         if (form.isValid()) {
-            var formData = form.getForm().getValues();            
+            var formData = form.getForm().getValues();
             if (formData.password && formData.retype) {
                 if (formData.password !== formData.retype) {
                     Ext.MessageBox.show({
@@ -203,27 +203,27 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                         closable: false,
                         buttons: Ext.MessageBox.OK
                     });
-                    
+
                     return false;
-                } 
-            } 
-            
+                }
+            }
+
             form.submit({
                 url: InboxManagement.Global.getApiUrl() + 'auth/register',
                 waitMsg: 'Loading...',
                 method: 'POST',
-                success: function(form, action) {                                          
-                    var res = Ext.decode(action.response.responseText);                    
+                success: function(form, action) {
+                    var res = Ext.decode(action.response.responseText);
                     Ext.MessageBox.show({
                         title: 'Signup',
-                        msg: res.message,                        
+                        msg: res.message,
                         width: 300,
                         closable: false,
                         buttons: Ext.MessageBox.OK
-                    });                    
-                    
+                    });
+
                     form.reset();
-                    win.close();       
+                    win.close();
                 },
                 failure: function(form, action) {
                     var res = Ext.decode(action.response.responseText);

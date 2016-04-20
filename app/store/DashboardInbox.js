@@ -6,8 +6,8 @@ Ext.define('InboxManagement.store.DashboardInbox', {
     ],
     model: 'InboxManagement.model.DashboardInbox',
     autoLoad: true,
-    proxy: {        
-        type: 'ajax',        
+    proxy: {
+        type: 'ajax',
         api: {
             read: InboxManagement.Global.getApiUrl() + 'pie-charts/inbox/' + InboxManagement.service.Authenticate.getCurrentUser().email
         },

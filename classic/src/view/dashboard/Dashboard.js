@@ -5,7 +5,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
         'Ext.layout.container.VBox',
         'InboxManagement.view.dashboard.DashboardController',
         'InboxManagement.view.dashboard.DashboardModel',
-        'InboxManagement.store.Dashboard',       
+        'InboxManagement.store.Dashboard',
         'InboxManagement.view.dashboard.BottomDashboard'
     ],
     xtype: 'dashboard',
@@ -35,7 +35,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                     insetPadding: 50,
                     innerPadding: 20,
                     store: {
-                        type : 'dashboard'
+                        type: 'dashboard'
                     },
                     legend: {
                         docked: 'bottom'

@@ -7,8 +7,8 @@ Ext.define('InboxManagement.view.write.WriteModel', {
     requires: [
         'InboxManagement.Global'
     ],
-    formulas: {       
-        user: function (get) {            
+    formulas: {
+        user: function(get) {
             return InboxManagement.Global.getUser();
         }
     }

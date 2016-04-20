@@ -7,8 +7,7 @@
 Ext.define('InboxManagement.view.profile.UsersController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.users',
-    
     onItemSelected: function() {
-        
+
     }
 });

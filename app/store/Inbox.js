@@ -4,12 +4,8 @@ Ext.define('InboxManagement.store.Inbox', {
     requires: [
         'InboxManagement.Global'
     ],
-
     storeId: 'Inbox',
-
     model: 'InboxManagement.model.Inbox',
-
     pageSize: 20,
-
     autoLoad: true
 });

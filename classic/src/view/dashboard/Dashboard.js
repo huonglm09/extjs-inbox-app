@@ -21,7 +21,6 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
     bodyPadding: 10,
     defaults: {
         frame: true,
-        bodyPadding: 10,
         height: 400
     },
     initComponent: function() {
@@ -32,7 +31,7 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                     width: '100%',
                     height: 420,
                     margin: '0 0 50 0',
-                    insetPadding: 50,
+                    insetPadding: 20,
                     innerPadding: 20,
                     store: {
                         type: 'dashboard'
@@ -47,23 +46,14 @@ Ext.define('InboxManagement.view.dashboard.Dashboard', {
                             fontSize: 22,
                             width: 100,
                             height: 30,
-                            x: 40,
+                            x: 0,
                             y: 20
-                        }, {
-                            type: 'text',
-                            text: 'Data: IDC Predictions - 2017',
-                            x: 12,
-                            y: 425
-                        }, {
-                            type: 'text',
-                            text: 'Source: Internet',
-                            x: 12,
-                            y: 440
                         }],
                     series: [{
                             type: 'pie3d',
                             angleField: 'value',
-                            donut: 50,
+                            donut: 40,
+                            thickness: 60,
                             label: {
                                 field: 'name',
                                 display: 'outside'

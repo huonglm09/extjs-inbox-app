@@ -80,6 +80,16 @@ Ext.define('InboxManagement.controller.Routes', {
         this.redirectTo('dashboard', false);
     },
     /*
+     * Render panel to container and load data again.
+     * */
+    onRenderContainer: function(container, panelApply) {
+        var el = Ext.getCmp(container);
+        Ext.suspendLayouts();
+        el.removeAll(true);
+        el.add(Ext.apply({xtype: panelApply}));
+        Ext.resumeLayouts(true);
+    },
+    /*
      * Login route method.  Loads the login form
      * */
     onLogin: function() {
@@ -99,6 +109,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onWrite: function() {
         this.changeTab('write');
+        this.onRenderContainer('write-main', 'write');
     },
     /*
      * Sent route method
@@ -117,12 +128,14 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onProfile: function() {
         this.changeTab('profile');
+        this.onRenderContainer('profile-main', 'profile');
     },
     /*
      * Dashboard route method
      * */
     onDashboard: function() {
         this.changeTab('dashboard');
+        this.onRenderContainer('dashboard-main', 'dashboard');
     },
     /*
      * Logout route method

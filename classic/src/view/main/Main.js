@@ -16,8 +16,11 @@ Ext.define('InboxManagement.view.main.Main', {
         'InboxManagement.view.main.MainController',
         'InboxManagement.view.main.MainModel',
         'InboxManagement.view.write.Write',
+        'InboxManagement.view.write.WriteMain',
         'InboxManagement.view.profile.Profile',
-        'InboxManagement.view.dashboard.Dashboard'
+        'InboxManagement.view.profile.ProfileMain',
+        'InboxManagement.view.dashboard.Dashboard',
+        'InboxManagement.view.dashboard.DashboardMain'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -79,14 +82,14 @@ Ext.define('InboxManagement.view.main.Main', {
             id: 'dashboard',
             iconCls: 'fa-desktop',
             items: [{
-                    xtype: 'dashboard'
+                    xtype: 'main-dashboard'
                 }]
         }, {
             title: 'Profile',
             id: 'profile',
             iconCls: 'fa-user',
             items: [{
-                    xtype: 'profile'
+                    xtype: 'main-profile'
                 }]
         }, {
             title: 'Inbox',
@@ -100,7 +103,7 @@ Ext.define('InboxManagement.view.main.Main', {
             id: 'write',
             iconCls: 'fa-edit',
             items: [{
-                    xtype: 'write'
+                    xtype: 'main-write'
                 }]
         }, {
             title: 'Sent',

@@ -93,7 +93,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                             fontSize: 22,
                             width: 100,
                             height: 30,
-                            x: 40,
+                            x: 0,
                             y: 20
                         }]
                 }]
@@ -169,7 +169,7 @@ Ext.define('InboxManagement.view.dashboard.BottomDashboard', {
                             fontSize: 22,
                             width: 100,
                             height: 30,
-                            x: 40,
+                            x: 0,
                             y: 20
                         }]
                 }]

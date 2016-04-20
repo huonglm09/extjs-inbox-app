@@ -23,7 +23,7 @@ Ext.define('InboxManagement.view.main.MainController', {
                     me.getView().destroy();
                     me.redirectTo('login');
                 }, failure: function() {
-                    me.redirectTo('profile');
+                    me.redirectTo('dashboard');
                 }
             });
         }

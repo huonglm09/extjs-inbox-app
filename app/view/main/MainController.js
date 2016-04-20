@@ -22,7 +22,6 @@ Ext.define('InboxManagement.view.main.MainController', {
                 success: function(response) {
                     me.getView().destroy();
                     me.redirectTo('login');
-                    window.location.reload();
                 }, failure: function() {
                     me.redirectTo('dashboard');
                 }

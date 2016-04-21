@@ -15,10 +15,10 @@ Ext.define('InboxManagement.view.inbox.Inbox', {
         align: 'stretch'
     },
     items: [{
-            xtype: 'container',
-            itemId: 'inbox-content-panel',
-            id: 'inbox-content-panel',
-            margin: '0 20 20 0',
-            flex: 1
-        }]
+        xtype: 'container',
+        itemId: 'inbox-content-panel',
+        id: 'inbox-content-panel',
+        margin: '0 0 20 0',
+        flex: 1
+    }]
 });

@@ -18,8 +18,8 @@ class CreateEmailsTable extends Migration
             $table->string('to_user_email', 255);
             $table->string('mail_subject');
             $table->string('mail_content');
-            $table->integer('from_deleted');
-            $table->integer('to_deleted');
+            $table->boolean('from_deleted')->default(false);
+            $table->boolean('to_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,16 +1,15 @@
-Ext.define('InboxManagement.view.inbox.Detail', {
+Ext.define('InboxManagement.view.trash.Detail', {
     extend: 'Ext.panel.Panel',
-    xtype: 'main-inbox-detail',
+    xtype: 'main-trash-detail',
     requires: [
-        'InboxManagement.view.inbox.DetailModel',
         'Ext.container.Container',
         'Ext.form.field.HtmlEditor',
         'Ext.layout.container.Anchor',
-        'Ext.layout.container.HBox'
+        'Ext.layout.container.HBox',
+        'InboxManagement.view.trash.TrashController',
+        'InboxManagement.view.trash.TrashModel'
     ],
-    viewModel: {
-        type: 'inbox-detail'
-    },
+    controller: 'trash-trash',
     cls: 'shadow',
     bodyPadding: 10,
     layout: {
@@ -20,19 +19,25 @@ Ext.define('InboxManagement.view.inbox.Detail', {
     listeners: {
         beforerender: 'beforeDetailsRender'
     },
-    tbar: [{
-        iconCls: 'x-fa fa-angle-left',
-        listeners: {
-            click: 'onBackBtnClick'
+    tbar: [
+        // Default item type for toolbar is button, thus we can skip it's definition in
+        // the array items
+        {
+            iconCls: 'x-fa fa-angle-left',
+            listeners: {
+                click: 'onBackBtnClick'
+            }
+        }, {
+            iconCls: 'x-fa fa-trash',
+            listeners: {
+                click: 'moveToTrash'
+            }
+        }, {
+            iconCls: 'x-fa fa-exclamation-circle'
+        }, {
+            iconCls: 'x-fa fa-print'
         }
-    }, {
-        iconCls: 'x-fa fa-trash',
-        listeners: {
-            click: 'moveToTrash'
-        }
-    }, {
-        iconCls: 'x-fa fa-exclamation-circle'
-    }],
+    ],
     bbar: {
         cls: 'single-mail-action-button',
         defaults: {

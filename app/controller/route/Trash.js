@@ -1,12 +1,12 @@
 (function() {
     'use strict';
-    Ext.define('InboxManagement.controller.route.Inbox', {
+    Ext.define('InboxManagement.controller.route.Trash', {
         extend: 'Ext.app.Controller',
         routes: {
-            'inbox': {
+            'trash': {
                 action: 'onInboxListRender'
             },
-            'inbox/:id': {
+            'trash/:id': {
                 before: 'beforeInboxDetail',
                 action: 'onRenderDetailInbox',
                 conditions: {
@@ -15,14 +15,14 @@
             }
         },
         onInboxListRender: function() {
-            var el = Ext.getCmp('inbox-content-panel');
+            var el = Ext.getCmp('trash-content-panel');
 
             Ext.suspendLayouts();
 
             el.removeAll(true);
             el.add(
                 Ext.apply({
-                    xtype: 'main-inbox-list'
+                    xtype: 'main-trash-list'
                 })
             );
 
@@ -35,14 +35,13 @@
                     action.stop(true);
                 },
                 success: function(record, operation) {
-                    var el = Ext.getCmp('inbox-content-panel');
+                    var el = Ext.getCmp('trash-content-panel');
                     if (el) {
                         Ext.suspendLayouts();
                         el.removeAll(true);
                         el.add(
                             Ext.apply({
-                                xtype: 'main-inbox-detail',
-                                id: 'main-inbox-detail'
+                                xtype: 'main-trash-detail'
                             }, {
                                 record: record
                             })
@@ -50,7 +49,7 @@
                         Ext.resumeLayouts(true);
                         action.resume();
                     } else {
-                        self.redirectTo('inbox');
+                        self.redirectTo('trash');
                         action.resume();
                     }
 

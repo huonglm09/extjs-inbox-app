@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60)->nullable();
             $table->enum('provider', ['local', 'facebook', 'google', 'github'])->default('local');
+            $table->boolean('isSuperAdmin')->default(false);
             $table->rememberToken()->nullable();
             $table->timestamps();
             $table->softDeletes();

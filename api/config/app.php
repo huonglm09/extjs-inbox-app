@@ -146,15 +146,15 @@ return [
         /*
          * Debugbar
          */
-        'Barryvdh\Debugbar\ServiceProvider',
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Import excel file maatwebsite
          * */
-        'Maatwebsite\Excel\ExcelServiceProvider',
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * tymondesigns/jwt-auth
          * */
-        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
     ],
 
@@ -204,9 +204,9 @@ return [
         'Validator'  => Illuminate\Support\Facades\Validator::class,
         'View'       => Illuminate\Support\Facades\View::class,
         'Gate'       => Illuminate\Support\Facades\Gate::class,
-        'Excel'      => 'Maatwebsite\Excel\Facades\Excel',
-        'JWTAuth'    => 'Tymon\JWTAuth\Facades\JWTAuth',
-        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+        'Excel'      => Maatwebsite\Excel\Facades\Excel::class,
+        'JWTAuth'    => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

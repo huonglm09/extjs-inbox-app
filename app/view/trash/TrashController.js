@@ -21,7 +21,7 @@ Ext.define('InboxManagement.view.trash.TrashController', {
         record.save({
             success: function() {
                 Ext.toast({
-                    html: 'Un trash',
+                    html: 'Restore',
                     title: 'Notification',
                     width: 200,
                     align: 'tr'

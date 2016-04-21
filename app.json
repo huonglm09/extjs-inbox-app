@@ -214,6 +214,9 @@
      *
      */
     "js": [{
+        "path": "bower_components/moment/min/moment-with-locales.min.js",
+        "includeInBundle": true
+    }, {
         "path": "app.js",
         "bundle": true
     }],

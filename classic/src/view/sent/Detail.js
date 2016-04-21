@@ -29,7 +29,10 @@ Ext.define('InboxManagement.view.sent.Detail', {
                 click: 'onBackBtnClick'
             }
         }, {
-            iconCls: 'x-fa fa-trash'
+            iconCls: 'x-fa fa-trash',
+            listeners: {
+                click: 'moveToTrash'
+            }
         }, {
             iconCls: 'x-fa fa-exclamation-circle'
         }, {
@@ -54,17 +57,17 @@ Ext.define('InboxManagement.view.sent.Detail', {
         ]
     },
     items: [{
-            xtype: 'container',
-            height: 82,
-            layout: {
-                type: 'hbox',
-                align: 'stretch'
-            },
-            items: [{
-                    xtype: 'box',
-                    cls: 'mail-body',
-                    itemId: 'mailBody'
-                }]
+        xtype: 'container',
+        height: 82,
+        layout: {
+            type: 'hbox',
+            align: 'stretch'
+        },
+        items: [{
+            xtype: 'box',
+            cls: 'mail-body',
+            itemId: 'mailBody'
         }]
+    }]
 
 });

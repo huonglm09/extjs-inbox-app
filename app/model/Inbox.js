@@ -3,32 +3,33 @@
     Ext.define('InboxManagement.model.Inbox', {
         extend: 'InboxManagement.model.Base',
         fields: [{
-                name: 'id',
-                type: 'integer'
-            }, {
-                name: 'from_user_email',
-                type: 'string',
-                reference: 'User'
-            }, {
-                name: 'to_user_email',
-                type: 'string',
-                reference: 'User'
-            }, {
-                name: 'mail_subject',
-                type: 'string'
-            }, {
-                name: 'from_user',
-                type: 'auto',
-                convert: function(value) {
-                    return value.firstName + ' ' + value.lastName;
-                }
-            }, {
-                name: 'created_at',
-                type: 'date',
-                convert: function(value) {
-                    return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
-                }
-            }],
+            name: 'id',
+            type: 'integer'
+        }, {
+            name: 'from_user_email',
+            type: 'string',
+            reference: 'User'
+        }, {
+            name: 'to_user_email',
+            type: 'string',
+            reference: 'User'
+        }, {
+            name: 'mail_subject',
+            type: 'string'
+        }, {
+            name: 'from_user',
+            type: 'auto',
+            convert: function(value) {
+                return value.firstName + ' ' + value.lastName;
+            }
+        }, {
+            name: 'created_at',
+            type: 'date',
+            convert: function(value) {
+                return window.moment(value).format('dddd MMM DD, YYYY, h:mm:ss a');
+            }
+        }],
+        useCache: false,
         proxy: {
             type: 'rest',
             url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + InboxManagement.service.Authenticate.getCurrentUser().email || '',
@@ -37,7 +38,9 @@
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
             },
             reader: {
-                rootProperty: 'emails',
+                rootProperty: function(data) {
+                    return data.emails || data;
+                },
                 totalProperty: 'total'
             }
         }

@@ -21,10 +21,10 @@
 
             el.removeAll(true);
             el.add(
-                    Ext.apply({
-                        xtype: 'main-inbox-list'
-                    })
-                    );
+                Ext.apply({
+                    xtype: 'main-inbox-list'
+                })
+            );
 
             Ext.resumeLayouts(true);
         },
@@ -40,12 +40,12 @@
                         Ext.suspendLayouts();
                         el.removeAll(true);
                         el.add(
-                                Ext.apply({
-                                    xtype: 'main-inbox-detail'
-                                }, {
-                                    record: record
-                                })
-                                );
+                            Ext.apply({
+                                xtype: 'main-inbox-detail'
+                            }, {
+                                record: record
+                            })
+                        );
                         Ext.resumeLayouts(true);
                         action.resume();
                     } else {

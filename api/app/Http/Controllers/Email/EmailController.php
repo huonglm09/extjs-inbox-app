@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers\Email;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Validator;
-use App\Models\User as User;
 use App\Models\Email as Email;
 use DB;
+use Gate;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Log;
 use Mail;
-use JWTAuth;
-use TymonJWTAuthExceptionsJWTException;
 
-class EmailController extends Controller {
+class EmailController extends Controller
+{
     /*
-      |--------------------------------------------------------------------------
-      | Email Controller
-      |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    | Email Controller
+    |--------------------------------------------------------------------------
      */
 
     /*
@@ -29,7 +26,8 @@ class EmailController extends Controller {
      * @return void
      */
 
-    public function __construct() {
+    public function __construct()
+    {
 //        $this->middleware('auth');
         //        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
     }
@@ -41,28 +39,35 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function getEmailsInbox($user_email, Request $request) {
-        $data = $request->all();               
+    public function getEmailsInbox($user_email, Request $request)
+    {
+        $data  = $request->all();
         $start = $data['start'];
         $limit = $data['limit'];
-       
-        $emails_inbox = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->get();
-        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->skip($start)->take($limit)->get();   
-        
+
+        $emails_inbox          = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->get();
+        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->skip($start)->take($limit)->get();
+
         return response()->json(['emails' => $emails_inbox_paginate, 'total' => count($emails_inbox)]);
     }
 
     /**
-     * [show description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
+     * Simple get email detail by id
+     * @param  int $id
+     * @return Collection
      */
-    public function show($id) {
+    public function show($id)
+    {
         try {
             $email = Email::with('fromUser')->with('toUser')->findOrFail($id);
-            return response()->json($email);
+            if (Gate::denies('show', $email)) {
+                return response()->json(['message' => 'Access denies'], Response::HTTP_UNAUTHORIZED);
+            } else {
+                return response()->json($email);
+            }
+
         } catch (ModelNotFoundException $e) {
-            return response()->json(['message' => 'Email not found'], 400);
+            return response()->json(['message' => 'Email not found'], Response::HTTP_BAD_REQUEST);
         }
     }
 
@@ -73,8 +78,9 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function getEmailsDetail($user_email, $id) {
-        $email_detail = Email::where('id', '=', $id)->get();
+    public function getEmailsDetail($user_email, $id)
+    {
+        $email_detail = Email::with('fromUser')->with('toUser')->where('id', '=', $id)->get();
         if (!empty($email_detail)) {
             return response()->json(['emails' => $email_detail, 'status' => 1]);
         } else {
@@ -89,14 +95,15 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function getEmailSent($user_email, Request $request) {
-        $data = $request->all();               
+    public function getEmailSent($user_email, Request $request)
+    {
+        $data  = $request->all();
         $start = $data['start'];
         $limit = $data['limit'];
-        
-        $emails_sent = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->get();    
-        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->skip($start)->take($limit)->get();           
-        
+
+        $emails_sent          = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->get();
+        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->skip($start)->take($limit)->get();
+
         return response()->json(['emails' => $emails_sent_paginate, 'total' => count($emails_sent)]);
     }
 
@@ -107,25 +114,26 @@ class EmailController extends Controller {
      * @Version ("v1")
      * */
 
-    public function sentMailToOther(Request $request) {
+    public function sentMailToOther(Request $request)
+    {
         if ($request->getMethod() == 'POST') {
             $emails = array();
 
             $emails['from_email'] = $request->get('from_email');
-            $emails['to_email'] = $request->get('to_email');
-            $emails['subject'] = $request->get('subject');
-            $emails['content'] = $request->get('content');
+            $emails['to_email']   = $request->get('to_email');
+            $emails['subject']    = $request->get('subject');
+            $emails['content']    = $request->get('content');
 
             $status = $this->sendMail($emails);
 
             if ($status) {
-                $emailSave = new Email();
+                $emailSave                  = new Email();
                 $emailSave->from_user_email = $request->get('from_email');
-                $emailSave->to_user_email = $request->get('to_email');
-                $emailSave->mail_subject = $request->get('subject');
-                $emailSave->mail_content = $request->get('content');
-                $emailSave->from_deleted = 0;
-                $emailSave->to_deleted = 0;
+                $emailSave->to_user_email   = $request->get('to_email');
+                $emailSave->mail_subject    = $request->get('subject');
+                $emailSave->mail_content    = $request->get('content');
+                $emailSave->from_deleted    = 0;
+                $emailSave->to_deleted      = 0;
 
                 if ($emailSave->save()) {
                     return response()->json(['status' => 1, 'success' => true]);
@@ -144,24 +152,24 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    private function sendMail($emails) {
+    private function sendMail($emails)
+    {
         try {
             //Define mail content
-            $mailContent = new \StdClass();
-            $mailContent->subject = $emails['subject'];
-            $mailContent->from = $emails['from_email'];
-            $mailContent->email_to = $emails['to_email'];
-            $mailContent->content = $emails['content'];
+            $mailContent            = new \StdClass();
+            $mailContent->subject   = $emails['subject'];
+            $mailContent->from      = $emails['from_email'];
+            $mailContent->email_to  = $emails['to_email'];
+            $mailContent->content   = $emails['content'];
             $mailContent->full_name = 'Inbox Member';
 
-
             Mail::send('emails.user-reset-password', ['message' => $mailContent, 'mailContent' => $mailContent->content,
-                'full_name' => $mailContent->full_name
-                    ], function ($m) use
-                    ($mailContent) {
-                $m->from($mailContent->from, 'InboxManagement');
-                $m->to($mailContent->email_to, $mailContent->full_name)->subject($mailContent->subject);
-            });
+                'full_name'                                         => $mailContent->full_name,
+            ], function ($m) use
+                ($mailContent) {
+                    $m->from($mailContent->from, 'InboxManagement');
+                    $m->to($mailContent->email_to, $mailContent->full_name)->subject($mailContent->subject);
+                });
 
             return true;
         } catch (\Exception $e) {
@@ -176,7 +184,8 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    public function deleteEmail(Request $request) {
+    public function deleteEmail(Request $request)
+    {
 
         if ($request->getMethod() == 'POST') {
             $email_id = $request->get('email_id');
@@ -204,9 +213,10 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    public function pieChart($email) {
+    public function pieChart($email)
+    {
         $emails_inbox = Email::where('to_user_email', '=', $email)->where('to_deleted', '=', 0)->count();
-        $emails_sent = Email::where('from_user_email', '=', $email)->where('from_deleted', '=', 0)->count();
+        $emails_sent  = Email::where('from_user_email', '=', $email)->where('from_deleted', '=', 0)->count();
 
         return response()->json(['success' => true, 'data' => [['name' => 'Received', 'value' => $emails_inbox, 'total' => $emails_inbox + $emails_sent], ['name' => 'Sent', 'value' => $emails_sent, 'total' => $emails_inbox + $emails_sent]]]);
     }
@@ -218,14 +228,15 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    public function pieChartSent($email) {
+    public function pieChartSent($email)
+    {
         $emails_sent = DB::table('emails')
-                ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
-                ->join('users', 'emails.to_user_email', '=', 'users.email')
-                ->where('from_user_email', '=', $email)
-                ->where('from_deleted', '=', 0)
-                ->groupBy('to_user_email')
-                ->get();
+            ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
+            ->join('users', 'emails.to_user_email', '=', 'users.email')
+            ->where('from_user_email', '=', $email)
+            ->where('from_deleted', '=', 0)
+            ->groupBy('to_user_email')
+            ->get();
 
         return response()->json(['success' => true, 'data' => $emails_sent]);
     }
@@ -237,14 +248,15 @@ class EmailController extends Controller {
      * @Versions({"v1"})
      */
 
-    public function pieChartInbox($email) {
+    public function pieChartInbox($email)
+    {
         $emails_sent = DB::table('emails')
-                ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
-                ->join('users', 'emails.from_user_email', '=', 'users.email')
-                ->where('to_user_email', '=', $email)
-                ->where('from_deleted', '=', 0)
-                ->groupBy('from_user_email')
-                ->get();
+            ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
+            ->join('users', 'emails.from_user_email', '=', 'users.email')
+            ->where('to_user_email', '=', $email)
+            ->where('from_deleted', '=', 0)
+            ->groupBy('from_user_email')
+            ->get();
 
         return response()->json(['success' => true, 'data' => $emails_sent]);
     }

@@ -14,5 +14,31 @@ Ext.define('InboxManagement.view.sent.SentController', {
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
         view.down('#mailBody').setHtml(record.get('mail_content'));
+    },
+
+    moveToTrash: function() {
+        var self = this;
+        var view = this.getView().down('main-sent-detail');
+        var record = view.record ? view.record : {};
+        record.erase({
+            success: function() {
+                Ext.toast({
+                    html: 'Move to trash',
+                    title: 'Notification',
+                    width: 200,
+                    align: 'tr'
+                });
+                self.redirectTo('sent');
+            },
+            failure: function() {
+                Ext.toast({
+                    html: 'Something wrong!',
+                    title: 'Notification',
+                    width: 200,
+                    align: 'tr'
+                });
+            }
+        });
+
     }
 });

@@ -26,9 +26,7 @@ Ext.define('InboxManagement.Application', {
         'route.Trash'
     ],
     launch: function() {
-
         InboxManagement.interceptor.Authenticate.init();
-
         Ext.create('Ext.container.Viewport', {
             /*items: [{
              xtype: 'panel',
@@ -39,7 +37,7 @@ Ext.define('InboxManagement.Application', {
                     window.fbAsyncInit = Ext.bind(this.onFacebookInit, this);
                     (function(d) {
                         var js, id = 'facebook-jssdk',
-                            ref = d.getElementsByTagName('script')[0];
+                                ref = d.getElementsByTagName('script')[0];
                         if (d.getElementById(id)) {
                             return;
                         }

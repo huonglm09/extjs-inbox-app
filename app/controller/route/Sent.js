@@ -19,11 +19,7 @@
             Ext.suspendLayouts();
 
             el.removeAll(true);
-            el.add(
-                    Ext.apply({
-                        xtype: 'main-sent-list'
-                    })
-                    );
+            el.add(Ext.apply({xtype: 'main-sent-list'}));
 
             Ext.resumeLayouts(true);
         },

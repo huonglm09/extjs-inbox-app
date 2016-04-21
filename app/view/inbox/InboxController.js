@@ -11,12 +11,10 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
 
         this.redirectTo('inbox/' + record.get('id'));
     },
-
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
-
     moveToTrash: function() {
         var self = this;
         var view = this.getView().down('main-inbox-detail');

@@ -57,17 +57,17 @@ Ext.define('InboxManagement.view.sent.Detail', {
         ]
     },
     items: [{
-        xtype: 'container',
-        height: 82,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'box',
-            cls: 'mail-body',
-            itemId: 'mailBody'
+            xtype: 'container',
+            height: 82,
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            items: [{
+                    xtype: 'box',
+                    cls: 'mail-body',
+                    itemId: 'mailBody'
+                }]
         }]
-    }]
 
 });

@@ -16,15 +16,10 @@
         },
         onInboxListRender: function() {
             var el = Ext.getCmp('trash-content-panel');
-
             Ext.suspendLayouts();
 
             el.removeAll(true);
-            el.add(
-                Ext.apply({
-                    xtype: 'main-trash-list'
-                })
-            );
+            el.add(Ext.apply({xtype: 'main-trash-list'}));
 
             Ext.resumeLayouts(true);
         },
@@ -40,12 +35,12 @@
                         Ext.suspendLayouts();
                         el.removeAll(true);
                         el.add(
-                            Ext.apply({
-                                xtype: 'main-trash-detail'
-                            }, {
-                                record: record
-                            })
-                        );
+                                Ext.apply({
+                                    xtype: 'main-trash-detail'
+                                }, {
+                                    record: record
+                                })
+                                );
                         Ext.resumeLayouts(true);
                         action.resume();
                     } else {

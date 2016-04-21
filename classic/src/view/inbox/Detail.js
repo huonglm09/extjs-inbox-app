@@ -21,18 +21,18 @@ Ext.define('InboxManagement.view.inbox.Detail', {
         beforerender: 'beforeDetailsRender'
     },
     tbar: [{
-        iconCls: 'x-fa fa-angle-left',
-        listeners: {
-            click: 'onBackBtnClick'
-        }
-    }, {
-        iconCls: 'x-fa fa-trash',
-        listeners: {
-            click: 'moveToTrash'
-        }
-    }, {
-        iconCls: 'x-fa fa-exclamation-circle'
-    }],
+            iconCls: 'x-fa fa-angle-left',
+            listeners: {
+                click: 'onBackBtnClick'
+            }
+        }, {
+            iconCls: 'x-fa fa-trash',
+            listeners: {
+                click: 'moveToTrash'
+            }
+        }, {
+            iconCls: 'x-fa fa-exclamation-circle'
+        }],
     bbar: {
         cls: 'single-mail-action-button',
         defaults: {
@@ -49,17 +49,17 @@ Ext.define('InboxManagement.view.inbox.Detail', {
         ]
     },
     items: [{
-        xtype: 'container',
-        height: 82,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'box',
-            cls: 'mail-body',
-            itemId: 'mailBody'
+            xtype: 'container',
+            height: 82,
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            items: [{
+                    xtype: 'box',
+                    cls: 'mail-body',
+                    itemId: 'mailBody'
+                }]
         }]
-    }]
 
 });

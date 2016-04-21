@@ -4,5 +4,4 @@ Ext.define('InboxManagement.view.trash.TrashModel', {
     data: {
         name: 'InboxManagement'
     }
-
 });

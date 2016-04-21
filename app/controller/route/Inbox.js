@@ -16,15 +16,10 @@
         },
         onInboxListRender: function() {
             var el = Ext.getCmp('inbox-content-panel');
-
             Ext.suspendLayouts();
 
             el.removeAll(true);
-            el.add(
-                Ext.apply({
-                    xtype: 'main-inbox-list'
-                })
-            );
+            el.add(Ext.apply({xtype: 'main-inbox-list'}));
 
             Ext.resumeLayouts(true);
         },
@@ -40,13 +35,13 @@
                         Ext.suspendLayouts();
                         el.removeAll(true);
                         el.add(
-                            Ext.apply({
-                                xtype: 'main-inbox-detail',
-                                id: 'main-inbox-detail'
-                            }, {
-                                record: record
-                            })
-                        );
+                                Ext.apply({
+                                    xtype: 'main-inbox-detail',
+                                    id: 'main-inbox-detail'
+                                }, {
+                                    record: record
+                                })
+                                );
                         Ext.resumeLayouts(true);
                         action.resume();
                     } else {

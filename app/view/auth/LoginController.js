@@ -6,9 +6,9 @@ Ext.define('InboxManagement.view.auth.LoginController', {
      * */
     onSubmit: function(btn) {
         var me = this,
-                win = btn.up('window'),
-                form = me.lookupReference('login_form'),
-                password;
+            win = btn.up('window'),
+            form = me.lookupReference('login_form'),
+            password;
 
         if (form.isValid()) {
             form.submit({
@@ -43,7 +43,16 @@ Ext.define('InboxManagement.view.auth.LoginController', {
     onFacebookLogin: function(btn) {
         var self = this;
         var win = btn.up('window');
-        window.FB.getLoginStatus(function(response) {
+        window.FB.login(function(response) {
+            if (response.authResponse) {
+                self.onFBLogin(win);
+            } else {
+
+            }
+        }, {
+            scope: 'email'
+        });
+        /*window.FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 self.onFBLogin(win);
             } else if (response.status === 'not_authorized') {
@@ -59,7 +68,7 @@ Ext.define('InboxManagement.view.auth.LoginController', {
             } else {
                 // the user isn't logged in to Facebook.
             }
-        });
+        });*/
 
     },
     /**
@@ -74,13 +83,13 @@ Ext.define('InboxManagement.view.auth.LoginController', {
         }, function(res) {
 
             InboxManagement.service.Auth.login(res).then(function(response, opts) {
-                InboxManagement.service.Authenticate.setCurrentUser(response);
-                win.close();
-                self.redirectTo('dashboard');
-            },
-                    function(response, opts) {
-                        Ext.toast(response.message);
-                    }
+                    InboxManagement.service.Authenticate.setCurrentUser(response);
+                    win.close();
+                    self.redirectTo('dashboard');
+                },
+                function(response, opts) {
+                    Ext.toast(response.message);
+                }
             );
         });
 
@@ -107,81 +116,81 @@ Ext.define('InboxManagement.view.auth.LoginController', {
                 bodyPadding: '0px 10px 10px 10px',
                 reference: 'register',
                 items: [{
-                        xtype: 'textfield',
-                        anchor: '100%',
-                        name: 'email',
-                        allowBlank: false,
-                        margin: '0 0 20 0',
-                        vtype: 'email',
-                        emptyText: 'Email',
-                        height: 50
-                    }, {
-                        xtype: 'textfield',
-                        anchor: '100%',
-                        inputType: 'password',
-                        name: 'password',
-                        allowBlank: false,
-                        margin: '0 0 20 0',
-                        emptyText: 'Password',
-                        height: 50
-                    }, {
-                        xtype: 'textfield',
-                        anchor: '100%',
-                        inputType: 'password',
-                        name: 'retype',
-                        allowBlank: false,
-                        margin: '0 0 20 0',
-                        emptyText: 'Retype Password',
-                        height: 50
-                    }, {
-                        xtype: 'textfield',
-                        anchor: '100%',
-                        name: 'firstName',
-                        allowBlank: false,
-                        margin: '0 0 20 0',
-                        emptyText: 'First Name',
-                        height: 50
-                    }, {
-                        xtype: 'textfield',
-                        anchor: '100%',
-                        name: 'lastName',
-                        allowBlank: false,
-                        margin: '0 0 20 0',
-                        emptyText: 'Last Name',
-                        height: 50
-                    }, {
-                        xtype: 'button',
-                        cls: 'btn btn-save btn-save-login',
-                        text: 'Save',
-                        width: '100%',
-                        height: 50,
-                        handler: 'onRegisterSave',
-                        iconCls: 'fa-angle-right',
-                        iconAlign: 'right'
-                    }, {
-                        title: 'OR',
-                        margin: '15 0 15 0',
-                        cls: 'line-or',
-                        height: 15
-                    }, {
-                        xtype: 'button',
-                        cls: 'btn btn-save btn-create-account',
-                        text: 'Cancel',
-                        width: '100%',
-                        height: 50,
-                        handler: function() {
-                            register.close();
-                        },
-                        iconCls: 'x-btn-icon-el x-btn-icon-el-default-small fa-angle-left',
-                        iconAlign: 'right'
-                    }]
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    name: 'email',
+                    allowBlank: false,
+                    margin: '0 0 20 0',
+                    vtype: 'email',
+                    emptyText: 'Email',
+                    height: 50
+                }, {
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    inputType: 'password',
+                    name: 'password',
+                    allowBlank: false,
+                    margin: '0 0 20 0',
+                    emptyText: 'Password',
+                    height: 50
+                }, {
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    inputType: 'password',
+                    name: 'retype',
+                    allowBlank: false,
+                    margin: '0 0 20 0',
+                    emptyText: 'Retype Password',
+                    height: 50
+                }, {
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    name: 'firstName',
+                    allowBlank: false,
+                    margin: '0 0 20 0',
+                    emptyText: 'First Name',
+                    height: 50
+                }, {
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    name: 'lastName',
+                    allowBlank: false,
+                    margin: '0 0 20 0',
+                    emptyText: 'Last Name',
+                    height: 50
+                }, {
+                    xtype: 'button',
+                    cls: 'btn btn-save btn-save-login',
+                    text: 'Save',
+                    width: '100%',
+                    height: 50,
+                    handler: 'onRegisterSave',
+                    iconCls: 'fa-angle-right',
+                    iconAlign: 'right'
+                }, {
+                    title: 'OR',
+                    margin: '15 0 15 0',
+                    cls: 'line-or',
+                    height: 15
+                }, {
+                    xtype: 'button',
+                    cls: 'btn btn-save btn-create-account',
+                    text: 'Cancel',
+                    width: '100%',
+                    height: 50,
+                    handler: function() {
+                        register.close();
+                    },
+                    iconCls: 'x-btn-icon-el x-btn-icon-el-default-small fa-angle-left',
+                    iconAlign: 'right'
+                }]
             }
         }).show();
     },
     onRegisterSave: function(btn) {
         var me = this,
-                win = btn.up('window'),
-                form = me.lookupReference('register');
+            win = btn.up('window'),
+            form = me.lookupReference('register');
 
         if (form.isValid()) {
             var formData = form.getForm().getValues();

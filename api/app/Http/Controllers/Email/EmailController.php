@@ -46,16 +46,16 @@ class EmailController extends Controller
         $start = $data['start'];
         $limit = $data['limit'];
 
-        $emails_inbox          = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->get();
-        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', 1)->skip($start)->take($limit)->get();
+        $emails_inbox          = Email::where('to_user_email', '=', $user_email)->where('to_deleted', '!=', true)->get();
+        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', true)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_inbox_paginate, 'total' => count($emails_inbox)]);
     }
 
     /**
-     * Simple get email detail by id
+     * @GET('/api/email/:id')
      * @param  int $id
-     * @return Collection
+     * @return Response
      */
     public function show($id)
     {
@@ -102,8 +102,8 @@ class EmailController extends Controller
         $start = $data['start'];
         $limit = $data['limit'];
 
-        $emails_sent          = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->get();
-        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', 1)->skip($start)->take($limit)->get();
+        $emails_sent          = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', true)->get();
+        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', true)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_sent_paginate, 'total' => count($emails_sent)]);
     }
@@ -263,8 +263,9 @@ class EmailController extends Controller
     }
 
     /**
-     * [getTrash description]
-     * @return [type] [description]
+     * @GET('/api/email/trash')
+     * @require Auth
+     * @return Response
      */
     public function getTrash(Request $request)
     {
@@ -286,9 +287,9 @@ class EmailController extends Controller
     }
 
     /**
-     * [moveToTrash description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
+     * @DELETE('/api/email/:id')
+     * @param  int $id
+     * @return Response
      */
     public function moveToTrash($id)
     {
@@ -303,8 +304,12 @@ class EmailController extends Controller
                 } else if ($email->from_user_email === $user->email) {
                     $email->from_deleted = true;
                 }
-                $email->save();
-                return response()->json($email, Response::HTTP_OK);
+                if ($email->save()) {
+                    return response()->json($email, Response::HTTP_OK);
+                } else {
+                    return response()->json(['message' => 'Something wrong!'], Response::HTTP_BAD_REQUEST);
+                }
+
             }
 
         } catch (ModelNotFoundException $e) {

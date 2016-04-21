@@ -297,4 +297,35 @@ class EmailController extends Controller
             return response()->json(['message' => 'Email not found'], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    /**
+     * PUT('/api/email/:id')
+     * @param  int $id
+     * @return Response
+     */
+    public function unTrash($id)
+    {
+        $user = Auth::user();
+        try {
+            $email = Email::with('fromUser', 'toUser')->findOrFail($id);
+            if (Gate::denies('unTrash', $email)) {
+                return response()->json(['message' => 'Access denies'], Response::HTTP_UNAUTHORIZED);
+            } else {
+                if ($email->to_user_email === $user->email) {
+                    $email->to_deleted = false;
+                } else if ($email->from_user_email === $user->email) {
+                    $email->from_deleted = false;
+                }
+                if ($email->save()) {
+                    return response()->json($email, Response::HTTP_OK);
+                } else {
+                    return response()->json(['message' => 'Something wrong!'], Response::HTTP_BAD_REQUEST);
+                }
+
+            }
+
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Email not found'], Response::HTTP_BAD_REQUEST);
+        }
+    }
 }

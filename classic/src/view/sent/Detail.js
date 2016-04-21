@@ -34,11 +34,10 @@ Ext.define('InboxManagement.view.sent.Detail', {
                 click: 'moveToTrash'
             }
         }, {
-            iconCls: 'x-fa fa-exclamation-circle'
-        }, {
-            iconCls: 'x-fa fa-print'
-        }, {
-            iconCls: 'x-fa fa-forward'
+            iconCls: 'x-fa fa-print',
+            listeners: {
+                click: 'printPage'
+            }
         }
     ],
     bbar: {
@@ -57,17 +56,24 @@ Ext.define('InboxManagement.view.sent.Detail', {
         ]
     },
     items: [{
-            xtype: 'container',
-            height: 82,
-            layout: {
-                type: 'hbox',
-                align: 'stretch'
-            },
-            items: [{
-                    xtype: 'box',
-                    cls: 'mail-body',
-                    itemId: 'mailBody'
-                }]
+        xtype: 'container',
+        layout: {
+            type: 'vbox',
+            align: 'stretch'
+        },
+        items: [{
+            xtype: 'box',
+            flex: 1,
+            itemId: 'fromName'
+        }, {
+            xtype: 'box',
+            flex: 1,
+            itemId: 'fromEmail'
+        }, {
+            xtype: 'box',
+            cls: 'mail-body',
+            itemId: 'mailBody'
         }]
+    }]
 
 });

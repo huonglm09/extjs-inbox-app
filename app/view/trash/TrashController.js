@@ -13,5 +13,32 @@ Ext.define('InboxManagement.view.trash.TrashController', {
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
         view.down('#mailBody').setHtml(record.get('mail_content'));
+    },
+    unTrash: function() {
+        var self = this;
+        var view = this.getView();
+        var record = view.record ? view.record : {};
+        record.save({
+            success: function() {
+                Ext.toast({
+                    html: 'Un trash',
+                    title: 'Notification',
+                    width: 200,
+                    align: 'tr'
+                });
+                self.redirectTo('trash');
+            },
+            failure: function() {
+                Ext.toast({
+                    html: 'Something wrong!',
+                    title: 'Notification',
+                    width: 200,
+                    align: 'tr'
+                });
+            }
+        });
+    },
+    printPage: function() {
+        window.print();
     }
 });

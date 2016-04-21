@@ -22,18 +22,18 @@ Ext.define('InboxManagement.view.inbox.List', {
     headerBorders: false,
     rowLines: false,
     columns: [{
-            text: 'Subject',
-            dataIndex: 'mail_subject',
-            flex: 1
-        }, {
-            text: 'From',
-            dataIndex: 'from_user',
-            flex: 1
-        }, {
-            text: 'Sent Date',
-            dataIndex: 'created_at',
-            flex: 1
-        }],
+        text: 'Subject',
+        dataIndex: 'mail_subject',
+        flex: 1
+    }, {
+        text: 'From',
+        dataIndex: 'from_user',
+        flex: 1
+    }, {
+        text: 'Received Date',
+        dataIndex: 'created_at',
+        flex: 1
+    }],
     bbar: {
         xtype: 'pagingtoolbar',
         pageSize: 20,

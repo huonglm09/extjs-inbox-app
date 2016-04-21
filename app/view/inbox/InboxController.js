@@ -13,6 +13,8 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
     },
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
+        view.down('#toName').setHtml('To: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName);
+        view.down('#toEmail').setHtml('Email: ' + record.get('to_user').email);
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
     moveToTrash: function() {
@@ -39,5 +41,8 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
             }
         });
 
+    },
+    printPage: function() {
+        window.print();
     }
 });

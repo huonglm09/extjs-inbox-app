@@ -19,25 +19,22 @@ Ext.define('InboxManagement.view.trash.Detail', {
     listeners: {
         beforerender: 'beforeDetailsRender'
     },
-    tbar: [
-        // Default item type for toolbar is button, thus we can skip it's definition in
-        // the array items
-        {
-            iconCls: 'x-fa fa-angle-left',
-            listeners: {
-                click: 'onBackBtnClick'
-            }
-        }, {
-            iconCls: 'x-fa fa-trash',
-            listeners: {
-                click: 'moveToTrash'
-            }
-        }, {
-            iconCls: 'x-fa fa-exclamation-circle'
-        }, {
-            iconCls: 'x-fa fa-print'
+    tbar: [{
+        iconCls: 'x-fa fa-angle-left',
+        listeners: {
+            click: 'onBackBtnClick'
         }
-    ],
+    }, {
+        iconCls: 'x-fa fa-minus',
+        listeners: {
+            click: 'unTrash'
+        }
+    }, {
+        iconCls: 'x-fa fa-print',
+        listeners: {
+            click: 'printPage'
+        }
+    }],
     bbar: {
         cls: 'single-mail-action-button',
         defaults: {
@@ -54,17 +51,17 @@ Ext.define('InboxManagement.view.trash.Detail', {
         ]
     },
     items: [{
-            xtype: 'container',
-            height: 82,
-            layout: {
-                type: 'hbox',
-                align: 'stretch'
-            },
-            items: [{
-                    xtype: 'box',
-                    cls: 'mail-body',
-                    itemId: 'mailBody'
-                }]
+        xtype: 'container',
+        height: 82,
+        layout: {
+            type: 'hbox',
+            align: 'stretch'
+        },
+        items: [{
+            xtype: 'box',
+            cls: 'mail-body',
+            itemId: 'mailBody'
         }]
+    }]
 
 });

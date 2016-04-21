@@ -42,7 +42,7 @@ Ext.define('InboxManagement.view.trash.Trash', {
         dataIndex: 'to_user',
         flex: 1
     }, {
-        text: 'Sent Date',
+        text: 'Date Create',
         dataIndex: 'created_at',
         flex: 1
     }],

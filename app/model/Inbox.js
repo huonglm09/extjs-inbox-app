@@ -31,10 +31,9 @@
         }],
         proxy: {
             type: 'rest',
-            url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + InboxManagement.service.Authenticate.getCurrentUser().email || '',
+            url: InboxManagement.Global.getApiUrl() + 'email/inbox',
             headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                'Accept': 'application/json'
             },
             reader: {
                 rootProperty: function(data) {

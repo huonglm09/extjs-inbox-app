@@ -35,19 +35,18 @@ class EmailController extends Controller
 
     /*
      * Get List Email Inbox By User Email
-     * @GET("/api/email-inbox/{user_email}")
-     * @Param : ({'user_email'})
+     * @GET("/api/email/inbox")
      * @Version ("v1")
      * */
 
-    public function getEmailsInbox($user_email, Request $request)
+    public function getEmailsInbox(Request $request)
     {
-        $data  = $request->all();
-        $start = $data['start'];
-        $limit = $data['limit'];
+        $user  = Auth::user();
+        $start = $request->start;
+        $limit = $request->limit;
 
-        $emails_inbox          = Email::where('to_user_email', '=', $user_email)->where('to_deleted', '!=', true)->get();
-        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->where('to_user_email', '=', $user_email)->where('to_deleted', '!=', true)->skip($start)->take($limit)->get();
+        $emails_inbox          = Email::whereToUserEmail($user->email)->whereToDeleted(false)->get();
+        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->whereToUserEmail($user->email)->whereToDeleted(false)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_inbox_paginate, 'total' => count($emails_inbox)]);
     }
@@ -73,37 +72,19 @@ class EmailController extends Controller
     }
 
     /*
-     * Get Email detail
-     * @GET("/api/email-detail/{user_email}/{id}")
-     * @Param : ({'user_email','id'})
-     * @Version ("v1")
-     * */
-
-    public function getEmailsDetail($user_email, $id)
-    {
-        $email_detail = Email::with('fromUser')->with('toUser')->where('id', '=', $id)->get();
-        if (!empty($email_detail)) {
-            return response()->json(['emails' => $email_detail, 'status' => 1]);
-        } else {
-            return response()->json(['status' => 0]);
-        }
-    }
-
-    /*
      * Get List Email Sent By User Email
-     * @GET("/api/email-sent/{user_email}")
-     * @Param : ({'user_email'})
+     * @GET("/api/email/sent")
      * @Version ("v1")
      * */
 
-    public function getEmailSent($user_email, Request $request)
+    public function getEmailSent(Request $request)
     {
-        $data  = $request->all();
-        $start = $data['start'];
-        $limit = $data['limit'];
+        $user  = Auth::user();
+        $start = $request->start;
+        $limit = $request->limit;
 
-        $emails_sent          = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', true)->get();
-        $emails_sent_paginate = Email::where('from_user_email', '=', $user_email)->where('from_deleted', '!=', true)->skip($start)->take($limit)->get();
+        $emails_sent          = Email::whereFromUserEmail($user->email)->whereFromDeleted(false)->get();
+        $emails_sent_paginate = Email::whereFromUserEmail($user->email)->whereFromDeleted(false)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_sent_paginate, 'total' => count($emails_sent)]);
     }
@@ -209,32 +190,32 @@ class EmailController extends Controller
 
     /*
      * pieChart : Inbox - sent Email
-     * @POST("/api/pie-charts}")
-     * @Param ({email_id})
+     * @POST("/api/pie-charts")
      * @Versions({"v1"})
      */
 
-    public function pieChart($email)
+    public function pieChart(Request $request)
     {
-        $emails_inbox = Email::where('to_user_email', '=', $email)->where('to_deleted', '=', 0)->count();
-        $emails_sent  = Email::where('from_user_email', '=', $email)->where('from_deleted', '=', 0)->count();
+        $user         = Auth::user();
+        $emails_inbox = Email::whereToUserEmail($user->email)->whereToDeleted(false)->count();
+        $emails_sent  = Email::whereFromUserEmail($user->email)->whereFromDeleted(false)->count();
 
         return response()->json(['success' => true, 'data' => [['name' => 'Received', 'value' => $emails_inbox, 'total' => $emails_inbox + $emails_sent], ['name' => 'Sent', 'value' => $emails_sent, 'total' => $emails_inbox + $emails_sent]]]);
     }
 
     /*
      * pieChart : Inbox - sent Email
-     * @POST("/api/pie-charts}")
-     * @Param ({email_id})
+     * @POST("/api/pie-charts/sent")
      * @Versions({"v1"})
      */
 
-    public function pieChartSent($email)
+    public function pieChartSent()
     {
+        $user        = Auth::user();
         $emails_sent = DB::table('emails')
             ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
             ->join('users', 'emails.to_user_email', '=', 'users.email')
-            ->where('from_user_email', '=', $email)
+            ->where('from_user_email', '=', $user->email)
             ->where('from_deleted', '=', 0)
             ->groupBy('to_user_email')
             ->get();
@@ -244,17 +225,17 @@ class EmailController extends Controller
 
     /*
      * pieChart : Inbox - sent Email
-     * @POST("/api/pie-charts}")
-     * @Param ({email_id})
+     * @GET("/api/pie-charts/inbox")
      * @Versions({"v1"})
      */
 
-    public function pieChartInbox($email)
+    public function pieChartInbox()
     {
+        $user        = Auth::user();
         $emails_sent = DB::table('emails')
             ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
             ->join('users', 'emails.from_user_email', '=', 'users.email')
-            ->where('to_user_email', '=', $email)
+            ->where('to_user_email', '=', $user->email)
             ->where('from_deleted', '=', 0)
             ->groupBy('from_user_email')
             ->get();

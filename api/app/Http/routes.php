@@ -56,23 +56,23 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['namespace' => 'Email'], function () {
             Route::any('write-email', 'EmailController@sentMailToOther');
-            Route::get('email-sent/{user_email}', 'EmailController@getEmailSent');
-            Route::get('email-inbox/{user_email}', 'EmailController@getEmailsInbox');
-            Route::get('email-detail/{user_email}/{id}', 'EmailController@getEmailsDetail');
-            Route::get('email-inbox/{user_email}/{id}', 'EmailController@getEmailsDetail');
 
             Route::group(['prefix' => 'email'], function () {
+                Route::get('inbox', 'EmailController@getEmailsInbox');
+                Route::get('sent', 'EmailController@getEmailSent');
                 Route::get('trash', 'EmailController@getTrash');
                 Route::get('{id}', 'EmailController@show');
                 Route::delete('{id}', 'EmailController@moveToTrash');
             });
+
+            Route::group(['prefix' => 'pie-charts'], function () {
+                Route::get('/', 'EmailController@pieChart');
+                Route::get('inbox', 'EmailController@pieChartInbox');
+                Route::get('sent', 'EmailController@pieChartSent');
+            });
         });
     });
 
-    // chart email inbox-send
-    Route::any('pie-charts/{user_email}', 'Email\EmailController@pieChart');
-    Route::any('pie-charts/inbox/{user_email}', 'Email\EmailController@pieChartInbox');
-    Route::any('pie-charts/sent/{user_email}', 'Email\EmailController@pieChartSent');
     Route::any('emails/delete', 'Email\EmailController@deleteEmail');
 
     /* User */

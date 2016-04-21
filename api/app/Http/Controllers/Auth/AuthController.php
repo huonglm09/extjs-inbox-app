@@ -86,7 +86,7 @@ use AuthenticatesAndRegistersUsers;
         // Attempt to log in
         if (Auth::attempt($post_data, $remember)) {
             // If login is successful return true and user data
-            return response(['success' => true, 'loggedin' => true, 'data' => Auth::user()], 200);
+            return response()->json(['success' => true, 'data' => Auth::user()]);
         } else {
             // Login attempt failed so check if the user exists
             $user = User::whereEmail($post_data['email'])->first();
@@ -114,16 +114,10 @@ use AuthenticatesAndRegistersUsers;
             'lastName' => isset($params['lastName']) ? $params['lastName'] : null
         ];
 
-
         $validator = $this->validator($post_data);
 
-        //var_dump($validator->errors()->count(), $validator->errors()->all());die();
-
         if ($validator->errors()->count() > 0) {
-            return response(
-                    [
-                'message' => $validator->errors()->all()
-                    ], 500);
+            return response(['success' => false, 'message' => $validator->errors()->all()], 500);
         }
 
         // Try to save the user
@@ -133,30 +127,22 @@ use AuthenticatesAndRegistersUsers;
             // The email field in the users table has a unique index so it will throw an error
             // if there is a duplicate
             if (preg_match('/Duplicate entry/', $e->getMessage())) {
-                return response([
-                    'message' => 'User Exists'
-                        ], 400);
+                return response(['success' => false, 'message' => 'User Exists'], 400);
             } else {
-                return response([
-                    'message' => $e->getMessage()
-                        ], 500);
+                return response(['success' => false, 'message' => $e->getMessage()], 500);
             }
         }
         // If the user create was a success return Accepted and loggedin false.
         if ($user->exists) {
-            return response([
-                'loggedin' => false
-                    ], 201);
+            return response(['success' => true, 'loggedin' => false, 'message' => 'Your account has been successfully created'], 201);
         } else {
-            return response([
-                'message' => 'Server error'
-                    ], 500);
+            return response(['success' => false, 'message' => 'Server error'], 500);
         }
     }
 
     public function logout() {
         Auth::logout();
-        if (!Auth::check()) {            
+        if (!Auth::check()) {
             return response(['success' => true, 'loggedin' => false], 200);
         }
     }

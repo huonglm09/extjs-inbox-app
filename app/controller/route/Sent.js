@@ -20,10 +20,10 @@
 
             el.removeAll(true);
             el.add(
-                Ext.apply({
-                    xtype: 'main-sent-list'
-                })
-            );
+                    Ext.apply({
+                        xtype: 'main-sent-list'
+                    })
+                    );
 
             Ext.resumeLayouts(true);
         },
@@ -40,12 +40,12 @@
 
                         el.removeAll(true);
                         el.add(
-                            Ext.apply({
-                                xtype: 'main-sent-detail'
-                            }, {
-                                record: record
-                            })
-                        );
+                                Ext.apply({
+                                    xtype: 'main-sent-detail'
+                                }, {
+                                    record: record
+                                })
+                                );
 
                         Ext.resumeLayouts(true);
 

@@ -8,27 +8,27 @@ Ext.define('InboxManagement.view.write.WriteController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.write',
     onDiscard: function() {
-        var me = this,                                      
-            form = me.lookupReference('write_form');       
-            form.reset();
-            
+        var me = this,
+                form = me.lookupReference('write_form');
+        form.reset();
+
         this.redirectTo('inbox');
     },
-    onWrite: function(btn) {        
-        var me = this,                                      
-            form = me.lookupReference('write_form');                    
-        
-        if (form.isValid()) {                                 
+    onWrite: function(btn) {
+        var me = this,
+                form = me.lookupReference('write_form');
+
+        if (form.isValid()) {
             form.submit({
-                url: InboxManagement.Global.getApiUrl() + 'write-email',               
+                url: InboxManagement.Global.getApiUrl() + 'write-email',
                 waitMsg: 'Loading...',
                 method: 'POST',
-                success: function(form, action) {                    
-                    var res = Ext.decode(action.response.responseText);             
+                success: function(form, action) {
+                    var res = Ext.decode(action.response.responseText);
                     form.reset();
                     me.redirectTo('sent');
                 }, failure: function(form, action) {
-                    var res = Ext.decode(action.response.responseText);  
+                    var res = Ext.decode(action.response.responseText);
                     Ext.MessageBox.show({
                         title: 'Compose',
                         msg: 'Please try again',
@@ -36,7 +36,7 @@ Ext.define('InboxManagement.view.write.WriteController', {
                         width: 200,
                         closable: false,
                         buttons: Ext.MessageBox.OK
-                    }); 
+                    });
                 }
             });
         }

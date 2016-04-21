@@ -6,8 +6,8 @@ Ext.define('InboxManagement.store.Profile', {
     ],
     model: 'InboxManagement.model.Profile',
     autoLoad: true,
-    proxy: {        
-        type: 'ajax',        
+    proxy: {
+        type: 'ajax',
         api: {
             read: InboxManagement.Global.getApiUrl() + 'auth/profile'
         },

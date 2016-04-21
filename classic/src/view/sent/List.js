@@ -24,22 +24,25 @@ Ext.define('InboxManagement.view.sent.List', {
     columns: [{
             text: 'Subject',
             dataIndex: 'mail_subject',
-            width: 200
+            flex: 1
         }, {
             text: 'To',
             dataIndex: 'to_user_email',
             flex: 1
-        }
-        , {
-            text: 'Content',
-            dataIndex: 'mail_content',
-            flex: 1
-        }
-        , {
-            text: 'Created at',
+        }, {
+            text: 'Received Date',
             dataIndex: 'created_at',
             flex: 1
         }],
+    bbar: {
+        xtype: 'pagingtoolbar',
+        pageSize: 20,
+        store: {
+            type: 'sent'
+        },
+        displayInfo: true,
+        plugins: new Ext.ux.ProgressBarPager()
+    },
     listeners: {
         cellclick: 'onItemSelected',
         scope: 'controller'

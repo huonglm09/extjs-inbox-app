@@ -26,7 +26,7 @@ Ext.define('InboxManagement.controller.Routes', {
         refs: {
             tabPanel: '#main-tabs'
         },
-        routes: {            
+        routes: {
             // Dashboard route
             'dashboard': {
                 before: 'loggedIn',
@@ -56,7 +56,7 @@ Ext.define('InboxManagement.controller.Routes', {
             'trash': {
                 before: 'loggedIn',
                 action: 'onTrash'
-            },            
+            },
             // Login route
             'login': {
                 before: 'beforeLogin',
@@ -80,6 +80,16 @@ Ext.define('InboxManagement.controller.Routes', {
         this.redirectTo('dashboard', false);
     },
     /*
+     * Render panel to container and load data again.
+     * */
+    onRenderContainer: function(container, panelApply) {
+        var el = Ext.getCmp(container);
+        Ext.suspendLayouts();
+        el.removeAll(true);
+        el.add(Ext.apply({xtype: panelApply}));
+        Ext.resumeLayouts(true);
+    },
+    /*
      * Login route method.  Loads the login form
      * */
     onLogin: function() {
@@ -99,6 +109,7 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onWrite: function() {
         this.changeTab('write');
+        this.onRenderContainer('write-main', 'write');
     },
     /*
      * Sent route method
@@ -117,12 +128,14 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     onProfile: function() {
         this.changeTab('profile');
+        this.onRenderContainer('profile-main', 'profile');
     },
     /*
      * Dashboard route method
      * */
     onDashboard: function() {
         this.changeTab('dashboard');
+        this.onRenderContainer('dashboard-main', 'dashboard');
     },
     /*
      * Logout route method
@@ -140,7 +153,7 @@ Ext.define('InboxManagement.controller.Routes', {
             InboxManagement.Global.setCurrentView('app-main');
         }
         var tabPanel = this.getTabPanel(),
-            child;
+                child;
         if (typeof tabPanel !== "undefined") {
             child = tabPanel.getComponent(tab);
             tabPanel.setActiveTab(child);
@@ -151,8 +164,8 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     loggedIn: function() {
         var me = this,
-            args = Ext.Array.slice(arguments),
-            action = args.pop();
+                args = Ext.Array.slice(arguments),
+                action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
             method: 'GET',
@@ -169,8 +182,8 @@ Ext.define('InboxManagement.controller.Routes', {
     },
     beforeLogin: function() {
         var me = this,
-            args = Ext.Array.slice(arguments),
-            action = args.pop();
+                args = Ext.Array.slice(arguments),
+                action = args.pop();
         Ext.Ajax.request({
             url: InboxManagement.Global.getApiUrl() + 'auth/loggedin',
             method: 'GET',
@@ -195,13 +208,13 @@ Ext.define('InboxManagement.controller.Routes', {
      * */
     closeWindows: function() {
         var args = Ext.Array.slice(arguments), // Get a reference to the route action
-            action = args.pop(); // Get a reference to the route action
+                action = args.pop(); // Get a reference to the route action
         Ext.WindowMgr.each(
-            function(win) {
-                if (win.isVisible()) {
-                    win.close(true);
+                function(win) {
+                    if (win.isVisible()) {
+                        win.close(true);
+                    }
                 }
-            }
         );
         action.resume();
     }

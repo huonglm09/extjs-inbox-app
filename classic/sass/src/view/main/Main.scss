@@ -274,13 +274,15 @@ $ui-header-noborder-adjust: false
 .fa-angle-right:before,
 .fa-facebook-f:before, 
 .fa-facebook:before,
-.fa-user-plus:before {
+.fa-user-plus:before,
+.fa-angle-left:before {
     font-family: FontAwesome !important;    
 }
 .login-form .fa-angle-right:before,
 .login-form .fa-facebook-f:before, 
 .login-form .fa-facebook:before,
-.login-form .fa-user-plus:before {
+.login-form .fa-user-plus:before,
+.login-form .fa-angle-left:before {
     font-size: 24px !important;    
     position: absolute !important;    
     right: 10px !important;    
@@ -316,4 +318,7 @@ $ui-header-noborder-adjust: false
 }
 .border-zero {
     border: none !important;
+}
+.x-component, .x-container {
+    position: inherit !important;
 }

@@ -8,24 +8,18 @@ Ext.define('InboxManagement.view.sent.Detail', {
         'Ext.layout.container.Anchor',
         'Ext.layout.container.HBox'
     ],
-
     viewModel: {
         type: 'sent-detail'
     },
-
     cls: 'shadow',
-
     bodyPadding: 10,
-
     layout: {
         type: 'anchor',
         anchor: '100%'
     },
-
     listeners: {
         beforerender: 'beforeDetailsRender'
     },
-
     tbar: [
         // Default item type for toolbar is button, thus we can skip it's definition in
         // the array items
@@ -44,7 +38,6 @@ Ext.define('InboxManagement.view.sent.Detail', {
             iconCls: 'x-fa fa-forward'
         }
     ],
-
     bbar: {
         cls: 'single-mail-action-button',
         defaults: {
@@ -60,19 +53,18 @@ Ext.define('InboxManagement.view.sent.Detail', {
             }
         ]
     },
-
     items: [{
-        xtype: 'container',
-        height: 82,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'box',
-            cls: 'mail-body',
-            itemId: 'mailBody'
+            xtype: 'container',
+            height: 82,
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            items: [{
+                    xtype: 'box',
+                    cls: 'mail-body',
+                    itemId: 'mailBody'
+                }]
         }]
-    }]
 
 });

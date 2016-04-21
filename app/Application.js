@@ -24,22 +24,21 @@ Ext.define('InboxManagement.Application', {
         'route.Inbox',
         'route.Sent'
     ],
-
     launch: function() {
 
         InboxManagement.interceptor.Authenticate.init();
 
         Ext.create('Ext.container.Viewport', {
             /*items: [{
-                xtype: 'panel',
-                html: '<center><div id="fblogin" class="fb-login-button">Login with Facebook</div></center>'
-            }],*/
+             xtype: 'panel',
+             html: '<center><div id="fblogin" class="fb-login-button">Login with Facebook</div></center>'
+             }],*/
             listeners: {
                 render: function(obj, eOpts) {
                     window.fbAsyncInit = Ext.bind(this.onFacebookInit, this);
                     (function(d) {
                         var js, id = 'facebook-jssdk',
-                            ref = d.getElementsByTagName('script')[0];
+                                ref = d.getElementsByTagName('script')[0];
                         if (d.getElementById(id)) {
                             return;
                         }
@@ -52,10 +51,9 @@ Ext.define('InboxManagement.Application', {
                 }
             },
             onFacebookInit: function() {
-                console.log('onFacebookInit');
                 var me = this;
                 FB.init({
-                    appId: '1528206814155438',
+                    appId: '223670991356420',
                     status: true,
                     xfbml: true,
                     version: 'v2.6'
@@ -64,9 +62,7 @@ Ext.define('InboxManagement.Application', {
             },
             onFacebookAuthResponseChange: function(response) {
                 this.down('panel').setVisible(false);
-                alert("Success fully Logged in");
             }
         });
-
     }
 });

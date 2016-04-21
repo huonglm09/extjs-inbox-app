@@ -22,11 +22,11 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                         closable: false,
                         buttons: Ext.MessageBox.OK
                     });
-                    
+
                     return false;
-                } 
-            } 
-            
+                }
+            }
+
             form.submit({
                 url: InboxManagement.Global.getApiUrl() + 'users/update/' + formData.email,
                 waitMsg: 'Loading...',
@@ -35,7 +35,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                     var res = Ext.decode(action.response.responseText);
                     Ext.MessageBox.show({
                         title: 'Save Profile',
-                        msg: res.message,                        
+                        msg: res.message,
                         width: 400,
                         closable: false,
                         buttons: Ext.MessageBox.OK
@@ -52,7 +52,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                         buttons: Ext.MessageBox.OK
                     });
                 }
-            });                   
+            });
         }
     }
 });

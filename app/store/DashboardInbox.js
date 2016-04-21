@@ -1,15 +1,15 @@
-Ext.define('InboxManagement.store.Dashboard', {
+Ext.define('InboxManagement.store.DashboardInbox', {
     extend: 'Ext.data.Store',
-    alias: 'store.dashboard',
+    alias: 'store.dashboardinbox',
     requires: [
         'InboxManagement.Global'
     ],
-    model: 'InboxManagement.model.Dashboard',
+    model: 'InboxManagement.model.DashboardInbox',
     autoLoad: true,
     proxy: {
         type: 'ajax',
         api: {
-            read: InboxManagement.Global.getApiUrl() + 'pie-charts/' + InboxManagement.service.Authenticate.getCurrentUser().email
+            read: InboxManagement.Global.getApiUrl() + 'pie-charts/inbox/' + InboxManagement.service.Authenticate.getCurrentUser().email
         },
         reader: {
             type: 'json',

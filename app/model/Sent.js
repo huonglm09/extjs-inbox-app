@@ -14,6 +14,12 @@ Ext.define('InboxManagement.model.Sent', {
             return value;
         }
     }, {
+        name: 'to_user',
+        type: 'auto',
+        convert: function(value) {
+            return value.firstName + ' ' + value.lastName;
+        }
+    }, {
         name: 'mail_subject',
         type: 'string'
     }, {

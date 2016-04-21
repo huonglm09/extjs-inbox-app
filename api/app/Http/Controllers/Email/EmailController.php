@@ -46,7 +46,7 @@ class EmailController extends Controller
         $limit = $request->limit;
 
         $emails_inbox          = Email::whereToUserEmail($user->email)->whereToDeleted(false)->get();
-        $emails_inbox_paginate = Email::with('fromUser')->with('toUser')->whereToUserEmail($user->email)->whereToDeleted(false)->skip($start)->take($limit)->get();
+        $emails_inbox_paginate = Email::with('fromUser', 'toUser')->whereToUserEmail($user->email)->whereToDeleted(false)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_inbox_paginate, 'total' => count($emails_inbox)]);
     }
@@ -59,7 +59,7 @@ class EmailController extends Controller
     public function show($id)
     {
         try {
-            $email = Email::with('fromUser')->with('toUser')->findOrFail($id);
+            $email = Email::with('fromUser', 'toUser')->findOrFail($id);
             if (Gate::denies('show', $email)) {
                 return response()->json(['message' => 'Access denies'], Response::HTTP_UNAUTHORIZED);
             } else {
@@ -84,7 +84,7 @@ class EmailController extends Controller
         $limit = $request->limit;
 
         $emails_sent          = Email::whereFromUserEmail($user->email)->whereFromDeleted(false)->get();
-        $emails_sent_paginate = Email::whereFromUserEmail($user->email)->whereFromDeleted(false)->skip($start)->take($limit)->get();
+        $emails_sent_paginate = Email::with('fromUser', 'toUser')->whereFromUserEmail($user->email)->whereFromDeleted(false)->skip($start)->take($limit)->get();
 
         return response()->json(['emails' => $emails_sent_paginate, 'total' => count($emails_sent)]);
     }
@@ -261,7 +261,7 @@ class EmailController extends Controller
                     ->whereToUserEmail($user->email)
                     ->whereToDeleted(true);
             })
-            ->with(['fromUser', 'toUser'])
+            ->with('fromUser', 'toUser')
             ->paginate($request->limit ? $request->limit : 15);
 
         return response()->json($data);
@@ -276,7 +276,7 @@ class EmailController extends Controller
     {
         $user = Auth::user();
         try {
-            $email = Email::with('fromUser')->with('toUser')->findOrFail($id);
+            $email = Email::with('fromUser', 'toUser')->findOrFail($id);
             if (Gate::denies('moveToTrash', $email)) {
                 return response()->json(['message' => 'Access denies'], Response::HTTP_UNAUTHORIZED);
             } else {

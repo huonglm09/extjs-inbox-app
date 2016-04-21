@@ -23,6 +23,12 @@
                 return value.firstName + ' ' + value.lastName;
             }
         }, {
+            name: 'to_user',
+            type: 'auto',
+            convert: function(value) {
+                return value.firstName + ' ' + value.lastName;
+            }
+        }, {
             name: 'created_at',
             type: 'date',
             convert: function(value) {

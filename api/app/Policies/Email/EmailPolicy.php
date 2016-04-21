@@ -44,4 +44,16 @@ class EmailPolicy
         return ($user->email === $email->from_user_email || $user->email === $email->to_user_email);
 
     }
+
+    /**
+     * [moveToTrash description]
+     * @param  User   $user  [description]
+     * @param  Email  $email [description]
+     * @return [type]        [description]
+     */
+    public function moveToTrash(User $user, Email $email)
+    {
+        return ($user->email === $email->from_user_email || $user->email === $email->to_user_email);
+
+    }
 }

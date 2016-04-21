@@ -22,7 +22,8 @@ Ext.define('InboxManagement.Application', {
     controllers: [
         'Routes',
         'route.Inbox',
-        'route.Sent'
+        'route.Sent',
+        'route.Trash'
     ],
     launch: function() {
 
@@ -38,7 +39,7 @@ Ext.define('InboxManagement.Application', {
                     window.fbAsyncInit = Ext.bind(this.onFacebookInit, this);
                     (function(d) {
                         var js, id = 'facebook-jssdk',
-                                ref = d.getElementsByTagName('script')[0];
+                            ref = d.getElementsByTagName('script')[0];
                         if (d.getElementById(id)) {
                             return;
                         }

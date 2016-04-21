@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    Ext.define('InboxManagement.model.Inbox', {
+    Ext.define('InboxManagement.model.Trash', {
         extend: 'InboxManagement.model.Base',
         fields: [{
             name: 'id',
@@ -31,14 +31,13 @@
         }],
         proxy: {
             type: 'rest',
-            url: InboxManagement.Global.getApiUrl() + 'email-inbox/' + InboxManagement.service.Authenticate.getCurrentUser().email || '',
+            url: InboxManagement.Global.getApiUrl() + 'email/trash',
             headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                'Accept': 'application/json'
             },
             reader: {
                 rootProperty: function(data) {
-                    return data.emails || data;
+                    return data.data || data;
                 },
                 totalProperty: 'total'
             }

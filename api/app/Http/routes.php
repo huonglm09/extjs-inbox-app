@@ -58,9 +58,14 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['namespace' => 'Email'], function () {
-            Route::get('email/{id}', 'EmailController@show');
             Route::get('email-detail/{user_email}/{id}', 'EmailController@getEmailsDetail');
             Route::get('email-inbox/{user_email}/{id}', 'EmailController@getEmailsDetail');
+
+            Route::group(['prefix' => 'email'], function () {
+                Route::get('trash', 'EmailController@getTrash');
+                Route::get('{id}', 'EmailController@show');
+                Route::delete('{id}', 'EmailController@moveToTrash');
+            });
         });
     });
 

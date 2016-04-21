@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Email;
 
 use App\Http\Controllers\Controller;
 use App\Models\Email as Email;
+use Auth;
 use DB;
 use Gate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -261,4 +262,53 @@ class EmailController extends Controller
         return response()->json(['success' => true, 'data' => $emails_sent]);
     }
 
+    /**
+     * [getTrash description]
+     * @return [type] [description]
+     */
+    public function getTrash(Request $request)
+    {
+        $user = Auth::user();
+        $data = Email::where(function ($query) use ($user) {
+            return $query
+                ->whereFromUserEmail($user->email)
+                ->whereFromDeleted(true);
+        })
+            ->orWhere(function ($query) use ($user) {
+                return $query
+                    ->whereToUserEmail($user->email)
+                    ->whereToDeleted(true);
+            })
+            ->with(['fromUser', 'toUser'])
+            ->paginate($request->limit ? $request->limit : 15);
+
+        return response()->json($data);
+    }
+
+    /**
+     * [moveToTrash description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function moveToTrash($id)
+    {
+        $user = Auth::user();
+        try {
+            $email = Email::with('fromUser')->with('toUser')->findOrFail($id);
+            if (Gate::denies('moveToTrash', $email)) {
+                return response()->json(['message' => 'Access denies'], Response::HTTP_UNAUTHORIZED);
+            } else {
+                if ($email->to_user_email === $user->email) {
+                    $email->to_deleted = true;
+                } else if ($email->from_user_email === $user->email) {
+                    $email->from_deleted = true;
+                }
+                $email->save();
+                return response()->json($email, Response::HTTP_OK);
+            }
+
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Email not found'], Response::HTTP_BAD_REQUEST);
+        }
+    }
 }

@@ -78,55 +78,56 @@ Ext.define('InboxManagement.view.main.Main', {
         tabchange: 'onChangeTab'
     },
     items: [{
-            title: 'Dashboard',
-            id: 'dashboard',
-            iconCls: 'fa-desktop',
-            items: [{
-                    xtype: 'main-dashboard'
-                }]
-        }, {
-            title: 'Profile',
-            id: 'profile',
-            iconCls: 'fa-user',
-            items: [{
-                    xtype: 'main-profile'
-                }]
-        }, {
-            title: 'Inbox',
-            id: 'inbox',
-            iconCls: 'fa-inbox',
-            items: [{
-                    xtype: 'main-inbox'
-                }]
-        }, {
-            title: 'Write',
-            id: 'write',
-            iconCls: 'fa-edit',
-            items: [{
-                    xtype: 'main-write'
-                }]
-        }, {
-            title: 'Sent',
-            id: 'sent',
-            iconCls: 'fa-send',
-            items: [{
-                    xtype: 'main-sent'
-                }]
-        }, {
-            title: 'Trash',
-            id: 'trash',
-            iconCls: 'fa-trash-o',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        }, {
-            title: 'Logout',
-            id: 'logout',
-            iconCls: 'fa-sign-out',
-            bind: {
-                html: '{loremIpsum}'
-            }
+        title: 'Dashboard',
+        id: 'dashboard',
+        iconCls: 'fa-desktop',
+        items: [{
+            xtype: 'main-dashboard'
         }]
+    }, {
+        title: 'Profile',
+        id: 'profile',
+        iconCls: 'fa-user',
+        items: [{
+            xtype: 'main-profile'
+        }]
+    }, {
+        title: 'Inbox',
+        id: 'inbox',
+        iconCls: 'fa-inbox',
+        items: [{
+            xtype: 'main-inbox'
+        }]
+    }, {
+        title: 'Write',
+        id: 'write',
+        iconCls: 'fa-edit',
+        items: [{
+            xtype: 'main-write'
+        }]
+    }, {
+        title: 'Sent',
+        id: 'sent',
+        iconCls: 'fa-send',
+        items: [{
+            xtype: 'main-sent'
+        }]
+    }, {
+        title: 'Trash',
+        id: 'trash',
+        iconCls: 'fa-trash-o',
+        items: [{
+            xtype: 'container',
+            id: 'trash-content-panel',
+            margin: '0 0 20 0',
+            flex: 1
+        }]
+    }, {
+        title: 'Logout',
+        id: 'logout',
+        iconCls: 'fa-sign-out',
+        bind: {
+            html: '{loremIpsum}'
+        }
+    }]
 });
-
-

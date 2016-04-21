@@ -6,7 +6,6 @@
             localStorage.setItem('user', Ext.encode(user));
         },
         getCurrentUser: function() {
-            console.log(1);
             if (localStorage.getItem('user')) {
                 return Ext.decode(localStorage.getItem('user'));
             } else {

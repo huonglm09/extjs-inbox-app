@@ -17,7 +17,7 @@ class CreateEmailsTable extends Migration
             $table->string('from_user_email', 255);
             $table->string('to_user_email', 255);
             $table->string('mail_subject');
-            $table->string('mail_content');
+            $table->longText('mail_content');
             $table->boolean('from_deleted')->default(false);
             $table->boolean('to_deleted')->default(false);
             $table->timestamps();

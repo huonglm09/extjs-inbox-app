@@ -21,6 +21,19 @@ class EmailPolicy
     }
 
     /**
+     * [before description]
+     * @param  User   $user    [description]
+     * @param  [type] $ability [description]
+     * @return [type]          [description]
+     */
+    public function before(User $user, $ability)
+    {
+        if ($user->isSuperAdmin()) {
+            return true;
+        }
+    }
+
+    /**
      * [show description]
      * @param  User   $user  [description]
      * @param  Email  $email [description]

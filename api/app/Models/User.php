@@ -55,4 +55,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasMany(Email::class, 'from_user_email', 'email');
     }
+
+    /**
+     * [isSuperAdmin description]
+     * @return boolean [description]
+     */
+    public function isSuperAdmin()
+    {
+        return $this->isSuperAdmin ? true : false;
+    }
 }

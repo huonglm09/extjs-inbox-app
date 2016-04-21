@@ -1,6 +1,6 @@
 Ext.define('InboxManagement.view.auth.LoginController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.login',    
+    alias: 'controller.login',
     /*
      * Form submit method
      * */

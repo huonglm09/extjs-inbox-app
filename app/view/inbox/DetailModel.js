@@ -4,5 +4,4 @@ Ext.define('InboxManagement.view.inbox.DetailModel', {
     data: {
         name: 'InboxManagement'
     }
-
 });

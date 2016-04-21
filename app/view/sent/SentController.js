@@ -15,7 +15,6 @@ Ext.define('InboxManagement.view.sent.SentController', {
         var record = view.record ? view.record : {};
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
-
     moveToTrash: function() {
         var self = this;
         var view = this.getView().down('main-sent-detail');

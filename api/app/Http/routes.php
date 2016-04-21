@@ -63,6 +63,7 @@ Route::group(['prefix' => 'api'], function () {
                 Route::get('trash', 'EmailController@getTrash');
                 Route::get('{id}', 'EmailController@show');
                 Route::delete('{id}', 'EmailController@moveToTrash');
+                Route::put('{id}', 'EmailController@unTrash');
             });
 
             Route::group(['prefix' => 'pie-charts'], function () {

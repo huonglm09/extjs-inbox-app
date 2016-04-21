@@ -30,7 +30,7 @@ Ext.define('InboxManagement.view.sent.List', {
         dataIndex: 'to_user',
         flex: 1
     }, {
-        text: 'Received Date',
+        text: 'Sent Date',
         dataIndex: 'created_at',
         flex: 1
     }],

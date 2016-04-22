@@ -9,7 +9,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
     alias: 'controller.profile',
     onSaveProfile: function(btn) {
         var me = this,
-                form = me.lookupReference('profile-form');
+            form = me.lookupReference('profile-form');
         if (form.isValid()) {
             var formData = form.getForm().getValues();
             if (formData.password && formData.retype) {
@@ -28,7 +28,7 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
             }
 
             form.submit({
-                url: InboxManagement.Global.getApiUrl() + 'users/update/' + formData.email,
+                url: InboxManagement.Global.getApiUrl() + 'users/update',
                 waitMsg: 'Loading...',
                 method: 'POST',
                 success: function(form, action) {

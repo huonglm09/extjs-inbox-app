@@ -54,10 +54,18 @@ Ext.define('InboxManagement.view.trash.Detail', {
         xtype: 'container',
         height: 82,
         layout: {
-            type: 'hbox',
+            type: 'vbox',
             align: 'stretch'
         },
         items: [{
+            xtype: 'box',
+            flex: 1,
+            itemId: 'trashName'
+        }, {
+            xtype: 'box',
+            flex: 1,
+            itemId: 'trashEmail'
+        }, {
             xtype: 'box',
             cls: 'mail-body',
             itemId: 'mailBody'

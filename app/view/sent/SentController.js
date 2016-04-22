@@ -13,8 +13,8 @@ Ext.define('InboxManagement.view.sent.SentController', {
     },
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
-        view.down('#fromName').setHtml('From: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName);
-        view.down('#fromEmail').setHtml('Email: ' + record.get('from_user').email);
+        view.down('#fromName').setHtml('From > User: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName + ' - Email: ' + record.get('from_user').email);
+        view.down('#fromEmail').setHtml('To > User: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName + ' - Email: ' + record.get('to_user').email);
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
     moveToTrash: function() {

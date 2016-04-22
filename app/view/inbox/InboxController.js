@@ -12,9 +12,9 @@ Ext.define('InboxManagement.view.inbox.InboxController', {
         this.redirectTo('inbox/' + record.get('id'));
     },
     beforeDetailsRender: function(view) {
-        var record = view.record ? view.record : {};
-        view.down('#toName').setHtml('To: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName);
-        view.down('#toEmail').setHtml('Email: ' + record.get('to_user').email);
+        var record = view.record ? view.record : {};        
+        view.down('#toName').setHtml('From > User: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName + ' - Email: ' + record.get('from_user').email);
+        view.down('#toEmail').setHtml('To > User: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName + ' - Email: ' + record.get('to_user').email);
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
     moveToTrash: function() {

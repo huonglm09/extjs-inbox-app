@@ -12,6 +12,8 @@ Ext.define('InboxManagement.view.trash.TrashController', {
     },
     beforeDetailsRender: function(view) {
         var record = view.record ? view.record : {};
+        view.down('#trashName').setHtml('From > User: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName + ' - Email: ' + record.get('from_user').email);
+        view.down('#trashEmail').setHtml('To > User: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName + ' - Email: ' + record.get('to_user').email);
         view.down('#mailBody').setHtml(record.get('mail_content'));
     },
     unTrash: function() {
@@ -21,7 +23,7 @@ Ext.define('InboxManagement.view.trash.TrashController', {
         record.save({
             success: function() {
                 Ext.toast({
-                    html: 'Un trash',
+                    html: 'Restore',
                     title: 'Notification',
                     width: 200,
                     align: 'tr'

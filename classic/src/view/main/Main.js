@@ -20,7 +20,8 @@ Ext.define('InboxManagement.view.main.Main', {
         'InboxManagement.view.profile.Profile',
         'InboxManagement.view.profile.ProfileMain',
         'InboxManagement.view.dashboard.Dashboard',
-        'InboxManagement.view.dashboard.DashboardMain'
+        'InboxManagement.view.dashboard.DashboardMain',
+        'InboxManagement.view.trash.TrashMain'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -117,10 +118,7 @@ Ext.define('InboxManagement.view.main.Main', {
             id: 'trash',
             iconCls: 'fa-trash-o',
             items: [{
-                    xtype: 'container',
-                    id: 'trash-content-panel',
-                    margin: '0 0 20 0',
-                    flex: 1
+                    xtype: 'main-trash'
                 }]
         }, {
             title: 'Logout',

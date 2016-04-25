@@ -62,7 +62,7 @@ class UserController extends Controller
             $limit      = $data['limit'];
             $current    = Auth::user();
             $totalUsers = User::where('id', '!=', $current['id'])->get();
-            $users      = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();
+            $users      = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->orderBy('id', 'DESC')->get();
 
             return response()->json(['success' => true, 'status' => 1, 'users' => $users, 'total' => count($totalUsers)]);
         }

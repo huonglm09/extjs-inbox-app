@@ -29,7 +29,7 @@ Ext.define('InboxManagement.view.profile.Users', {
             ],
             bbar: {
                 xtype: 'pagingtoolbar',
-                pageSize: 5,
+                pageSize: 10,
                 store: store,
                 displayInfo: true,
                 plugins: new Ext.ux.ProgressBarPager()

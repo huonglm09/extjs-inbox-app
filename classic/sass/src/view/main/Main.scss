@@ -322,3 +322,21 @@ $ui-header-noborder-adjust: false
 .x-component, .x-container {
     position: inherit !important;
 }
+.avatar-wrapper {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.profile-avatar {
+    height: 100px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-shadow: 0px 0px 6px;
+    -moz-box-shadow: 0px 0px 6px;
+    -webkit-box-shadow: 0px 0px 6px;
+    border: 1px solid #ffffff;
+    margin: 0 auto;
+}
+  

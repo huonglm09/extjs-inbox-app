@@ -12,39 +12,46 @@ Ext.define('InboxManagement.view.sent.List', {
             html: '<i class="mark-color"></i><div class="title-panel">Sent</div>'
         }
     },
-    store: {
-        type: 'sent'
-    },
     viewConfig: {
         preserveScrollOnRefresh: true,
         preserveScrollOnReload: true
     },
     headerBorders: false,
     rowLines: false,
-    columns: [{
-        text: 'Subject',
-        dataIndex: 'mail_subject',
-        flex: 1
-    }, {
-        text: 'To',
-        dataIndex: 'to_user',
-        flex: 1
-    }, {
-        text: 'Sent Date',
-        dataIndex: 'created_at',
-        flex: 1
-    }],
-    bbar: {
-        xtype: 'pagingtoolbar',
-        pageSize: 20,
-        store: {
-            type: 'sent'
-        },
-        displayInfo: true,
-        plugins: new Ext.ux.ProgressBarPager()
+    initComponent: function() {
+        var store = new InboxManagement.store.Sent();
+
+        Ext.apply(this, {
+            store: store,
+            columns: [{
+                    text: 'Subject',
+                    dataIndex: 'mail_subject',
+                    flex: 1
+                }, {
+                    text: 'To',
+                    dataIndex: 'to_user',
+                    flex: 1
+                }, {
+                    text: 'Sent Date',
+                    dataIndex: 'created_at',
+                    flex: 1
+                }],
+            bbar: {
+                xtype: 'pagingtoolbar',
+                pageSize: 20,
+                store: store,
+                displayInfo: true,
+                plugins: new Ext.ux.ProgressBarPager()
+            },
+            listeners: {
+                cellclick: 'onItemSelected',
+                scope: 'controller'
+            }
+        });
+        this.callParent();
     },
-    listeners: {
-        cellclick: 'onItemSelected',
-        scope: 'controller'
+    afterRender: function() {
+        this.callParent(arguments);
+        this.getStore().load();
     }
 });

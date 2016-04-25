@@ -24,39 +24,44 @@ Ext.define('InboxManagement.view.trash.Trash', {
     },
     headerBorders: false,
     rowLines: false,
+    initComponent: function() {
+        var store = new InboxManagement.store.Trash();
 
-    store: {
-        type: 'trash'
+        Ext.apply(this, {
+            store: store,
+            columns: [{
+                text: 'Subject',
+                dataIndex: 'mail_subject',
+                flex: 1
+            }, {
+                text: 'From',
+                dataIndex: 'from_user',
+                flex: 1
+            }, {
+                text: 'To',
+                dataIndex: 'to_user',
+                flex: 1
+            }, {
+                text: 'Created Date',
+                dataIndex: 'created_at',
+                flex: 1
+            }],
+            bbar: {
+                xtype: 'pagingtoolbar',
+                pageSize: 20,
+                store: store,
+                displayInfo: true,
+                plugins: new Ext.ux.ProgressBarPager()
+            },
+            listeners: {
+                cellclick: 'onItemSelected',
+                scope: 'controller'
+            }
+        });
+        this.callParent();
     },
-
-    columns: [{
-        text: 'Subject',
-        dataIndex: 'mail_subject',
-        flex: 1
-    }, {
-        text: 'From',
-        dataIndex: 'from_user',
-        flex: 1
-    }, {
-        text: 'To',
-        dataIndex: 'to_user',
-        flex: 1
-    }, {
-        text: 'Created Date',
-        dataIndex: 'created_at',
-        flex: 1
-    }],
-    bbar: {
-        xtype: 'pagingtoolbar',
-        pageSize: 20,
-        store: {
-            type: 'trash'
-        },
-        displayInfo: true,
-        plugins: new Ext.ux.ProgressBarPager()
-    },
-    listeners: {
-        cellclick: 'onItemSelected',
-        scope: 'controller'
-    }
+    afterRender: function() {
+        this.callParent(arguments);
+        this.getStore().load();
+    }      
 });

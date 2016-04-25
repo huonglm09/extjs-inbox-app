@@ -32,7 +32,12 @@ Ext.define('InboxManagement.view.profile.ProfileController', {
                 waitMsg: 'Loading...',
                 method: 'POST',
                 success: function(form, action) {
-                    var res = Ext.decode(action.response.responseText);
+                    var res = Ext.decode(action.response.responseText);                    
+                    var el = Ext.getCmp('profile-main');
+                    Ext.suspendLayouts();
+                    el.removeAll(true);
+                    el.add(Ext.apply({xtype: 'profile'}));
+                    Ext.resumeLayouts(true);
                     Ext.MessageBox.show({
                         title: 'Save Profile',
                         msg: res.message,

@@ -59,6 +59,7 @@ use AuthenticatesAndRegistersUsers;
                     'lastName' => $data['lastName'],
                     'email' => $data['email'],
                     'password' => bcrypt($data['password']),
+                    'avatar' => $data['avatar']
         ]);
     }
 
@@ -111,7 +112,8 @@ use AuthenticatesAndRegistersUsers;
             'email' => isset($params['email']) ? $params['email'] : null,
             'password' => isset($params['password']) ? $params['password'] : null,
             'firstName' => isset($params['firstName']) ? $params['firstName'] : null,
-            'lastName' => isset($params['lastName']) ? $params['lastName'] : null
+            'lastName' => isset($params['lastName']) ? $params['lastName'] : null,
+            'avatar' => '/api/public/uploads/avatar/noavatar.png'
         ];
 
         $validator = $this->validator($post_data);
@@ -121,7 +123,7 @@ use AuthenticatesAndRegistersUsers;
         }
 
         // Try to save the user
-        try {
+        try {            
             $user = $this->create($post_data);
         } catch (QueryException $e) {
             // The email field in the users table has a unique index so it will throw an error

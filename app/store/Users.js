@@ -6,7 +6,7 @@ Ext.define('InboxManagement.store.Users', {
     ],
     model: 'InboxManagement.model.User',
     autoLoad: true,
-    pageSize: 5,
+    pageSize: 10,
     proxy: {
         type: 'ajax',
         enablePaging: true,

@@ -87,7 +87,7 @@ class UserController extends Controller
 
                 $name = 'uploads/avatar/' . sha1(uniqid('', true)) . '.jpg';
                 $img->save(public_path($name));
-                $user->avatar = 'api/' . public_path($name);
+                $user->avatar = '/api/public/' . $name;
             }
 
         }

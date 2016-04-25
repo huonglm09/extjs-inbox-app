@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\User\Backend;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Validator;
 use App\Models\User as User;
-use DB;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+use Image;
+use Validator;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
     /*
-      |--------------------------------------------------------------------------
-      | User Admin Controller
-      |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    | User Admin Controller
+    |--------------------------------------------------------------------------
      */
 
     private $_userModel;
@@ -25,7 +26,8 @@ class UserController extends Controller {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
         //Init Entity Model
         $this->_userModel = new User();
@@ -36,7 +38,8 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function index() {
+    public function index()
+    {
         //Get all users
         $users = $this->_userModel->all();
         //Response view
@@ -51,14 +54,15 @@ class UserController extends Controller {
      * @Version("v1")
      */
 
-    public function getUsers(Request $request) {
+    public function getUsers(Request $request)
+    {
         if (Auth::check()) {
-            $data = $request->all();                        
-            $start = $data['start'];
-            $limit = $data['limit'];
-            $current = Auth::user();
-            $totalUsers = User::where('id', '!=', $current['id'])->get();            
-            $users = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();                        
+            $data       = $request->all();
+            $start      = $data['start'];
+            $limit      = $data['limit'];
+            $current    = Auth::user();
+            $totalUsers = User::where('id', '!=', $current['id'])->get();
+            $users      = User::where('id', '!=', $current['id'])->skip($start)->take($limit)->get();
 
             return response()->json(['success' => true, 'status' => 1, 'users' => $users, 'total' => count($totalUsers)]);
         }
@@ -74,8 +78,19 @@ class UserController extends Controller {
      * @Version("v1")
      */
 
-    public function updateUser($email, Request $request) {
-        $user = User::where('email', '=', $email)->first();
+    public function updateUser(Request $request)
+    {
+        $user = Auth::user();
+        if ($request->hasFile('photo')) {
+            if ($request->file('photo')->isValid()) {
+                $img = Image::make($request->file('photo'));
+
+                $name = 'uploads/avatar/' . sha1(uniqid('', true)) . '.jpg';
+                $img->save(public_path($name));
+                $user->avatar = 'api/' . public_path($name);
+            }
+
+        }
 
         if (empty($user)) {
             return response()->json(['status' => 0]);
@@ -98,11 +113,11 @@ class UserController extends Controller {
             if ($user->save()) {
                 return response()->json(['success' => true, 'status' => 1, 'message' => 'Your profile has been saved successfull']);
             } else {
-                return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile']);
+                return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile'], Response::HTTP_BAD_REQUEST);
             }
         }
 
-        return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile']);
+        return response()->json(['success' => false, 'status' => 0, 'message' => 'An error happen in process save your profile'], Response::HTTP_BAD_REQUEST);
     }
 
     /*
@@ -113,18 +128,19 @@ class UserController extends Controller {
      * @Version("v1")
      */
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         if ($request->getMethod() == 'POST') {
 
             $datas = $request->all();
 
             /* Validation form */
             $validator = Validator::make($request->all(), [
-                        'firstName' => 'required',
-                        'lastName' => 'required',
-                        'email' => 'required|email',
-                        'newPassword' => 'required',
-                        'confirmPass' => 'required|same:newPassword'
+                'firstName'   => 'required',
+                'lastName'    => 'required',
+                'email'       => 'required|email',
+                'newPassword' => 'required',
+                'confirmPass' => 'required|same:newPassword',
             ]);
 
             /* Check exist email */
@@ -133,16 +149,15 @@ class UserController extends Controller {
             if ($userExist == false) {
                 $validator->errors()->add('email', 'This email already exists!');
                 return redirect('admin/users/create')
-                                ->withErrors($validator)
-                                ->withInput();
+                    ->withErrors($validator)
+                    ->withInput();
             }
 
             if ($validator->fails()) {
                 return redirect('admin/users/create')
-                                ->withErrors($validator)
-                                ->withInput();
+                    ->withErrors($validator)
+                    ->withInput();
             }
-
 
             $file = array_get($datas, 'avatar');
             if ($file) {
@@ -155,7 +170,6 @@ class UserController extends Controller {
                 // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
                 $upload_success = $file->move($destinationPath, $fileName);
 
-
                 if ($upload_success) {
                     $datas['avatar'] = $fileName;
                 }
@@ -164,22 +178,21 @@ class UserController extends Controller {
             }
 
             /* Save new user */
-            $user = new User();
+            $user            = new User();
             $user->firstName = $datas['firstName'];
-            $user->lastName = $datas['lastName'];
-            $user->email = $datas['email'];
-            $user->password = Hash::make($datas['newPassword']);
+            $user->lastName  = $datas['lastName'];
+            $user->email     = $datas['email'];
+            $user->password  = Hash::make($datas['newPassword']);
 
             $user->updated_at = date('Y-m-d');
-            $user->avatar = $datas['avatar'];
-            $user->isActive = $datas['isActive'];
-            $user->isAdmin = 1;
-
+            $user->avatar     = $datas['avatar'];
+            $user->isActive   = $datas['isActive'];
+            $user->isAdmin    = 1;
 
             if ($user->save()) {
                 return redirect()->action('User\Backend\UserController@index');
             } else {
-                
+
             }
         }
         return view('user.backend.create');
@@ -192,7 +205,8 @@ class UserController extends Controller {
      * @Version("v1")
      */
 
-    public function edit($userID, Request $request) {
+    public function edit($userID, Request $request)
+    {
         $user = User::find($userID);
         if ($user == null) {
             //Response view
@@ -204,17 +218,16 @@ class UserController extends Controller {
 
             /* Validation form */
             $validator = Validator::make($request->all(), [
-                        'firstName' => 'required',
-                        'lastName' => 'required',
-                        'confirmPass' => 'same:newPassword'
+                'firstName'   => 'required',
+                'lastName'    => 'required',
+                'confirmPass' => 'same:newPassword',
             ]);
 
             if ($validator->fails()) {
                 return redirect('admin/users/edit/' . $user->id)
-                                ->withErrors($validator)
-                                ->withInput();
+                    ->withErrors($validator)
+                    ->withInput();
             }
-
 
             $file = array_get($datas, 'avatar');
             if ($file) {
@@ -227,7 +240,6 @@ class UserController extends Controller {
                 // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
                 $upload_success = $file->move($destinationPath, $fileName);
 
-
                 if ($upload_success) {
                     $datas['avatar'] = $fileName;
                 }
@@ -235,11 +247,10 @@ class UserController extends Controller {
                 $datas['avatar'] = $user->avatar;
             }
 
-
             /* Save new user */
             $user->firstName = $datas['firstName'];
-            $user->lastName = $datas['lastName'];
-            $user->avatar = $datas['avatar'];
+            $user->lastName  = $datas['lastName'];
+            $user->avatar    = $datas['avatar'];
 
             $user->isActive = $datas['isActive'];
 
@@ -251,7 +262,7 @@ class UserController extends Controller {
                 //Response view
                 return redirect()->action('User\Backend\UserController@index');
             } else {
-                
+
             }
         }
         return view('user.backend.edit', ['user' => $user]);
@@ -264,7 +275,8 @@ class UserController extends Controller {
      * @Version("v1")
      */
 
-    public function delete($id, Request $request) {
+    public function delete($id, Request $request)
+    {
         $user = User::find($id);
         if ($user == null) {
             //Response view
@@ -285,7 +297,8 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function profile($id) {
+    public function profile($id)
+    {
         return view('user.backend.profile');
     }
 
@@ -295,7 +308,8 @@ class UserController extends Controller {
      * @Version("v1")
      * */
 
-    private function checkEmailExist($email) {
+    private function checkEmailExist($email)
+    {
         $userExist = User::where(array('email' => $email))->count();
         if ($userExist > 0) {
             return false;

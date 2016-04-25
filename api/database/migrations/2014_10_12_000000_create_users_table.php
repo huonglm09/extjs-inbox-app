@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('avatar');
             $table->string('email')->unique();
             $table->string('password', 60)->nullable();
             $table->enum('provider', ['local', 'facebook', 'google', 'github'])->default('local');

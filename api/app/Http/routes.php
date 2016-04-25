@@ -72,13 +72,19 @@ Route::group(['prefix' => 'api'], function () {
                 Route::get('sent', 'EmailController@pieChartSent');
             });
         });
+
+        Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+            Route::group(['namespace' => 'Backend'], function () {
+                Route::any('update', 'UserController@updateUser');
+            });
+        });
+
     });
 
     Route::any('emails/delete', 'Email\EmailController@deleteEmail');
 
     /* User */
     Route::any('users', 'User\Backend\UserController@getUsers');
-    Route::any('users/update/{user_email}', 'User\Backend\UserController@updateUser');
 
     /* Auth */
     Route::any('auth/login', '\App\Http\Controllers\Auth\AuthController@login');

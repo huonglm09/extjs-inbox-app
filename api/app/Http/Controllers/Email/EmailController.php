@@ -247,7 +247,7 @@ class EmailController extends Controller
             ->select('*', DB::raw('count(*) as total, CONCAT_WS(" ", firstName, lastName) as fullName'))
             ->join('users', 'emails.from_user_email', '=', 'users.email')
             ->where('to_user_email', '=', $user->email)
-            ->where('from_deleted', '=', 0)
+            ->where('to_deleted', '=', 0)
             ->groupBy('from_user_email')
             ->get();
 

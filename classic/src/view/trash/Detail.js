@@ -51,8 +51,7 @@ Ext.define('InboxManagement.view.trash.Detail', {
         ]
     },
     items: [{
-        xtype: 'container',
-        height: 82,
+        xtype: 'container',        
         layout: {
             type: 'vbox',
             align: 'stretch'
@@ -68,7 +67,9 @@ Ext.define('InboxManagement.view.trash.Detail', {
         }, {
             xtype: 'box',
             cls: 'mail-body',
-            itemId: 'mailBody'
+            itemId: 'mailBody',
+            scrollable: 'y',
+            maxHeight: 500
         }]
     }]
 

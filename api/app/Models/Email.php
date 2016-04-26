@@ -28,7 +28,7 @@ class Email extends Model implements AuthenticatableContract, CanResetPasswordCo
      */
     public function fromUser()
     {
-        return $this->belongsTo(User::class, 'from_user_email', 'email')->select('firstName', 'lastName', 'email');
+        return $this->belongsTo(User::class, 'from_user_email', 'email')->select('firstName', 'lastName', 'email', 'avatar');
     }
 
     /**
@@ -37,7 +37,7 @@ class Email extends Model implements AuthenticatableContract, CanResetPasswordCo
      */
     public function toUser()
     {
-        return $this->belongsTo(User::class, 'to_user_email', 'email')->select('firstName', 'lastName', 'email');
+        return $this->belongsTo(User::class, 'to_user_email', 'email')->select('firstName', 'lastName', 'email', 'avatar');
     }
 
 }

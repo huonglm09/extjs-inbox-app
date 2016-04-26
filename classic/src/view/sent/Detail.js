@@ -72,7 +72,9 @@ Ext.define('InboxManagement.view.sent.Detail', {
         }, {
             xtype: 'box',
             cls: 'mail-body',
-            itemId: 'mailBody'
+            itemId: 'mailBody',
+            scrollable: 'y',
+            maxHeight: 500
         }]
     }]
 

@@ -52,7 +52,7 @@ Ext.define('InboxManagement.view.write.Write', {
                     flex: 1,
                     name: 'content',
                     minHeight: 400,
-                    fieldLabel: 'Message:'
+                    fieldLabel: 'Message'
                 }
             ]
         }

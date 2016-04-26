@@ -339,4 +339,56 @@ $ui-header-noborder-adjust: false
     border: 1px solid #ffffff;
     margin: 0 auto;
 }
-  
+.avatar-detail {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.avatar-detail img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    box-shadow: 0px 0px 6px;
+    -moz-box-shadow: 0px 0px 6px;
+    -webkit-box-shadow: 0px 0px 6px;
+    border: 1px solid #ffffff;
+    float: left;
+    margin: 5px;
+}
+.avatar-detail .text-right {
+    float: left;    
+    margin: 2px 10px;
+    width: 80%;
+    margin-top: 10px;
+}
+.avatar-detail .text-right.two {
+    float: left;    
+    margin: 2px 10px;
+    width: 80%;
+    margin-top: 0px;
+}
+.mail-body {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.content-detail {    
+    overflow: hidden;
+    font-size: 14px;    
+    padding: 20px 0px;    
+    line-height: 25px;
+}
+.write-btn.send {    
+    border: 1px solid #84b351;    
+    background-color: #9cc96b;
+}
+.write-btn.cancel {
+    border: 1px solid #cf2f3f;    
+    background-color: #e44959;
+}
+.write-btn.cancel:hover {
+    background-color: #d24352;
+}
+.write-btn.send:hover {
+    background-color: #90b962;
+}

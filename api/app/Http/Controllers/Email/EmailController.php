@@ -99,21 +99,34 @@ class EmailController extends Controller
     public function sentMailToOther(Request $request)
     {
         if ($request->getMethod() == 'POST') {
-            $emails = array();
-
-            $emails['from_email'] = $request->get('from_email');
-            $emails['to_email']   = $request->get('to_email');
-            $emails['subject']    = $request->get('subject');
-            $emails['content']    = $request->get('content');
-
+            $data = $request->all();                        
+            $emails = array();            
+            if(isset($data['type'])) {
+                $user  = Auth::user();
+                $emailCurrent = Email::find($request->get('id'));
+                
+                $emails['from_email'] = $user->email;
+                $emails['to_email']   = $request->get('reply_to_email');                                
+                $emails['subject']    = 'Re: ' . $emailCurrent['mail_subject'];
+                $emails['content']    = $request->get('reply') . "<br/><br/>----- Original Message -----<br/>From: " . $emailCurrent['from_user_email'] . "<br/>To: "  . $emailCurrent['to_user_email'] . "<br/>Sent: " . $emailCurrent['created_at'] . "<br/>Subject: " . $emailCurrent['mail_subject'] . "<br/><br/>" . str_replace('----- Original Message -----', '', $emailCurrent['mail_content']);
+                if(isset($data['reply_subject'])) {
+                    $emails['subject']    = $request->get('reply_subject');
+                }                                
+            } else {
+                $emails['from_email'] = $request->get('from_email');
+                $emails['to_email']   = $request->get('to_email');
+                $emails['subject']    = $request->get('subject');
+                $emails['content']    = $request->get('content');
+            }
+            
             $status = $this->sendMail($emails);
 
             if ($status) {
                 $emailSave                  = new Email();
-                $emailSave->from_user_email = $request->get('from_email');
-                $emailSave->to_user_email   = $request->get('to_email');
-                $emailSave->mail_subject    = $request->get('subject');
-                $emailSave->mail_content    = $request->get('content');
+                $emailSave->from_user_email = $emails['from_email'];
+                $emailSave->to_user_email   = $emails['to_email'];
+                $emailSave->mail_subject    = $emails['subject'];
+                $emailSave->mail_content    = $emails['content'];
                 $emailSave->from_deleted    = 0;
                 $emailSave->to_deleted      = 0;
 
@@ -145,9 +158,7 @@ class EmailController extends Controller
             $mailContent->content   = $emails['content'];
             $mailContent->full_name = 'Inbox Member';
 
-            Mail::send('emails.user-reset-password', ['message' => $mailContent, 'mailContent' => $mailContent->content,
-                'full_name'                                         => $mailContent->full_name,
-            ], function ($m) use
+            Mail::send('emails.user-reset-password', ['message' => $mailContent, 'mailContent' => $mailContent->content, 'full_name' => $mailContent->full_name], function ($m) use
                 ($mailContent) {
                     $m->from($mailContent->from, 'InboxManagement');
                     $m->to($mailContent->email_to, $mailContent->full_name)->subject($mailContent->subject);

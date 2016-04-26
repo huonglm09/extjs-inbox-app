@@ -12,10 +12,10 @@ Ext.define('InboxManagement.view.sent.SentController', {
         this.redirectTo('email-detail/' + record.get('id'));
     },
     beforeDetailsRender: function(view) {
-        var record = view.record ? view.record : {};
-        view.down('#fromName').setHtml('From > User: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName + ' - Email: ' + record.get('from_user').email);
-        view.down('#fromEmail').setHtml('To > User: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName + ' - Email: ' + record.get('to_user').email);
-        view.down('#mailBody').setHtml(record.get('mail_content'));
+        var record = view.record ? view.record : {};  
+        view.down('#fromName').setHtml('<div class="avatar-detail"><img src="'+ record.get('from_user').avatar +'"/> <div class="text-right">Me: ' + record.get('from_user').firstName + ' ' + record.get('from_user').lastName + '</div><div class="text-right two">Email: ' + record.get('from_user').email + '</div>');
+        view.down('#fromEmail').setHtml('<div class="avatar-detail"><img src="'+ record.get('to_user').avatar +'"/> <div class="text-right">To: ' + record.get('to_user').firstName + ' ' + record.get('to_user').lastName + '</div><div class="text-right two">Email: ' + record.get('to_user').email + '</div>');
+        view.down('#mailBody').setHtml('<div class="content-detail">' + record.get('mail_content') + '</div>');
     },
     moveToTrash: function() {
         var self = this;

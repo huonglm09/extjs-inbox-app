@@ -20,7 +20,6 @@ Ext.define('InboxManagement.view.profile.Users', {
         Ext.apply(this, {
             store: store,
             columns: [
-                {text: 'Id', dataIndex: 'id'},
                 {text: 'First Name', dataIndex: 'firstName', flex: 1},
                 {text: 'Last Name', dataIndex: 'lastName', flex: 1},
                 {text: 'Email', dataIndex: 'email', flex: 1.5},

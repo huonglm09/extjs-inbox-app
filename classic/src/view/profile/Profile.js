@@ -46,7 +46,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     html: '<i class="mark-color"></i><div class="title-panel">Profile</div>'
                 }
             },
-            flex: 2,
+            flex: 1,
             margin: '0 10 0 0',
             xtype: 'form',
             defaultType: 'textfield',
@@ -130,7 +130,7 @@ Ext.define('InboxManagement.view.profile.Profile', {
                     html: '<i class="mark-color"></i><div class="title-panel">Users</div>'
                 }
             },
-            flex: 4,
+            flex: 1.5,
             margin: '0 10 0 0',
             cls: 'profile-form',
             items: [{

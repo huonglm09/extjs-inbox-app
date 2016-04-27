@@ -18,6 +18,7 @@ Ext.define('InboxManagement.view.sent.SentController', {
         view.down('#mailBody').setHtml('<div class="content-detail">' + record.get('mail_content') + '</div>');
         view.down('#replyToEmail').setValue(record.get('to_user').email);        
         view.down('#idMailDetail').setValue(record.get('id'));      
+        view.down('#idMailForward').setValue(record.get('id'));              
     },
     moveToTrash: function() {
         var self = this;
@@ -72,13 +73,69 @@ Ext.define('InboxManagement.view.sent.SentController', {
                 }
             });
         }
+    },   
+    onForward: function() {
+        var me = this;
+        var form = me.lookupReference('forward_form');        
+        if (form.isValid()) {
+            form.submit({
+                url: InboxManagement.Global.getApiUrl() + 'write-email',
+                waitMsg: 'Loading...',
+                method: 'POST',
+                success: function(form, action) {
+                    var res = Ext.decode(action.response.responseText);
+                    form.reset();
+                    me.redirectTo('sent');
+                }, failure: function(form, action) {
+                    var res = Ext.decode(action.response.responseText);
+                    Ext.MessageBox.show({
+                        title: 'Forward',
+                        msg: 'Please try again',
+                        icon: Ext.MessageBox.ERROR,
+                        width: 200,
+                        closable: false,
+                        buttons: Ext.MessageBox.OK
+                    });
+                }
+            });
+        }
     },
     onCancelReply: function() {
+        this.resetReply();
+        var replyForm = this.lookupReference('reply_form');
+        replyForm.hide();
+    },
+    onCancelForward: function() {
+        this.resetForward();
+        var forwardForm = this.lookupReference('forward_form');
+        forwardForm.hide();
+    }, 
+    replyAction: function() {        
+        this.onCancelForward();
+        var replyForm = this.lookupReference('reply_form');
+        replyForm.show();
+    },
+    forwardAction: function() {
+        this.onCancelReply();
+        var forwardForm = this.lookupReference('forward_form');
+        forwardForm.show();
+    },
+    resetReply: function() {
         var replyContent = this.lookupReference('reply_content');
         var replySubject = this.lookupReference('reply_subject');
         var replySubjectMode = this.lookupReference('changeSubject');
         replyContent.reset();
         replySubject.reset();
-        replySubjectMode.reset();
+        replySubjectMode.reset();   
+    },
+    resetForward: function() {
+        var forwardContent = this.lookupReference('forward_content');
+        var forwardSubject = this.lookupReference('forward_subject');
+        var forwardSubjectMode = this.lookupReference('changeForwardSubject');
+        var forwardEmail = this.lookupReference('to_forward_email');
+        forwardContent.reset();
+        forwardSubject.reset();
+        forwardSubjectMode.reset();
+        forwardEmail.reset();
     }
 });

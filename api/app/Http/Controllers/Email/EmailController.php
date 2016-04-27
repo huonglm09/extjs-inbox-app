@@ -102,16 +102,31 @@ class EmailController extends Controller
             $data = $request->all();                        
             $emails = array();            
             if(isset($data['type'])) {
-                $user  = Auth::user();
-                $emailCurrent = Email::find($request->get('id'));
+                if($data['type'] == 'reply') {
+                    $user  = Auth::user();
+                    $emailCurrent = Email::find($request->get('id'));
+
+                    $emails['from_email'] = $user->email;
+                    $emails['to_email']   = $request->get('reply_to_email');                                
+                    $emails['subject']    = 'Re: ' . $emailCurrent['mail_subject'];
+                    $emails['content']    = $request->get('reply') . "<br/><br/>----- Original Message -----<br/>From: " . $emailCurrent['from_user_email'] . "<br/>To: "  . $emailCurrent['to_user_email'] . "<br/>Sent: " . $emailCurrent['created_at'] . "<br/>Subject: " . $emailCurrent['mail_subject'] . "<br/><br/>" . str_replace('----- Original Message -----', '', $emailCurrent['mail_content']);
+                    if(isset($data['reply_subject'])) {
+                        $emails['subject']    = $request->get('reply_subject');
+                    }                    
+                }
                 
-                $emails['from_email'] = $user->email;
-                $emails['to_email']   = $request->get('reply_to_email');                                
-                $emails['subject']    = 'Re: ' . $emailCurrent['mail_subject'];
-                $emails['content']    = $request->get('reply') . "<br/><br/>----- Original Message -----<br/>From: " . $emailCurrent['from_user_email'] . "<br/>To: "  . $emailCurrent['to_user_email'] . "<br/>Sent: " . $emailCurrent['created_at'] . "<br/>Subject: " . $emailCurrent['mail_subject'] . "<br/><br/>" . str_replace('----- Original Message -----', '', $emailCurrent['mail_content']);
-                if(isset($data['reply_subject'])) {
-                    $emails['subject']    = $request->get('reply_subject');
-                }                                
+                if($data['type'] == 'forward') {
+                    $user  = Auth::user();
+                    $emailCurrent = Email::find($request->get('id_forward'));
+
+                    $emails['from_email'] = $user->email;
+                    $emails['to_email']   = $request->get('to_forward_email');                                
+                    $emails['subject']    = 'Fwd: ' . $emailCurrent['mail_subject'];
+                    $emails['content']    = $request->get('forward') . "<br/><br/>----- Forwarded Message -----<br/>From: " . $emailCurrent['from_user_email'] . "<br/>To: "  . $emailCurrent['to_user_email'] . "<br/>Sent: " . $emailCurrent['created_at'] . "<br/>Subject: " . $emailCurrent['mail_subject'] . "<br/><br/>" . str_replace('----- Forwarded Message -----', '', $emailCurrent['mail_content']);
+                    if(isset($data['forward_subject'])) {
+                        $emails['subject']    = $request->get('forward_subject');
+                    }                    
+                }                           
             } else {
                 $emails['from_email'] = $request->get('from_email');
                 $emails['to_email']   = $request->get('to_email');

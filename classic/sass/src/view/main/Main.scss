@@ -392,3 +392,7 @@ $ui-header-noborder-adjust: false
 .write-btn.send:hover {
     background-color: #90b962;
 }
+#main-inbox-detail-body .write-btn.send,
+#main-inbox-detail-body .write-btn.cancel {
+    margin-left: 10px !important;
+}

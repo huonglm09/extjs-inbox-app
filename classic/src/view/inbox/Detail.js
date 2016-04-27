@@ -37,21 +37,6 @@ Ext.define('InboxManagement.view.inbox.Detail', {
             click: 'printPage'
         }
     }],
-    bbar: {
-        cls: 'single-mail-action-button',
-        defaults: {
-            margin: '0 15 0 0'
-        },
-        items: [
-            '->', {
-                ui: 'gray',
-                text: 'Save'
-            }, {
-                ui: 'soft-green',
-                text: 'Send'
-            }
-        ]
-    },    
     items: [{                
         xtype: 'container',
         layout: {

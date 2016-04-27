@@ -78,6 +78,11 @@ Ext.define('InboxManagement.view.sent.Detail', {
                             name: 'type',
                             value: 'reply'
                         }, {
+                            fieldLabel: 'Subject Mode:',
+                            boxLabel: 'Use default subject',
+                            xtype: 'checkbox',                            
+                            reference: 'changeSubject'     
+                        }, {                                                           
                             xtype: 'textfield',
                             reference: 'reply_subject',
                             fieldLabel: 'Reply - Subject',
@@ -88,11 +93,6 @@ Ext.define('InboxManagement.view.sent.Detail', {
                             bind: {
                                 disabled: '{changeSubject.checked}'
                             }
-                        }, {
-                            fieldLabel: 'Subject Mode:',
-                            boxLabel: 'Use default subject',
-                            xtype: 'checkbox',                            
-                            reference: 'changeSubject'        
                         }, {
                             xtype: 'htmleditor',
                             reference: 'reply_content',
